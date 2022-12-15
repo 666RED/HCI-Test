@@ -7,19 +7,21 @@
   <title>Inventory</title>
   <link rel="stylesheet" href="CSS/general.css">
   <link rel="stylesheet" href="CSS/header.css">
+  <link rel="stylesheet" href="CSS/footer.css">
+  <link rel="stylesheet" href="CSS/inventory.css">
 </head>
 
 <body>
   <div class="whole-container">
-    <div class="header">
+    <section class="header">
       <div class="left-section">
         <h1 class="shop-name">KMS</h1>
       </div>
       <div class="middle-section">
-        <button class="checkout-btn">Checkout</button>
-        <button class="inventory-btn">
-          <a href="inventory.html" class="inventory-link">Inventory</a>
+        <button class="checkout-btn">
+          <a href="index.html">Checkout</a> 
         </button>
+        <button class="inventory-btn">Inventory</button>
         <button class="report-btn">
           <a href="report.html" class="report-link">Report</a>
         </button>
@@ -31,7 +33,8 @@
         </div>
         <img src="image/logout.png" class="logout-img">
       </div>
-    </div>
+    </section>
+  
     <div class="pop-up">
       <div class="upper-row">
         <div>
@@ -52,12 +55,23 @@
         <button class="no-btn">No</button>
       </div>
     </div>
-    <div>This is inventory page</div>
-    <div>
-      <a href="index.html">Back</a>
-    </div>
+  
+    <section class="footer">
+      <div class="footer-upper-row">
+        <div class="terms-of-use">
+          <img src="image/book.png" class="book-img">
+          <a href="terms-of-use.html">Terms of use</a>
+        </div>
+        <div class="contact-us">
+          <img src="image/telephone.png" class="phone-img">
+          <p>Contact us: 012-xxxxxxx</p>
+        </div>
+      </div>
+      <div class="footer-bottom-row">
+        <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
+      </div>
+    </section>
   </div>
-
-
+  <script src="JavaScript/checkout.js"></script>
 </body>
 </html>

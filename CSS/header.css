@@ -61,10 +61,6 @@
   height: 100%;
 }
 
-.inventory-btn:hover, .report-btn:hover{
-  background-color: rgba(255, 255, 255, .5);
-}
-
 .right-section {
   flex: 1;
   display: flex;

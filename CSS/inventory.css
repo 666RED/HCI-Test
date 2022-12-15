@@ -1,8 +1,8 @@
-.checkout-btn {
+.inventory-btn {
   text-decoration: underline;
 }
 
-.inventory-btn:hover,
+.checkout-btn:hover,
 .report-btn:hover {
   background-color: rgba(255, 255, 255, .5);
 }
