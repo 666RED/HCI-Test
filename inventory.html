@@ -12,66 +12,94 @@
 </head>
 
 <body>
-  <div class="whole-container">
-    <section class="header">
-      <div class="left-section">
-        <h1 class="shop-name">KMS</h1>
+  <section class="header">
+    <div class="left-section">
+      <h1 class="shop-name">KMS</h1>
+    </div>
+    <div class="middle-section">
+      <button class="checkout-btn">
+        <a href="index.html">Checkout</a> 
+      </button>
+      <button class="inventory-btn">Inventory</button>
+      <button class="report-btn">
+        <a href="report.html" class="report-link">Report</a>
+      </button>
+    </div>
+    <div class="right-section">
+      <div class="user-box">
+        <img src="image/user.png" class="user-img">
+        <p class="user-id">owner</p>
       </div>
-      <div class="middle-section">
-        <button class="checkout-btn">
-          <a href="index.html">Checkout</a> 
-        </button>
-        <button class="inventory-btn">Inventory</button>
-        <button class="report-btn">
-          <a href="report.html" class="report-link">Report</a>
-        </button>
-      </div>
-      <div class="right-section">
-        <div class="user-box">
-          <img src="image/user.png" class="user-img">
-          <p class="user-id">owner</p>
-        </div>
-        <img src="image/logout.png" class="logout-img">
-      </div>
-    </section>
-  
-    <div class="pop-up">
-      <div class="upper-row">
-        <div>
-          <img src="image/warning.png" class="danger-img">
-        </div>
-        <p>LOGOUT</p>
-        <div>
-          <img src="image/remove.png" class="cancel-img">
-        </div>
-      </div>
-      <div class="message-row">
-        <p>Are you sure you want to logout?</p>
-      </div>
-      <div class="btn-row">
-        <button class="yes-btn">
-          <a href="login.html" class="yes-link">Yes</a>
-        </button>
-        <button class="no-btn">No</button>
+      <img src="image/logout.png" class="logout-img">
+    </div>
+  </section>
+
+  <section class="item-row">
+    <div class="search-item-box">
+      <h3 class="item-text">Item</h3>
+      <div>
+        <input type="text" placeholder="Barcode / Name" id="search-bar">
       </div>
     </div>
-  
-    <section class="footer">
-      <div class="footer-upper-row">
-        <div class="terms-of-use">
-          <img src="image/book.png" class="book-img">
-          <a href="terms-of-use.html">Terms of use</a>
-        </div>
-        <div class="contact-us">
-          <img src="image/telephone.png" class="phone-img">
-          <p>Contact us: 012-xxxxxxx</p>
-        </div>
+    <button class="add-item-button">
+      <a href="add-item.html">
+        <img src="image/plus.png" class="plus-icon">
+        <div class="add-item-text">Add New Item</div>
+      </a>
+    </button>
+  </section>
+
+  <section class="main-content">
+    <div class="title-row">
+      <h3>No.</h3>
+      <h3>Name</h3>
+      <h3>Quantity</h3>
+      <h3>Price(Each)</h3>
+    </div>
+    <div class="content-row">
+      <div>1.</div>
+      <div>100 Plus</div>
+      <div>20</div>
+      <div>RM 2.00</div>
+    </div>
+  </section>
+
+  <section class="footer">
+    <div class="footer-upper-row">
+      <div class="terms-of-use">
+        <img src="image/book.png" class="book-img">
+        <a href="terms-of-use.html">Terms of use</a>
       </div>
-      <div class="footer-bottom-row">
-        <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
+      <div class="contact-us">
+        <img src="image/telephone.png" class="phone-img">
+        <p>Contact us: 012-xxxxxxx</p>
       </div>
-    </section>
+    </div>
+    <div class="footer-bottom-row">
+      <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
+    </div>
+  </section>
+
+  <div class="pop-up">
+    <div class="upper-row">
+      <div>
+        <img src="image/warning.png" class="danger-img">
+      </div>
+      <p>LOGOUT</p>
+      <div>
+        <img src="image/remove.png" class="cancel-img">
+      </div>
+    </div>
+    <div class="message-row">
+      <p>Are you sure you want to logout?</p>
+    </div>
+    <div class="btn-row">
+      <button class="yes-btn">
+        <a href="login.html" class="yes-link">Yes</a>
+      </button>
+      <button class="no-btn">No</button>
+    </div>
   </div>
-  <script src="JavaScript/checkout.js"></script>
+  <script src="JavaScript/general.js"></script>
 </body>
 </html>
