@@ -6,9 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventory</title>
   <link rel="stylesheet" href="CSS/general.css">
+  <link rel="stylesheet" href="CSS/header.css">
 </head>
 
 <body>
-  <div>This is inventory page</div>  
+  <div class="whole-container">
+    <div class="header">
+      <div class="left-section">
+        <h1 class="shop-name">KMS</h1>
+      </div>
+      <div class="middle-section">
+        <button class="checkout-btn">Checkout</button>
+        <button class="inventory-btn">
+          <a href="inventory.html" class="inventory-link">Inventory</a>
+        </button>
+        <button class="report-btn">
+          <a href="report.html" class="report-link">Report</a>
+        </button>
+      </div>
+      <div class="right-section">
+        <div class="user-box">
+          <img src="image/user.png" class="user-img">
+          <p class="user-id">owner</p>
+        </div>
+        <img src="image/logout.png" class="logout-img">
+      </div>
+    </div>
+    <div class="pop-up">
+      <div class="upper-row">
+        <div>
+          <img src="image/warning.png" class="danger-img">
+        </div>
+        <p>LOGOUT</p>
+        <div>
+          <img src="image/remove.png" class="cancel-img">
+        </div>
+      </div>
+      <div class="message-row">
+        <p>Are you sure you want to logout?</p>
+      </div>
+      <div class="btn-row">
+        <button class="yes-btn">
+          <a href="login.html" class="yes-link">Yes</a>
+        </button>
+        <button class="no-btn">No</button>
+      </div>
+    </div>
+    <div>This is inventory page</div>
+    <div>
+      <a href="index.html">Back</a>
+    </div>
+  </div>
+
+
 </body>
 </html>

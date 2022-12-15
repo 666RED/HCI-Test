@@ -10,44 +10,68 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/header.css">
   <link rel="stylesheet" href="CSS/general.css">
+  <link rel="stylesheet" href="CSS/checkout.css">
+  <link rel="stylesheet" href="CSS/footer.css">
 </head>
 <body>
-  <div class="header">
-    <div class="left-section">
-      <h1 class="shop-name">KMS</h1>
-    </div>
-    <div class="middle-section">
-      <button class="checkout-btn">Checkout</button>
-      <button class="inventory-btn">
-        <a href="inventory.html">Inventory</a>
-      </button>
-      <button class="report-btn">
-        <a href="report.html">Report</a>
-      </button>
-    </div>
-    <div class="right-section">
-      <div class="user-box">
-        <img src="image/user.png" class="user-img">
-        <p class="user-id">owner</p>
+  <div class="whole-container">
+    <section class="header">
+      <div class="left-section">
+        <h1 class="shop-name">KMS</h1>
       </div>
-      <img src="image/logout.png" class="logout-img">
-    </div>
-  </div>
-  <div class="pop-up">
-    <div class="upper-row">
-      <h1>dangerous</h1>
-      <p>LOGOUT</p>
-      <h1>exit</h1>
-    </div>
-    <div class="message">
-      <p>Are you sure you want to logout?</p>
-    </div>
-    <div class="btn-row">
-      <button class="yes-btn">
-        <a href="login.html">Yes</a>
-      </button>
-      <button class="no-btn">No</button>
-    </div>
+      <div class="middle-section">
+        <button class="checkout-btn">Checkout</button>
+        <button class="inventory-btn">
+          <a href="inventory.html" class="inventory-link">Inventory</a>
+        </button>
+        <button class="report-btn">
+          <a href="report.html" class="report-link">Report</a>
+        </button>
+      </div>
+      <div class="right-section">
+        <div class="user-box">
+          <img src="image/user.png" class="user-img">
+          <p class="user-id">owner</p>
+        </div>
+        <img src="image/logout.png" class="logout-img">
+      </div>
+      <div class="pop-up">
+        <div class="upper-row">
+          <div>
+            <img src="image/warning.png" class="danger-img">
+          </div>
+          <p>LOGOUT</p>
+          <div>
+            <img src="image/remove.png" class="cancel-img">
+          </div>
+        </div>
+        <div class="message-row">
+          <p>Are you sure you want to logout?</p>
+        </div>
+        <div class="btn-row">
+          <button class="yes-btn">
+            <a href="login.html" class="yes-link">Yes</a>
+          </button>
+          <button class="no-btn">No</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="footer-upper-row">
+        <div class="terms-of-use">
+          <img src="image/book.png" class="book-img">
+          <a href="terms-of-use.html">Terms of use</a>
+        </div>
+        <div class="contact-us">
+          <img src="image/telephone.png" class="phone-img">
+          <p>Contact us: 012-xxxxxxx</p>
+        </div>
+      </div>
+      <div class="footer-bottom-row">
+        <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
+      </div>
+    </section>
   </div>
   <script src="JavaScript/checkout.js"></script>
 </body>
