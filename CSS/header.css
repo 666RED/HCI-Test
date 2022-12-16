@@ -10,6 +10,7 @@
 
   height: 2.5rem;
   background-color: #231A2B;
+  z-index: 100;
 }
 
 .left-section {
@@ -96,6 +97,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  background-color: white;
 
   transform: translate(-50%, -50%) scale(0.1);
   visibility: hidden;
@@ -130,11 +132,14 @@
 }
 
 .cancel-img{
-  opacity: 1;
   width: 2rem;
   height: 2rem;
   cursor: pointer;
   margin-right: .4rem;
+}
+
+.cancel-img:hover {
+  opacity: .5;
 }
 
 .message-row {
@@ -160,6 +165,10 @@
   height: 2rem;
   border: none;
   background-color: #FF0000;
+}
+
+.btn-row button:hover {
+  opacity: .5;
 }
 
 .yes-link {

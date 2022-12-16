@@ -5,10 +5,119 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Item</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/header.css">
   <link rel="stylesheet" href="CSS/general.css">
+  <link rel="stylesheet" href="CSS/inventory.css">
+  <link rel="stylesheet" href="CSS/add-item.css">
+  <link rel="stylesheet" href="CSS/footer.css">
 </head>
 <body>
-  This is Add Item Page
-  <a href="index.html">Back</a>
+  <section class="header">
+    <div class="left-section">
+      <h1 class="shop-name">KMS</h1>
+    </div>
+    <div class="middle-section">
+      <button class="checkout-btn">
+        <a href="index.html">Checkout</a>
+      </button>
+      <button class="inventory-btn">Inventory</button>
+      <button class="report-btn">
+        <a href="report.html" class="report-link">Report</a>
+      </button>
+    </div>
+    <div class="right-section">
+      <div class="user-box">
+        <img src="image/user.png" class="user-img">
+        <p class="user-id">owner</p>
+      </div>
+      <img src="image/logout.png" class="logout-img">
+    </div>
+  </section>
+
+  <section class="add-item-main-content">
+    <div class="return-row">
+      <a href="inventory.html">
+        <img src="image/return.png" class="return-icon">
+      </a>
+      <hr>
+    </div>
+    <form class="add-item-form">
+      <div class="item-detail">
+        <div class="item-name">
+          <label for="name">Product Name: </label>
+          <input type="text" name="name" id="name" required>
+        </div>
+        <div class="item-cost">
+          <label for="cost">Cost <span class="cost-colon">:</span> </label>
+          <input type="number" name="cost" id="cost" required min="0" placeholder="RM" step="0.10">
+        </div>
+        <div class="item-price">
+          <label for="price">Price <span class="price-colon">:</span> </label>
+          <input type="number" name="price" id="price" required min="0" placeholder="RM" step="0.10">
+        </div>
+        <div class="item-barcode">
+          <label for="barcode">Barcode <span class="barcode-colon">:</span> </label>
+          <input type="text" name="barcode" id="barcode" required>
+        </div>
+        <div class="item-quantity">
+          <label for="quantity">Quantity <span class="quantity-colon">:</span> </label>
+          <input type="number" name="quantity" id="quantity" required min="0">
+        </div>
+      </div>
+      
+      <div class="button-row">
+        <button type="reset" class="clear-btn btn">Clear All</button>
+        <button type="submit" class="save-btn btn">
+          <a href="javascript:delay('inventory.html')">Confirm and Save</a>
+        </button>
+      </div>
+    </form>
+
+
+  </section>
+
+
+
+  <section class="footer">
+    <div class="footer-upper-row">
+      <div class="terms-of-use">
+        <img src="image/book.png" class="book-img">
+        <a href="terms-of-use.html">Terms of use</a>
+      </div>
+      <div class="contact-us">
+        <img src="image/telephone.png" class="phone-img">
+        <p>Contact us: 012-xxxxxxx</p>
+      </div>
+    </div>
+    <div class="footer-bottom-row">
+      <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
+    </div>
+  </section>
+  
+  <div class="pop-up">
+    <div class="upper-row">
+      <div>
+        <img src="image/warning.png" class="danger-img">
+      </div>
+      <p>LOGOUT</p>
+      <div>
+        <img src="image/remove.png" class="cancel-img">
+      </div>
+    </div>
+    <div class="message-row">
+      <p>Are you sure you want to logout?</p>
+    </div>
+    <div class="btn-row">
+      <button class="yes-btn">
+        <a href="login.html" class="yes-link">Yes</a>
+      </button>
+      <button class="no-btn">No</button>
+    </div>
+  </div>
+  <script src="JavaScript/general.js"></script>
+  <script src="JavaScript/add-item.js"></script>
 </body>
 </html>
