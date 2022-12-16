@@ -12,6 +12,7 @@ removeNoBtn.addEventListener('click', (e) => {
 
 removeCancel.addEventListener('click', () => {
   removePopupMenu.classList.remove('open-popup');
+  removeYesBtn.removeEventListener('click', );
 });
 
 decreaseButtons.forEach(button => {
@@ -20,12 +21,11 @@ decreaseButtons.forEach(button => {
     const adjustQuantityRow = buttonClicked.parentElement;
 
     const productQuantity = adjustQuantityRow.querySelector('.quantity');
-
     if(productQuantity.innerText === '1'){
       removePopupMenu.classList.add('open-popup');
-      removeYesBtn.addEventListener('click', (e) => {
+      removeYesBtn.addEventListener('click', () => {
         removePopupMenu.classList.remove('open-popup');
-        const productRow = adjustQuantityRow.parentElement;
+        const productRow = button.parentElement.parentElement;  
         productRow.remove();
       });
     }else {
