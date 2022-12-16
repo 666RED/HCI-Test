@@ -58,7 +58,7 @@
   flex: 1;
 }
 
-.title-row .name-title, .product-row .product-name{
+.title-row .name-title, .product-row .product-name-row{
   text-align: left;
   flex: 7;
   margin-left: .5rem;
@@ -84,6 +84,20 @@
 .product-price, .product-total{
   /* text-indent: 4rem; */
   text-align: center;
+}
+
+.product-name-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+  margin-right: 1.5rem;
 }
 
 .adjust-quantity {
