@@ -7,7 +7,7 @@
   <title>Inventory</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/general.css">
   <link rel="stylesheet" href="CSS/header.css">
   <link rel="stylesheet" href="CSS/footer.css">
@@ -45,33 +45,40 @@
       </a>
     </button>
     <div class="search-item-box">
-      <div>
-        <input type="text" placeholder="Barcode / Name" id="search-bar">
-      </div>
+      <input type="text" placeholder="Barcode / Name" id="search-bar">
     </div>
   </section>
 
-  <h3 class="item-text">Item</h3>
+  <h3 class="item-text">Inventory</h3>
 
   <section class="inventory-main-content">
     <div class="title-row">
       <h3 class="no-title">No.</h3>
       <h3 class="name-title">Name</h3>
+      <h3 class="barcode-title">Barcode</h3>
       <h3 class="quantity-title">Quantity</h3>
       <h3 class="price-title">Price(Each)</h3>
     </div>
     <div class="content-row">
       <div class="product-no">01.</div>
       <div class="product-name">100 Plus</div>
+      <div class="product-barcode">123456789</div>
       <div class="product-quantity">20</div>
-      <div class="product-price">RM 2.00</div>
+      <div class="price-and-edit">
+        <div class="product-price">RM 2.00</div>
+        <button class="edit-btn">Edit</button>
+      </div>
     </div>
 
     <div class="content-row">
       <div class="product-no">02.</div>
       <div class="product-name">Coke</div>
+      <div class="product-barcode">987654321</div>
       <div class="product-quantity">10</div>
-      <div class="product-price">RM 5.00</div>
+      <div class="price-and-edit">
+        <div class="product-price">RM 100.00</div>
+        <button class="edit-btn">Edit</button>
+      </div>
     </div>
   </section>
 

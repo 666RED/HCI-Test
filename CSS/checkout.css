@@ -1,8 +1,134 @@
 .checkout-btn {
-  text-decoration: underline;
+  color:rgba(211, 211, 211, 0.779);
 }
 
 .inventory-btn:hover,
 .report-btn:hover {
   background-color: rgba(255, 255, 255, .5);
+}
+
+/* Main Content */
+
+.search-item-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+
+#search-bar {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png');
+  background-size: 1rem;
+  background-position: left;
+  background-position-x: .5rem;
+  background-repeat: no-repeat;
+
+  padding: .5rem 2rem;
+  border: 1px solid grey;
+  border-radius: 1rem;
+  margin-left: .8rem;
+  width: 25rem;
+}
+
+.checkout-main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-detail {
+  border-bottom: 1px solid #A8A8A8;
+}
+
+.title-row, .product-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.title-row {
+  background-color: #A8A8A8;
+  text-align: center;
+  height: 2.5rem;
+}
+
+.no-title, .product-no {
+  flex: 1;
+}
+
+.title-row .name-title, .product-row .product-name{
+  text-align: left;
+  flex: 7;
+  margin-left: .5rem;
+}
+
+.price-title, .quantity-title, .total-title, .product-price, .adjust-quantity, .product-total{
+  flex: 2;
+}
+
+.product-no, .product-name, .product-price, .adjust-quantity, .product-total {
+  padding: .4rem 0;
+}
+
+.product-no, .product-price, .product-total {
+  background-color: rgb(67, 67, 67, .2);
+}
+
+.product-row div {
+  text-align: center;
+}
+
+.adjust-quantity {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+  margin: 0 1rem;
+}
+
+.purchase-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.purchase-form label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.purchase-form div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: .5rem 0;
+}
+
+.purchase-box input {
+  width: 12rem;
+  margin-left: .5rem;
+  font-size: 1rem;
+  padding: 0 .5rem;
+  background-color: #E1E1E1;
+  border: none;
+  box-shadow: .1rem .1rem .2rem rgba(0, 0, 0, .7);
+}
+
+.purchase-btn {
+  padding: .5rem 7rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: #F65446;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 1rem;
 }
