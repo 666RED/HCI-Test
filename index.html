@@ -58,7 +58,7 @@
             <div class="quantity">1</div>
             <img src="image/plus.png" class="increase-icon icon">
           </div>
-          <div class="product-total">RM 100.00</div>
+          <div class="product-total">RM 5.00</div>
         </div>
 
         <div class="product-row">
@@ -82,7 +82,7 @@
             <div class="quantity">1</div>
             <img src="image/plus.png" class="increase-icon icon">
           </div>
-          <div class="product-total">RM 100.00</div>
+          <div class="product-total">RM 20.00</div>
         </div>
       </div>
     </div>
@@ -90,15 +90,15 @@
       <form class="purchase-form">
         <div class="total-row">
           <label for="total">Total :</label>
-          <input type="text" name="total" id="total">
+          <input type="text" name="total" id="total" value="RM 125.00">
         </div>
         <div class="payment-row">
           <label for="payment">Payment :</label>
-          <input type="text" name="payment" id="payment">
+          <input type="text" name="payment" id="payment" value="RM 130.00">
         </div>
         <div class="change-row">
           <label for="change">Change :</label>
-          <input type="text" name="change" id="change">
+          <input type="text" name="change" id="change" value="RM 5.00">
         </div>
       </form>
       <button class="purchase-btn">Purchase</button>
@@ -121,26 +121,46 @@
     </div>
   </section>
 
-  <div class="pop-up">
-    <div class="upper-row">
+  <div class="logout-pop-up">
+    <div class="logout-upper-row">
       <div>
-        <img src="image/warning.png" class="danger-img">
+        <img src="image/warning.png" class="logout-danger-img">
       </div>
       <p>LOGOUT</p>
       <div>
-        <img src="image/remove.png" class="cancel-img">
+        <img src="image/remove.png" class="logout-cancel-img">
       </div>
     </div>
-    <div class="message-row">
+    <div class="logout-message-row">
       <p>Are you sure you want to logout?</p>
     </div>
-    <div class="btn-row">
-      <button class="yes-btn">
-        <a href="login.html" class="yes-link">Yes</a>
+    <div class="logout-btn-row">
+      <button class="logout-yes-btn">
+        <a href="login.html" class="logout-yes-link">Yes</a>
       </button>
-      <button class="no-btn">No</button>
+      <button class="logout-no-btn">No</button>
+    </div>
+  </div>
+
+  <div class="remove-product-pop-up">
+    <div class="remove-product-upper-row">
+      <div>
+        <img src="image/warning.png" class="remove-product-danger-img">
+      </div>
+      <p>REMOVE PRODUCT</p>
+      <div>
+        <img src="image/remove.png" class="remove-product-cancel-img">
+      </div>
+    </div>
+    <div class="remove-product-message-row">
+      <p>Do you want to remove this product?</p>
+    </div>
+    <div class="remove-product-btn-row">
+      <button class="remove-product-yes-btn">Yes</button>
+      <button class="remove-product-no-btn">No</button>
     </div>
   </div>
   <script src="JavaScript/general.js"></script>
+  <script src="JavaScript/checkout.js"></script>
 </body>
 </html>

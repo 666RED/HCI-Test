@@ -35,6 +35,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-width: 40rem;
 }
 
 .product-detail {
@@ -61,6 +62,7 @@
   text-align: left;
   flex: 7;
   margin-left: .5rem;
+  min-width: 20rem;
 }
 
 .price-title, .quantity-title, .total-title, .product-price, .adjust-quantity, .product-total{
@@ -75,7 +77,12 @@
   background-color: rgb(67, 67, 67, .2);
 }
 
-.product-row div {
+.product-row .product-no {
+  text-align: center;
+}
+
+.product-price, .product-total{
+  /* text-indent: 4rem; */
   text-align: center;
 }
 
@@ -113,9 +120,10 @@
 }
 
 .purchase-box input {
+  text-indent: 3rem;
   width: 12rem;
   margin-left: .5rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding: 0 .5rem;
   background-color: #E1E1E1;
   border: none;
@@ -131,4 +139,100 @@
   font-weight: bold;
   font-size: 1.2rem;
   margin-top: 1rem;
+  cursor: pointer;
+}
+
+.remove-product-pop-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+
+  transform: translate(-50%, -50%) scale(0.1);
+  visibility: hidden;
+  transition: transform 0.2s;
+  border: 1px solid black;
+  border-radius: 1rem;
+  overflow: hidden;
+  padding: 0 0 1rem 0;
+}
+
+.remove-product-upper-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  background-color: rgb(228, 227, 227);
+}
+
+.remove-product-danger-img {
+  width: 3rem;
+  height: 3rem;
+  margin-top: .5rem;
+  margin-left: 1rem;
+}
+
+.remove-product-upper-row p {
+  color: red;
+  font-weight: bold;
+  margin-right: 1.2rem;
+}
+
+.remove-product-cancel-img {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  margin-right: .4rem;
+}
+
+.remove-product-cancel-img:hover {
+  opacity: .5;
+}
+
+.remove-product-message-row {
+  margin: 3rem 2rem;
+}
+
+.remove-product-message-row p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.remove-product-btn-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: c;
+}
+
+.remove-product-btn-row button {
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  background-color: #FF0000;
+}
+
+.remove-product-btn-row button:hover {
+  opacity: .5;
+}
+
+.remove-product-no-btn, .remove-product-yes-btn{
+  cursor: pointer;
+  padding: .8rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.open-popup {
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
 }
