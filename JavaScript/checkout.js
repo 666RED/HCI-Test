@@ -5,6 +5,7 @@ const removeNoBtn = document.querySelector('.remove-product-no-btn');
 const removeButtons = document.querySelectorAll('.remove-icon');  
 const removePopupMenu = document.querySelector('.remove-product-pop-up');
 const removeCancel = document.querySelector('.remove-product-cancel-img');
+const quantityInputs = document.querySelectorAll('.quantity');
 
 removeNoBtn.addEventListener('click', (e) => {  
   removePopupMenu.classList.remove('open-popup');
@@ -12,7 +13,6 @@ removeNoBtn.addEventListener('click', (e) => {
 
 removeCancel.addEventListener('click', () => {
   removePopupMenu.classList.remove('open-popup');
-  removeYesBtn.removeEventListener('click', );
 });
 
 decreaseButtons.forEach(button => {
@@ -21,15 +21,10 @@ decreaseButtons.forEach(button => {
     const adjustQuantityRow = buttonClicked.parentElement;
 
     const productQuantity = adjustQuantityRow.querySelector('.quantity');
-    if(productQuantity.innerText === '1'){
-      removePopupMenu.classList.add('open-popup');
-      removeYesBtn.addEventListener('click', () => {
-        removePopupMenu.classList.remove('open-popup');
-        const productRow = button.parentElement.parentElement;  
-        productRow.remove();
-      });
+    if(productQuantity.value === '1'){
+      window.alert("The product quantity must be greater than 0")
     }else {
-      productQuantity.innerText--;
+      productQuantity.value--;
     }
   });
 });
@@ -40,7 +35,7 @@ increaseButtons.forEach(button => {
     const adjustQuantityRow = buttonClicked.parentElement;
 
     const productQuantity = adjustQuantityRow.querySelector('.quantity');
-    productQuantity.innerText++;
+    productQuantity.value++;
   });
 });
 
@@ -56,4 +51,14 @@ removeButtons.forEach(button => {
       productRow.remove();
     });
   });
+});
+
+quantityInputs.forEach(input => {
+  input.addEventListener('change', (e) => {
+    inputChanged = e.target;
+    if(inputChanged.value <= 0){
+      window.alert("Tha product quantity must be greater than 0");
+      inputChanged.value = 1;
+    }
+  })
 });
