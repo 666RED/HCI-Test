@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventory</title>
+  <title>Edit Item</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="CSS/general.css">
   <link rel="stylesheet" href="CSS/header.css">
-  <link rel="stylesheet" href="CSS/footer.css">
+  <link rel="stylesheet" href="CSS/general.css">
   <link rel="stylesheet" href="CSS/inventory.css">
+  <link rel="stylesheet" href="CSS/edit-item.css">
+  <link rel="stylesheet" href="CSS/footer.css">
 </head>
 
 <body>
@@ -21,7 +23,7 @@
     </div>
     <div class="middle-section">
       <button class="checkout-btn">
-        <a href="index.html">Checkout</a> 
+        <a href="index.html">Checkout</a>
       </button>
       <button class="inventory-btn">Inventory</button>
       <button class="report-btn">
@@ -37,64 +39,45 @@
     </div>
   </section>
 
-  <section class="item-row">
-    <button class="add-item-button">
-      <a href="add-item.html">
-        <img src="image/plus.png" class="plus-icon">
-        <div class="add-item-text">Add New Item</div>
+  <section class="add-item-main-content">
+    <div class="return-row">
+      <a href="inventory.html">
+        <img src="image/return.png" class="return-icon">
       </a>
-    </button>
-    <div class="search-item-box">
-      <input type="text" placeholder="Barcode / Name" id="search-bar">
+      <hr>
     </div>
-  </section>
-
-  <h3 class="item-text">Inventory</h3>
-
-  <section class="inventory-main-content">
-    <div class="title-row">
-      <h3 class="no-title">No.</h3>
-      <h3 class="name-title">Name</h3>
-      <h3 class="barcode-title">Barcode</h3>
-      <h3 class="quantity-title">Quantity</h3>
-      <h3 class="cost-title">Cost</h3>
-      <h3 class="price-title">Price(Each)</h3>
-    </div>
-    <div class="content-row">
-      <div class="product-no">01.</div>
-      <div class="product-name">100 Plus</div>
-      <div class="product-barcode">123456789</div>
-      <div class="product-quantity">20</div>
-      <div class="product-cost">RM 1.00</div>
-      <div class="price-and-edit">
-        <div class="product-price">RM 2.00</div>
-        <button class="edit-btn">Edit</button>
+    <div class="page-title">Edit Item</div>
+    <form class="add-item-form">
+      <div class="item-detail">
+        <div class="item-name">
+          <label for="name">Product Name: </label>
+          <input type="text" name="name" id="name" required>
+        </div>
+        <div class="item-cost">
+          <label for="cost">Cost <span class="cost-colon">:</span> </label>
+          <input type="number" name="cost" id="cost" required min="0" placeholder="RM" step="0.10">
+        </div>
+        <div class="item-price">
+          <label for="price">Price <span class="price-colon">:</span> </label>
+          <input type="number" name="price" id="price" required min="0" placeholder="RM" step="0.10">
+        </div>
+        <div class="item-barcode">
+          <label for="barcode">Barcode <span class="barcode-colon">:</span> </label>
+          <input type="text" name="barcode" id="barcode" required>
+        </div>
+        <div class="item-quantity">
+          <label for="quantity">Quantity <span class="quantity-colon">:</span> </label>
+          <input type="number" name="quantity" id="quantity" required min="0">
+        </div>
       </div>
-    </div>
 
-    <div class="content-row">
-      <div class="product-no">02.</div>
-      <div class="product-name">Coke</div>
-      <div class="product-barcode">987654321</div>
-      <div class="product-quantity">10</div>
-      <div class="product-cost">RM 1.20</div>
-      <div class="price-and-edit">
-        <div class="product-price">RM 2.50</div>
-        <button class="edit-btn">Edit</button>
+      <div class="button-row">
+        <button type="button" class="delete-btn btn">Delete Item</button>
+        <button type="submit" class="save-btn btn">
+          <a href="javascript:delay('inventory.html')" class="save-link">Confirm and Save</a>
+        </button>
       </div>
-    </div>
-
-    <div class="content-row">
-      <div class="product-no">03.</div>
-      <div class="product-name">Sprite</div>
-      <div class="product-barcode">000000001</div>
-      <div class="product-quantity">30</div>
-      <div class="product-cost">RM 1.00</div>
-      <div class="price-and-edit">
-        <div class="product-price">RM 2.50</div>
-        <button class="edit-btn">Edit</button>
-      </div>
-    </div>
+    </form>
   </section>
 
   <section class="footer">
@@ -134,6 +117,7 @@
     </div>
   </div>
   <script src="JavaScript/general.js"></script>
-  <script src="JavaScript/inventory.js"></script>
+  <script src="JavaScript/add-item.js"></script>
 </body>
+
 </html>

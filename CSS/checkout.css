@@ -82,7 +82,6 @@
 }
 
 .product-price, .product-total{
-  /* text-indent: 4rem; */
   text-align: center;
 }
 
@@ -144,7 +143,9 @@
   margin: .5rem 0;
 }
 
-.purchase-box input {
+.purchase-box input,
+.total-price,
+.change{
   text-indent: 3rem;
   width: 12rem;
   margin-left: .5rem;
