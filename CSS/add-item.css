@@ -21,8 +21,6 @@
   flex-direction: column;
   flex: 1;
   justify-content: space-between;
-  /* align-items: center; */
-
   margin-top: 1rem;
 }
 
@@ -38,7 +36,7 @@
 .item-detail input {
   margin-left: .5rem;
   padding: .5rem;
-  background-color: #D9D9D9;
+  background-color: white;
   border: 1px solid grey;
   border-radius: .2rem;
   font-size: .8rem;

@@ -79,6 +79,7 @@
 
   margin-top: .5rem;
   border-bottom: 1px solid #A8A8A8;
+  background-color: white;
 }
 
 .title-row {
@@ -109,7 +110,7 @@
 }
 
 .content-row:hover {
-  background-color: #bbbbbb;
+  background-color: #e1e2de;
 }
 
 .no-title,
@@ -131,7 +132,7 @@
   text-align: center;
 }
 
-.product-no {
+.product-no{
   background-color: #cecdcd;
 }
 
@@ -158,13 +159,13 @@
 
 .barcode-title,
 .product-barcode {
-  width: 7rem;
+  width: 10rem;
 }
 
 .quantity-title,
 .product-quantity {
   text-align: center;
-  width: 7rem;
+  width: 8rem;
 }
 
 .product-quantity {
@@ -174,7 +175,7 @@
 
 .cost-title,
 .product-cost {
-  width: 7rem;
+  width: 8rem;
 }
 
 .product-cost {
@@ -187,7 +188,7 @@
 
 .price-title,
 .price-and-edit{
-  width: 11rem;
+  width: 12rem;
 }
 
 .product-price {
@@ -208,6 +209,7 @@
   background-color: green;
   color: white;
   cursor: pointer;
+  margin-right: .5rem;
 }
 
 .edit-btn:hover {
