@@ -6,3 +6,167 @@
 .inventory-btn:hover {
   background-color: rgba(255, 255, 255, .5);
 }
+
+.upper-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.month-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.month-section label {
+  margin-right: .5rem;
+}
+
+.month {
+  padding: .2rem .5rem;
+}
+
+.month::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.period-section {
+  display: flex;
+  flex-direction: row;
+  margin-right: 9.5rem;
+}
+
+.period-section > * {
+  padding: .5rem 1rem;
+  background-color: #a8a8a8;
+}
+
+.daily {
+  font-weight: bold;
+}
+
+.weekly:hover,
+.monthly:hover {
+  opacity: .5;
+}
+
+.period-section a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+
+.report-info {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-width: fit-content;
+  background-color: white;
+}
+
+.title-row,
+.content-row,
+.total-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.title-row {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: #A8A8A8;
+}
+
+.no-title,
+.date-no {
+  width: 5rem;
+  text-align: center;
+}
+
+.date-no {
+  background-color: #cecdcd;
+}
+
+.date {
+  cursor: pointer;
+}
+
+.date-title,
+.date,
+.total-text{
+  flex: 1;
+}
+
+.date-title,
+.date {
+  margin-left: 1.5rem;
+}
+
+.cost-title,
+.date-cost,
+.price-title,
+.date-price,
+.profit-title,
+.date-profit,
+.total-cost,
+.total-price,
+.total-profit{
+  width: 14rem;
+  text-align: center;
+}
+
+.date-cost,
+.date-profit,
+.total-cost,
+.total-profit{
+  border-left: 1px solid #A8A8A8;
+  border-right: 1px solid #A8A8A8;
+}
+
+.content-container {
+  flex: 1;
+  max-height: 22.5rem;
+  overflow: auto;
+}
+
+.content-row {
+  font-size: 1.2rem;
+  height: 3rem;
+}
+
+.content-row:hover {
+  background-color: #e1e2de;
+}
+
+.content-row > * {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
+.date-no,
+.date-cost,
+.date-price,
+.date-profit {
+  justify-content: center;
+}
+
+.total-row{
+  text-align: center;
+  font-size: 2rem;
+  border-top: .1rem solid #A8A8A8;
+  border-bottom: .1rem solid #A8A8A8;
+}
+
+.total-text {
+  font-weight: bold;
+}
