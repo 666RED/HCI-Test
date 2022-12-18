@@ -6,6 +6,7 @@ const removeButtons = document.querySelectorAll('.remove-icon');
 const removePopupMenu = document.querySelector('.remove-product-pop-up');
 const removeCancel = document.querySelector('.remove-product-cancel-img');
 const quantityInputs = document.querySelectorAll('.quantity');
+const purchaseButton = document.querySelector('.purchase-btn');
 
 removeNoBtn.addEventListener('click', (e) => {  
   removePopupMenu.classList.remove('open-popup');
@@ -61,4 +62,8 @@ quantityInputs.forEach(input => {
       inputChanged.value = 1;
     }
   })
+});
+
+purchaseButton.addEventListener('click', () => {
+  window.location.href = 'receipt.html';
 });

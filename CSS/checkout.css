@@ -175,6 +175,10 @@
   cursor: pointer;
 }
 
+.purchase-btn:hover {
+  opacity: .7;
+}
+
 .remove-product-pop-up {
   display: flex;
   flex-direction: column;

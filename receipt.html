@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/receipt.css">
+</head>
+
+<body>
+  <section class="receipt-container">
+    <div class="heading-row">
+      <img src="image/return.png" class="return-icon">
+      <h1 class="receipt-title">RECEIPT</h1>
+    </div>
+    <hr>
+    <div class="receipt-info">
+      <p class="receipt-info-shop-name">PASAR MINI KMS</p>
+      <p class="receipt-info-no">RECEIPT NO: 1</p>
+      <p class="receipt-info-date">DATE: 2022/11/1</p>
+    </div>
+    <div class="receipt-detail">
+      <div class="title-row">
+        <div class="no-title">NO.</div>
+        <div class="name-title">NAME</div>
+        <div class="quantity-title">QUANTITY</div>
+        <div class="price-title">PRICE</div>
+      </div>
+      <div class="product-container">
+        <div class="product-row">
+          <div class="product-no">01.</div>
+          <div class="product-name">100 Plus</div>
+          <div class="product-quantity">1</div>
+          <div class="product-price">RM 2.00</div>
+        </div>
+        <div class="product-row">
+          <div class="product-no">02.</div>
+          <div class="product-name">Coke</div>
+          <div class="product-quantity">1</div>
+          <div class="product-price">RM 2.50</div>
+        </div>
+        <div class="product-row">
+          <div class="product-no">03.</div>
+          <div class="product-name">Sprite</div>
+          <div class="product-quantity">1</div>
+          <div class="product-price">RM 2.00</div>
+        </div>
+      </div>
+    </div>
+    <div class="purchase-section">
+      <div class="total-row">
+        <label for="total" class="total">Total:</label>
+        <div class="total-price">RM 6.50</div>
+      </div>
+      <div class="payment-row">
+        <label for="payment" class="payment">Payment:</label>
+        <div class="total-payment">RM 10.00</div>
+      </div>
+      <div class="change-row">
+        <label for="change" class="change">Change:</label>
+        <div class="total-change">RM 3.50</div>
+      </div>
+    </div>
+    <div class="button-row">
+      <button class="print-and-save-btn">Print and save</button>
+      <button class="save-btn">Save</button>
+    </div>
+  </section>
+  <a href="index.html">Back</a> 
+</body>
+</html>
