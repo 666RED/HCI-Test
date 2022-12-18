@@ -1,11 +1,9 @@
 const contentContainer = document.querySelector('.content-container');
-const totalCost = document.querySelector('.total-cost');
-const totalPrice = document.querySelector('.total-price');
-const totalProfit = document.querySelector('.total-profit');
-
 const dateCosts = document.querySelectorAll('.date-cost');
 const datePrices = document.querySelectorAll('.date-price');
 const dateProfits = document.querySelectorAll('.date-profit');
+
+const dates = document.querySelectorAll('.date');
 
 if(contentContainer.offsetHeight >= 360){
   dateProfits.forEach(cost => {
@@ -13,3 +11,9 @@ if(contentContainer.offsetHeight >= 360){
   cost.style.paddingLeft = '20px';
   });
 }
+
+dates.forEach(date => {
+  date.addEventListener('click', () => {
+    window.location.href = 'daily-sales.html';
+  })
+});

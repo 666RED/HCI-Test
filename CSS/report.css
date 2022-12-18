@@ -35,13 +35,18 @@
 }
 
 .period-section {
+  text-align: center;
   display: flex;
   flex-direction: row;
-  margin-right: 9.5rem;
+  margin-right: 9rem;
 }
 
 .period-section > * {
-  padding: .5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 2.5rem;
   background-color: #a8a8a8;
 }
 
