@@ -1,3 +1,12 @@
+.inventory-btn {
+  color: rgba(211, 211, 211, 0.779);
+}
+
+.checkout-btn:hover,
+.report-btn:hover {
+  background-color: rgba(255, 255, 255, .5);
+}
+
 .add-item-main-content {
   height: 100%;
   display: flex;
@@ -27,6 +36,7 @@
 .item-detail {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .item-detail > * {
@@ -56,8 +66,21 @@
   margin-left: 2.7rem;
 }
 
+.product-barcode::-webkit-outer-spin-button,
+.product-barcode::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .quantity-colon {
   margin-left: 2.6rem;
+}
+
+.error-box {
+  display: none;
+  margin-left: 8.5rem;
+  color: red;
+  font-size: .8rem;
 }
 
 .button-row {
@@ -102,4 +125,52 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+}
+
+.added-item-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+
+  z-index: 100;
+  transform: translate(-50%, -50%) scale(0.1);
+  visibility: hidden;
+  transition: transform 0.2s;
+  border: .1rem solid black;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.verified-image {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.added-item-message {
+  font-size: .8rem;
+}
+
+.done-btn {
+  margin-top: 1rem;
+  padding: .2rem 2rem;
+  border: none;
+  background-color: #D81919;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.done-btn:hover {
+  opacity: .7;
+}
+
+.open-popup {
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
 }

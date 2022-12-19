@@ -188,8 +188,9 @@ body {
 }
 
 .verified-image {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .success-message {

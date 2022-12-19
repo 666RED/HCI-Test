@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/header.css">
   <link rel="stylesheet" href="CSS/general.css">
-  <link rel="stylesheet" href="CSS/inventory.css">
   <link rel="stylesheet" href="CSS/add-item.css">
   <link rel="stylesheet" href="CSS/footer.css">
 </head>
@@ -44,34 +43,39 @@
       </a>
       <hr>
     </div>
-    <div class="page-title">Add New Item</div>
+    <div class="page-title">Add New Product</div>
     <form class="add-item-form">
       <div class="item-detail">
         <div class="item-name">
           <label for="name">Product Name: </label>
-          <input type="text" name="name" id="name" required>
+          <input type="text" name="name" id="name" class="product-name" required>
+          <div class="name-error-box error-box">hello</div>
         </div>
         <div class="item-cost">
           <label for="cost">Cost <span class="cost-colon">:</span> </label>
-          <input type="number" name="cost" id="cost" required min="0" placeholder="RM" step="0.10">
+          <input type="number" name="cost" id="cost" class="product-cost" min="0" placeholder="RM" step="0.10">
+          <div class="cost-error-box error-box">hello</div>
         </div>
         <div class="item-price">
           <label for="price">Price <span class="price-colon">:</span> </label>
-          <input type="number" name="price" id="price" required min="0" placeholder="RM" step="0.10">
+          <input type="number" name="price" id="price" class="product-price" min="0" placeholder="RM" step="0.10">
+          <div class="price-error-box error-box">hello</div>
         </div>
         <div class="item-barcode">
           <label for="barcode">Barcode <span class="barcode-colon">:</span> </label>
-          <input type="text" name="barcode" id="barcode" required>
+          <input type="number" name="barcode" id="barcode" class="product-barcode" placeholder="13 digits:  e.g. 1234567890123">
+          <div class="barcode-error-box error-box">hello</div>
         </div>
         <div class="item-quantity">
           <label for="quantity">Quantity <span class="quantity-colon">:</span> </label>
-          <input type="number" name="quantity" id="quantity" required min="0">
+          <input type="number" name="quantity" id="quantity" class="product-quantity" min="0">
+          <div class="quantity-error-box error-box">hello</div>
         </div>
       </div>
       
       <div class="button-row">
         <button type="reset" class="clear-btn btn">Clear All</button>
-        <button type="submit" class="save-btn btn">
+        <button type="button" class="save-btn btn">
           <a href="javascript:delay('inventory.html')" class="save-link">Confirm and Save</a>
         </button>
       </div>
@@ -115,6 +119,13 @@
       </button>
       <button class="logout-no-btn">No</button>
     </div>
+  </div>
+
+  <div class="added-item-popup">
+    <img src="image/verified.png" class="verified-image">
+    <h1 class="added-item-header">Added</h1>
+    <p class="added-item-message">New Item Added Successfully</p>
+    <button class="done-btn">Done</button>
   </div>
   <script src="JavaScript/general.js"></script>
   <script src="JavaScript/add-item.js"></script>
