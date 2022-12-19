@@ -24,18 +24,20 @@
 
       <div class="info-section">
         <div class="id-box">
-          <label for="id">Staff Id</label>
+          <label for="id">Staff Id <span class="star">*</span></label>
           <input type="text" name="id" id="id" class="id-input" placeholder="AI210000">
+          <div class="id-error-box">Incorrect Id</div>
         </div>
         
         <div class="password-box">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="12345678abc+-*/">
+          <label for="password">Password <span class="star">*</span></label>
+          <input type="password" id="password" name="password" placeholder="12345678abc+-*/" class="password-input">
         </div>
         
         <div class="view-password-row"> 
           <input type="checkbox" id="view-passowrd-btn" class="view-password-btn">
           <p class="view-password-text">View password</p>
+          <div class="password-error-box">Incorect Password</div>
         </div>
         
         <button class="login-btn">Login</button>
@@ -44,5 +46,6 @@
     </div>
   </div>
   <a href="index.html">Back</a>
+  <script src="JavaScript/login.js"></script>
 </body>
 </html>

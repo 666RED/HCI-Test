@@ -21,7 +21,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 30rem;
+  height: 32rem;
   width: 30rem;
   padding: 0 2rem;
 }
@@ -93,16 +93,29 @@ body {
   padding: 0 .8rem;
 }
 
+.star {
+  color: red;
+  font-size: 1rem;
+}
+
 .id-box{
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
 }
 
+.id-error-box {
+  visibility: hidden;
+  font-size: .8rem;
+  color: red;
+  margin-left: .5rem;
+  margin-top: .2rem;
+}
+
 .password-box {
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-top: .5rem;
 }
 
 .id-box input, .password-box input {
@@ -133,6 +146,13 @@ body {
 
 .view-password-text {
   font-size: .8rem;
+}
+
+.password-error-box {
+  visibility: hidden;
+  font-size: .8rem;
+  margin-left: 1rem;
+  color: red;
 }
 
 .login-btn {
