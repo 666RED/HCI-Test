@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/header.css">
+  <link rel="stylesheet" href="CSS/general.css">
+  <link rel="stylesheet" href="CSS/checkout.css">
+  <link rel="stylesheet" href="CSS/footer.css">
+</head>
+<body>
+  <section class="header">
+    <div class="left-section">
+      <h1 class="shop-name">KMS</h1>
+    </div>
+    <div class="middle-section">
+      <button class="checkout-btn">Checkout</button>
+      <button class="inventory-btn">
+        <a href="inventory.html" class="inventory-link">Inventory</a>
+      </button>
+      <button class="report-btn">
+        <a href="report.html" class="report-link">Report</a>
+      </button>
+    </div>
+    <div class="right-section">
+      <div class="user-box">
+        <img src="image/user.png" class="user-img">
+        <p class="user-id">owner</p>
+      </div>
+      <img src="image/logout.png" class="logout-img">
+    </div>
+  </section>
+
+  <section class="checkout-main-content">
+    <div class="search-item-box">
+      <input type="text" placeholder="Barcode / Name" id="search-bar">
+    </div>
+    <div class="product-detail">
+      <div class="title-row">
+        <h3 class="no-title">No.</h3>
+        <h3 class="name-title">Name</h3>
+        <h3 class="price-title">Price</h3>
+        <h3 class="quantity-title">Quantity</h3>
+        <h3 class="total-title">Total</h3>
+      </div>
+      <div class="product-info">
+        <div class="product-row">
+          <div class="product-no">01.</div>
+          <div class="product-name-row">
+            <div class="product-name">100 Plus</div>
+            <img src="image/dustbin.png" class="remove-icon">
+          </div>
+          <div class="product-price">RM 2.00</div>
+          <div class="adjust-quantity">
+            <img src="image/minus.png" class="decrease-icon icon">
+            <input type="number" class="quantity" value="1" min="1">
+            <img src="image/plus.png" class="increase-icon icon">
+          </div>
+          <div class="product-total">RM 2.00</div>
+        </div>
+
+        <div class="product-row">
+          <div class="product-no">02.</div>
+          <div class="product-name-row">
+            <div class="product-name">Coke</div>
+            <img src="image/dustbin.png" class="remove-icon">
+          </div>
+          <div class="product-price">RM 2.50</div>
+          <div class="adjust-quantity">
+            <img src="image/minus.png" class="decrease-icon icon">
+            <input type="number" class="quantity" value="1" min="1">
+            <img src="image/plus.png" class="increase-icon icon">
+          </div>
+          <div class="product-total">RM 2.50</div>
+        </div>
+
+        <div class="product-row">
+          <div class="product-no">03.</div>
+          <div class="product-name-row">
+            <div class="product-name">Sprite</div>
+            <img src="image/dustbin.png" class="remove-icon">
+          </div>          
+          <div class="product-price">RM 2.00</div>
+          <div class="adjust-quantity">
+            <img src="image/minus.png" class="decrease-icon icon">
+            <input type="number" class="quantity" value="1" min="1">
+            <img src="image/plus.png" class="increase-icon icon">
+          </div>
+          <div class="product-total">RM 2.00</div>
+        </div>
+      </div>
+    </div>
+    <div class="purchase-box">
+      <form class="purchase-form">
+        <div class="total-row">
+          <label for="total">Total :</label>
+          <div class="total-price">RM 6.50</div>
+        </div>
+        <div class="payment-row">
+          <label for="payment">Payment :</label>
+          <input type="text" name="payment" id="payment" value="RM 10.00">
+        </div>
+        <div class="change-row">
+          <label for="change">Change :</label>
+          <div class="change">RM 3.50</div>
+        </div>
+      </form>
+      <button class="purchase-btn">Purchase</button>
+    </div>
+  </section>
+
+  <section class="footer">
+    <div class="footer-upper-row">
+      <div class="terms-of-use">
+        <img src="image/book.png" class="book-img">
+        <a href="terms-of-use.html">Terms of use</a>
+      </div>
+      <div class="contact-us">
+        <img src="image/telephone.png" class="phone-img">
+        <p>Contact us: 012-xxxxxxx</p>
+      </div>
+    </div>
+    <div class="footer-bottom-row">
+      <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
+    </div>
+  </section>
+
+  <div class="logout-pop-up">
+    <div class="logout-upper-row">
+      <div>
+        <img src="image/warning.png" class="logout-danger-img">
+      </div>
+      <p>LOGOUT</p>
+      <div>
+        <img src="image/remove.png" class="logout-cancel-img">
+      </div>
+    </div>
+    <div class="logout-message-row">
+      <p>Are you sure you want to logout?</p>
+    </div>
+    <div class="logout-btn-row">
+      <button class="logout-yes-btn">
+        <a href="index.html" class="logout-yes-link">Yes</a>
+      </button>
+      <button class="logout-no-btn">No</button>
+    </div>
+  </div>
+
+  <div class="remove-product-pop-up">
+    <div class="remove-product-upper-row">
+      <div>
+        <img src="image/warning.png" class="remove-product-danger-img">
+      </div>
+      <p>REMOVE PRODUCT</p>
+      <div>
+        <img src="image/remove.png" class="remove-product-cancel-img">
+      </div>
+    </div>
+    <div class="remove-product-message-row">
+      <p>Do you want to remove this product?</p>
+    </div>
+    <div class="remove-product-btn-row">
+      <button class="remove-product-yes-btn">Yes</button>
+      <button class="remove-product-no-btn">No</button>
+    </div>
+  </div>
+  <script src="JavaScript/general.js"></script>
+  <script src="JavaScript/checkout.js"></script>
+</body>
+</html>

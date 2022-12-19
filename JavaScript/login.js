@@ -4,6 +4,7 @@ const password = document.querySelector('.password-input');
 const viewPasswordButton = document.querySelector('.view-password-btn');
 const idErrorBox = document.querySelector('.id-error-box');
 const passwordErrorBox = document.querySelector('.password-error-box');
+const passwordBox = document.querySelector('.password-box');
 
 const userArr = JSON.parse(localStorage.getItem('User')) || [];
 
@@ -23,10 +24,12 @@ const validation = () => {
   }else if(id.value === ''){
     idErrorBox.style.visibility = 'visible';
     idErrorBox.innerText = 'Required*';
+    passwordErrorBox.style.visibility = 'hidden';
     return;
   }else if(password.value === ''){
     passwordErrorBox.style.visibility = 'visible';
     passwordErrorBox.innerText = 'Required*';
+    idErrorBox.style.visibility = 'hidden';
     return;
   }else if(id.value !== '' && password.value !== ''){
     idErrorBox.style.visibility = 'hidden';
@@ -47,7 +50,7 @@ const validation = () => {
 
   for(let i = 0; i < userArr.length; i++){
     if(id.value == userArr[i].name && password.value == userArr[i].password){
-      window.location.href = 'index.html';
+      window.location.href = 'checkout.html';
     }else if(id.value == userArr[i].name && password.value != userArr[i].password){
       passwordErrorBox.style.visibility = 'visible';
       passwordErrorBox.innerText = 'Incorrect Password';
@@ -58,4 +61,4 @@ const validation = () => {
 
 loginButton.addEventListener('click', validation);
 
-localStorage.setItem('User', JSON.stringify([{name:'red', password:'666'}, {name:'cs', password:'1234'}, {name:'edison', password:'0000'}]));
+localStorage.setItem('User', JSON.stringify([{name:'red666', password:'666'}, {name:'cs', password:'1234'}, {name:'edison', password:'0000'}]));
