@@ -11,39 +11,49 @@
   <link rel="stylesheet" href="CSS/register.css">
 </head>
 <body>
-  <div class="whole-container">
-    <h1 class="shop-name">KMS</h1>
-    <div class="form-container">
-      <div class="title-row">
-        <button class="register">Register</button>
-        <button class="login">
-          <a href="index.html">Login</a>
-        </button>
-      </div>
-  
-      <div class="info-section">
-        <div class="id-box">
-          <label for="id">Staff Id <span class="star">*</span></label>
-          <input type="text" name="id" id="id" class="id-input" placeholder="4 digit:  e.g. 1234">
-          <div class="id-error-box error-message">hello</div>
+  <div class="whole-screen">
+    <div class="whole-container">
+      <h1 class="shop-name">KMS</h1>
+      <div class="form-container">
+        <div class="title-row">
+          <button class="register">Register</button>
+          <button class="login">
+            <a href="index.html">Login</a>
+          </button>
         </div>
-  
-        <div class="password-box">
-          <label for="password">Password <span class="star">*</span></label>
-          <input type="password" id="password" name="password" placeholder="12345678abc+-*/" class="password-input">
-          <div class="password-error-box error-message">hello</div>
+
+        <div class="info-section">
+          <div class="id-box">
+            <label for="id">Staff Id <span class="star">*</span></label>
+            <input type="text" name="id" id="id" class="id-input" placeholder="4 digit:  e.g. 1234">
+            <div class="id-error-box error-message">hello</div>
+          </div>
+
+          <div class="password-box">
+            <label for="password">Password <span class="star">*</span></label>
+            <input type="password" id="password" name="password" placeholder="12345678abc+-*/" class="password-input">
+            <div class="password-error-box error-message">hello</div>
+          </div>
+
+          <div class="confirmed-password-box">
+            <label for="confirmed-password">Confirmed Password <span class="star">*</span></label>
+            <input type="password" id="confirmed-password" name="confirmed-password" placeholder="12345678abc+-*/"
+              class="confirmed-password-input">
+            <div class="confirmed-password-error-box error-message">hello</div>
+          </div>
+          <button class="register-btn">Register</button>
         </div>
-  
-        <div class="confirmed-password-box">
-          <label for="confirmed-password">Confirmed Password <span class="star">*</span></label>
-          <input type="password" id="confirmed-password" name="confirmed-password" placeholder="12345678abc+-*/" class="confirmed-password-input">
-          <div class="confirmed-password-error-box error-message">hello</div>
-        </div>
-  
-        <button class="register-btn">Register</button>
       </div>
     </div>
   </div>
+
+  <div class="successful-popup">
+    <img src="image/verified.png" class="verified-image">
+    <h1 class="success-header">SUCCESS!</h1>
+    <p class="success-message">You Registered Successfully</p>
+    <button class="done-btn">Done</button>
+  </div>
+  
   <script src="JavaScript/register.js"></script>
 </body>
 </html>

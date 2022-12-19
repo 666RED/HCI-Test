@@ -4,9 +4,19 @@ const confirmedPassword = document.querySelector('.confirmed-password-input');
 const idErrorBox = document.querySelector('.id-error-box');
 const passwordErrorBox = document.querySelector('.password-error-box');
 const confirmedPasswordErrorBox = document.querySelector('.confirmed-password-error-box');
-const registerButton = document.querySelector('.register-btn'); 
+const registerButton = document.querySelector('.register-btn');  
+const wholeScreen = document.querySelector('body');
+const blur = document.querySelector('.whole-screen');
+const successfulPopup = document.querySelector('.successful-popup');
+const doneButton = document.querySelector('.done-btn');
 
 const userArr = JSON.parse(localStorage.getItem('User')) || [];
+
+doneButton.addEventListener('click', () => {
+  successfulPopup.classList.remove('open-popup');
+  blur.classList.remove('active');
+  window.location.href = 'index.html';
+});
 
 const validation = () => {
 
@@ -47,6 +57,15 @@ const validation = () => {
       idErrorBox.style.display = 'block';
       idErrorBox.innerText = 'Must be in 4 digits';
       id.value = '';
+    }else {
+      for(let i = 0; i < userArr.length; i++){
+        if(id.value === userArr[i].id){
+          idErrorBox.style.display = 'block';
+          idErrorBox.innerText = 'User already existed';
+          id.value = '';
+          return;
+        }
+      }
     }
   }
 
@@ -67,6 +86,8 @@ const registerNewUser = (id, password) => {
   });
 
   localStorage.setItem('User', JSON.stringify(userArr));
+  blur.classList.add('active');
+  successfulPopup.classList.add('open-popup');
 };
 
 registerButton.addEventListener('click', validation);

@@ -19,6 +19,18 @@ body {
   justify-content: center;
 }
 
+.whole-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* visibility: hidden; */
+}
+
 .whole-container {
   display: flex;
   flex-direction: column;
@@ -150,4 +162,55 @@ body {
 
 .register-btn:hover {
   opacity: .7;
+}
+
+.active {
+  filter: blur(3px);
+}
+
+.successful-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+
+  z-index: 100;
+  transform: translate(-50%, -50%) scale(0.1);
+  visibility: hidden;
+  transition: transform 0.2s;
+  border: .1rem solid black;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.verified-image {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.success-message {
+  font-size: .8rem;
+}
+
+.done-btn {
+  margin-top: 1rem;
+  padding: .2rem 2rem;
+  border: none;
+  background-color: #D81919;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.done-btn:hover {
+  opacity: .7;
+}
+
+.open-popup {
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
 }
