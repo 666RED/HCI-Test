@@ -149,7 +149,7 @@ body {
 }
 
 .password-error-box {
-  visibility: hidden;
+  display: none;
   font-size: .8rem;
   margin-left: .5rem;
   color: red;

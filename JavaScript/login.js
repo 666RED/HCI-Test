@@ -6,6 +6,7 @@ const idErrorBox = document.querySelector('.id-error-box');
 const passwordErrorBox = document.querySelector('.password-error-box');
 const passwordBox = document.querySelector('.password-box');
 
+localStorage.setItem('User', JSON.stringify([{name:'red666', password:'666'}, {name:'cs', password:'1234'}, {name:'edison', password:'0000'}]));
 const userArr = JSON.parse(localStorage.getItem('User')) || [];
 
 viewPasswordButton.addEventListener('click', () => {
@@ -18,22 +19,22 @@ const validation = () => {
   if(id.value === '' && password.value === ''){
     idErrorBox.style.visibility = 'visible';
     idErrorBox.innerText = 'Required*';
-    passwordErrorBox.style.visibility = 'visible';
+    passwordErrorBox.style.display = 'block';
     passwordErrorBox.innerText = 'Required*';
     return;
   }else if(id.value === ''){
     idErrorBox.style.visibility = 'visible';
     idErrorBox.innerText = 'Required*';
-    passwordErrorBox.style.visibility = 'hidden';
+    passwordErrorBox.style.display = 'none';
     return;
   }else if(password.value === ''){
-    passwordErrorBox.style.visibility = 'visible';
+    passwordErrorBox.style.display = 'block';
     passwordErrorBox.innerText = 'Required*';
     idErrorBox.style.visibility = 'hidden';
     return;
   }else if(id.value !== '' && password.value !== ''){
     idErrorBox.style.visibility = 'hidden';
-    passwordErrorBox.style.visibility = 'hidden';
+    passwordErrorBox.style.display = 'none';
   }
 
   for(let i = 0; i < userArr.length; i++){
@@ -52,7 +53,7 @@ const validation = () => {
     if(id.value == userArr[i].name && password.value == userArr[i].password){
       window.location.href = 'checkout.html';
     }else if(id.value == userArr[i].name && password.value != userArr[i].password){
-      passwordErrorBox.style.visibility = 'visible';
+      passwordErrorBox.style.display = 'block';
       passwordErrorBox.innerText = 'Incorrect Password';
       password.value = '';
     }
@@ -60,5 +61,3 @@ const validation = () => {
 }
 
 loginButton.addEventListener('click', validation);
-
-localStorage.setItem('User', JSON.stringify([{name:'red666', password:'666'}, {name:'cs', password:'1234'}, {name:'edison', password:'0000'}]));

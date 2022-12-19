@@ -23,7 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 35rem;
+  height: 36rem;
   width: 35rem;
   padding: 0 2rem;
 }
@@ -95,22 +95,22 @@ body {
   padding: 0 .8rem;
 }
 
+.star {
+  color: red;
+  font-size: 1rem;
+}
+
 .id-box {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
 }
 
-.password-box {
+.password-box,
+.confirmed-password-box{
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
-}
-
-.confirmed-password-box {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
+  margin-top: .5rem;
 }
 
 .id-box input,
@@ -126,6 +126,13 @@ body {
 .confirmed-password-box label{
   font-size: .8rem;
   margin-bottom: .3rem;
+}
+
+.error-message {
+  visibility: hidden;
+  margin-left: .5rem;
+  color: red;
+  font-size: .8rem;
 }
 
 .register-btn {

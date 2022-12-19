@@ -23,23 +23,27 @@
   
       <div class="info-section">
         <div class="id-box">
-          <label for="id">Staff Id</label>
+          <label for="id">Staff Id <span class="star">*</span></label>
           <input type="text" name="id" id="id" class="id-input" placeholder="AI210000">
+          <div class="id-error-box error-message">hello</div>
         </div>
   
         <div class="password-box">
-          <label for="password">Password</label>
+          <label for="password">Password <span class="star">*</span></label>
           <input type="password" id="password" name="password" placeholder="12345678abc+-*/">
+          <div class="password-error-box error-message">hello</div>
         </div>
   
         <div class="confirmed-password-box">
-          <label for="confirmed-password">Confirmed Password</label>
+          <label for="confirmed-password">Confirmed Password <span class="star">*</span></label>
           <input type="password" id="confirmed-password" name="confirmed-password" placeholder="12345678abc+-*/">
+          <div class="confirmed-password-error-box error-message">hello</div>
         </div>
   
         <button class="register-btn">Register</button>
       </div>
     </div>
   </div>
+  <script src="JavaScript/register.js"></script>
 </body>
 </html>
