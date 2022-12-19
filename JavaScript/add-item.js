@@ -18,6 +18,7 @@ const priceError = document.querySelector('.price-error-box');
 const barcodeError = document.querySelector('.barcode-error-box');
 const quantityError = document.querySelector('.quantity-error-box');
 
+const wholeScreen = document.querySelector('.whole-screen');
 const outsideScreen = document.querySelector('.item-detail');
 const addedItemfulPopup = document.querySelector('.added-item-popup');
 const doneButton = document.querySelector('.done-btn');
@@ -28,6 +29,7 @@ outsideScreen.addEventListener('click', (e) => {
   if(!addedItemfulPopup.contains(e.target) && addedItemfulPopup.classList.contains('open-popup')){
     window.location.href = 'inventory.html';  
     addedItemfulPopup.classList.remove('open-popup');
+    wholeScreen.classList.remove('active');
   }
 });
 
@@ -42,6 +44,7 @@ const addNewItem = (name, cost, price, barcode, quantity) => {
 
   localStorage.setItem('Inventory', JSON.stringify(productArr));
   addedItemfulPopup.classList.add('open-popup');
+  wholeScreen.classList.add('active');
 }
 
 const validation = () => {
@@ -169,5 +172,6 @@ clearAllButton.addEventListener('click', () => {
 
 doneButton.addEventListener('click', () => {
   addedItemfulPopup.classList.remove('open-popup');
+  wholeScreen.classList.remove('active');
   window.location.href = 'inventory.html';
 });  
