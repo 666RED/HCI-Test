@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Item</title>
+  <title>Edit Product</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
@@ -46,34 +46,39 @@
         </a>
         <hr>
       </div>
-      <div class="page-title">Edit Item</div>
+      <div class="page-title">Edit Product</div>
       <form class="add-item-form">
         <div class="item-detail">
           <div class="item-name">
             <label for="name">Product Name: </label>
             <input type="text" name="name" id="name" class="product-name">
+            <div class="name-error-box error-box"></div>
           </div>
           <div class="item-cost">
-            <label for="cost">Cost <span class="cost-colon">:</span> </label>
+            <label for="cost">Cost (RM)<span class="cost-colon">:</span> </label>
             <input type="number" name="cost" id="cost" class="product-cost" min="0" placeholder="RM" step="0.10">
+            <div class="cost-error-box error-box"></div>
           </div>
           <div class="item-price">
-            <label for="price">Price <span class="price-colon">:</span> </label>
+            <label for="price">Price (RM)<span class="price-colon">:</span> </label>
             <input type="number" name="price" id="price" class="product-price" min="0" placeholder="RM" step="0.10">
+            <div class="price-error-box error-box"></div>
           </div>
           <div class="item-barcode">
             <label for="barcode">Barcode <span class="barcode-colon">:</span> </label>
             <input type="number" name="barcode" id="barcode" class="product-barcode"
               placeholder="13 digits:  e.g. 1234567890123">
+              <div class="barcode-error-box error-box"></div>
           </div>
           <div class="item-quantity">
             <label for="quantity">Quantity <span class="quantity-colon">:</span> </label>
             <input type="number" name="quantity" id="quantity" class="product-quantity" min="0">
+            <div class="quantity-error-box error-box"></div>
           </div>
         </div>
 
         <div class="button-row">
-          <button type="button" class="delete-btn btn">Delete Item</button>
+          <button type="button" class="delete-btn btn">Delete Product</button>
           <button type="submit" class="save-btn btn">
             <a href="javascript:delay('inventory.html')" class="save-link">Confirm and Save</a>
           </button>
@@ -143,6 +148,13 @@
     <h1 class="product-deleted-header">Deleted</h1>
     <p class="product-deleted-message">Product Deleted Successfully</p>
     <button class="done-btn">Done</button>
+  </div>
+
+  <div class="product-updated-popup">
+    <img src="image/verified.png" class="verified-image">
+    <h1 class="product-updated-header">Updated</h1>
+    <p class="product-updated-message">Product Updated Successfully</p>
+    <button class="product-updated-done-btn">Done</button>
   </div>
   <script src="JavaScript/general.js"></script>
   <script src="JavaScript/edit-item.js"></script>

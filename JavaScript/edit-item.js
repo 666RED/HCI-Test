@@ -7,14 +7,32 @@ const deleteProductPopup = document.querySelector('.delete-product-pop-up');
 const wholeScreen = document.querySelector('.whole-screen');
 const productDeletedPopup = document.querySelector('.product-deleted-popup');
 const doneBtn = document.querySelector('.done-btn');
+const saveBtn = document.querySelector('.save-btn');
+const productUpdatedPopup = document.querySelector('.product-updated-popup');
+const productUpdatedDoneBtn = document.querySelector('.product-updated-done-btn');
 
 const deleteButton = document.querySelector('.delete-btn');
 const deleteYesBtn = document.querySelector('.delete-product-yes-btn');
 const deleteNoBtn = document.querySelector('.delete-product-no-btn');
 const deleteCancelBtn = document.querySelector('.delete-product-cancel-img');
+const outsideScreen = document.querySelector('.item-detail');
+
+const nameError = document.querySelector('.name-error-box');
+const costError = document.querySelector('.cost-error-box');
+const priceError = document.querySelector('.price-error-box');
+const barcodeError = document.querySelector('.barcode-error-box');
+const quantityError = document.querySelector('.quantity-error-box');
 
 const singleProductArr = JSON.parse(sessionStorage.getItem('Product'));
 const productArr = JSON.parse(localStorage.getItem('Inventory'));
+
+outsideScreen.addEventListener('click', (e) => {
+  if(!productUpdatedPopup.contains(e.target) && productUpdatedPopup.classList.contains('open-popup')){
+    window.location.href = 'inventory.html';  
+    productUpdatedPopup.classList.remove('open-popup');
+    wholeScreen.classList.remove('active');
+  }
+});
 
 const displayProductDetail = () => {
   productName.value = singleProductArr[0].name;
@@ -49,9 +67,156 @@ doneBtn.addEventListener('click', () => {
   window.location.href = 'inventory.html';
 });
 
+productUpdatedDoneBtn.addEventListener('click', () => {
+  wholeScreen.classList.remove('active');
+  productUpdatedPopup.classList.remove('open-popup');
+  sessionStorage.clear();
+  window.location.href = 'inventory.html';
+});
+
+saveBtn.addEventListener('click', validation);
+
 deleteNoBtn.addEventListener('click', closePopup);
 deleteCancelBtn.addEventListener('click', closePopup);  
 
 function closePopup() {
   deleteProductPopup.classList.remove('open-popup');
 };
+
+const updateProductDetail = (name, cost, price, barcode, quantity) => {
+  console.log(productArr[0].name);
+  console.log(name);
+  for(let i = 0; i < productArr.length; i++){
+    if(productArr[i].name === singleProductArr[0].name){
+      productArr[i].name = name;
+      productArr[i].cost = cost;
+      productArr[i].price = price;
+      productArr[i].barcode = barcode;
+      productArr[i].quantity = quantity;
+      break;
+    }
+  }
+  localStorage.setItem('Inventory', JSON.stringify(productArr));
+  wholeScreen.classList.add('active');
+  productUpdatedPopup.classList.add('open-popup');
+}
+
+function validation() {
+  let emptyName = true;
+  let emptyCost = true;
+  let emptyPrice = true;
+  let emptyBarcode = true;
+  let emptyQuantity = true;
+
+  let validName = true;
+  let validCost = true;
+  let validPrice = true;
+  let validBarcode = true;
+  let validQuantity = true;
+
+  if(productName.value === ''){
+    nameError.style.display = 'block';
+    nameError.innerText = 'Required*';
+    validName = false;
+  }else {
+    nameError.style.display = 'none';
+    emptyName = false;
+  }
+
+  if(productCost.value === ''){
+    costError.style.display = 'block';
+    costError.innerText = 'Required*';
+    validCost = false;
+  }else {
+    costError.style.display = 'none';
+    emptyCost = false;
+  }
+
+  if(productPrice.value === ''){
+    priceError.style.display = 'block';
+    priceError.innerText = 'Required*';
+    validPrice = false;
+  }else {
+    priceError.style.display = 'none';
+    emptyPrice = false;
+  }
+
+  if(productBarcode.value === ''){
+    barcodeError.style.display = 'block';
+    barcodeError.innerText = 'Required*';
+    validBarcode = false;
+  }else {
+    barcodeError.style.display = 'none';
+    emptyBarcode = false;
+  }
+
+  if(productQuantity.value === ''){
+    quantityError.style.display = 'block';
+    quantityError.innerText = 'Required*';
+    validQuantity = false;
+  }else {
+    quantityError.style.display = 'none';
+    emptyQuantity = false;
+  }
+
+  if(!emptyName){
+    const arr = productName.value.split(' ');
+    for(let i = 0; i < arr.length; i++){
+      arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+    }
+    productName.value = arr.join(' ');
+
+    for(let i = 0; i < productArr.length; i++){
+      if(productName.value == productArr[i].name && productName.value !== singleProductArr[0].name){
+        nameError.style.display = 'block';
+        nameError.innerText = 'This item had already in the inventory';
+        validName = false;
+        break;
+      }
+    }
+  }
+
+  if(!emptyCost && Number(productCost.value) <= 0){
+    costError.style.display = 'block';
+    costError.innerText = 'Must be greater than RM 0.00';
+    validCost = false;
+  }
+
+  if(!emptyPrice && Number(productPrice.value) <= 0){
+    priceError.style.display = 'block';
+    priceError.innerText = 'Must be greater than RM 0.00';
+    validPrice = false;
+  }
+
+  if(!emptyCost && !emptyPrice && Number(productCost.value) >= Number(productPrice.value)){
+    priceError.style.display = 'block';
+    priceError.innerText = 'Price should be greater than Cost';
+    validPrice = false;
+    validCost = false;
+  }
+
+  if(!emptyBarcode && productBarcode.value.length !== 13){
+    barcodeError.style.display = 'block';
+    barcodeError.innerText = 'Barcode must be in 13 digits';
+    validBarcode = false;
+  }else if(!emptyBarcode){
+    for(let i = 0; i < productArr.length; i++){
+      if(productBarcode.value == productArr[i].barcode && productBarcode.value !== singleProductArr[0].barcode){
+        barcodeError.style.display = 'block';
+        barcodeError.innerText = 'This barcode belongs to another product in the inventory';
+        validBarcode = false;  
+        break;
+      }
+    }
+  }
+
+  if(!emptyQuantity && Number(productQuantity.value) < 0){
+    quantityError.style.display = 'block';
+    quantityError.innerText = 'Must be greater than or equal to 0';
+    validQuantity = false;
+  }
+
+  if(validName && validCost && validPrice && validBarcode && validQuantity){
+    updateProductDetail(productName.value, productCost.value, productPrice.value, productBarcode.value, productQuantity.value);
+  }
+}
