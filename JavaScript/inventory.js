@@ -19,7 +19,7 @@ const createProduct = (contentArr, i) => {
   const productPrice = document.createElement('div');
   const editButton = document.createElement('button');
 
-  productNo.innerText = i + 1;
+  productNo.innerText = i + 1 + '.';
   productName.innerText = contentArr[i].name;
   productBarcode.innerText = contentArr[i].barcode;
   productQuantity.innerText = contentArr[i].quantity;

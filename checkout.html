@@ -38,7 +38,9 @@
 
   <section class="checkout-main-content">
     <div class="search-item-box">
-      <input type="text" placeholder="Barcode / Name" id="search-bar">
+      <h1 class="checkout-text">Checkout</h1>
+      <input type="text" placeholder="Product Name" id="search-bar">
+      <div class="suggested-product-box"></div>
     </div>
     <div class="product-detail">
       <div class="title-row">
@@ -48,38 +50,9 @@
         <h3 class="quantity-title">Quantity</h3>
         <h3 class="total-title">Total</h3>
       </div>
+
       <div class="product-info">
-        <div class="product-row">
-          <div class="product-no">01.</div>
-          <div class="product-name-row">
-            <div class="product-name">100 Plus</div>
-            <img src="image/dustbin.png" class="remove-icon">
-          </div>
-          <div class="product-price">RM 2.00</div>
-          <div class="adjust-quantity">
-            <img src="image/minus.png" class="decrease-icon icon">
-            <input type="number" class="quantity" value="1" min="1">
-            <img src="image/plus.png" class="increase-icon icon">
-          </div>
-          <div class="product-total">RM 2.00</div>
-        </div>
-
-        <div class="product-row">
-          <div class="product-no">02.</div>
-          <div class="product-name-row">
-            <div class="product-name">Coke</div>
-            <img src="image/dustbin.png" class="remove-icon">
-          </div>
-          <div class="product-price">RM 2.50</div>
-          <div class="adjust-quantity">
-            <img src="image/minus.png" class="decrease-icon icon">
-            <input type="number" class="quantity" value="1" min="1">
-            <img src="image/plus.png" class="increase-icon icon">
-          </div>
-          <div class="product-total">RM 2.50</div>
-        </div>
-
-        <div class="product-row">
+        <!-- <div class="product-row">
           <div class="product-no">03.</div>
           <div class="product-name-row">
             <div class="product-name">Sprite</div>
@@ -92,8 +65,9 @@
             <img src="image/plus.png" class="increase-icon icon">
           </div>
           <div class="product-total">RM 2.00</div>
-        </div>
+        </div> -->
       </div>
+
     </div>
     <div class="purchase-box">
       <form class="purchase-form">
