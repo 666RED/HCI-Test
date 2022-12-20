@@ -2,6 +2,8 @@ const editButtons = document.querySelectorAll('.edit-btn');
 const productNames = document.querySelectorAll('.product-name');
 
 const contentContainer = document.querySelector('.content-container');
+const searchBar = document.querySelector('#search-bar');
+const suggestedProductBox = document.querySelector('.suggested-product-box');
 
 const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 
@@ -112,4 +114,25 @@ function editItem2(e) {
 
   sessionStorage.setItem('Product', JSON.stringify(arr));
   window.location.href = 'edit-item.html';
+}
+
+searchBar.addEventListener('keyup', (e) => {
+  searchProduct(e);
+});
+
+function searchProduct(e) {
+  let text = e.target;
+  text.value = text.value.toUpperCase();
+  suggestedProductBox.innerHTML = '';
+  for(let i = 0; i < contentArr.length; i++){
+    const suggestedProduct = document.createElement('div'); 
+    if(contentArr[i].name.includes(text.value) && contentArr[i].name[0] === text.value[0]){
+      suggestedProductBox.style.display = 'block';
+      suggestedProduct.classList.add('suggested-product');
+      suggestedProduct.innerText = contentArr[i].name;
+      suggestedProductBox.appendChild(suggestedProduct);
+    }else if(!suggestedProductBox.querySelector('.suggested-product') && i == contentArr.length - 1){
+      suggestedProductBox.style.display = 'none';
+    }
+  }
 }

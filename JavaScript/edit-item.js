@@ -31,6 +31,7 @@ outsideScreen.addEventListener('click', (e) => {
     window.location.href = 'inventory.html';  
     productUpdatedPopup.classList.remove('open-popup');
     wholeScreen.classList.remove('active');
+    sessionStorage.clear();
   }
 });
 

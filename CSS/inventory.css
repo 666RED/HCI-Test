@@ -18,13 +18,6 @@
   margin-bottom: 1rem;
 }
 
-.search-item-box {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-
 .add-item-button {
   margin-right: 1rem;
   border: none;
@@ -55,6 +48,13 @@
   margin-right: .5rem;
 }
 
+.search-item-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 #search-bar {
   background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png');
   background-size: 1rem;
@@ -67,7 +67,30 @@
   border-radius: 1rem;
   margin-left: .8rem;
   width: 25rem;
-} 
+}
+
+.item-text-row {
+  position: relative;
+  border: 1px solid black;
+}
+
+.suggested-product-box{
+  position: absolute;
+  border: 1px solid black;
+  left: 16rem;
+  top: -1rem;
+  padding: .2rem .5rem; 
+  width: 22rem;
+  background-color: white;
+  max-height: 8rem;
+  overflow: auto;
+  display: none;
+}
+
+.suggested-product {
+  font-size: 1rem;
+  cursor: pointer;
+}
 
 .item-text {
   font-size: 1.2rem;
