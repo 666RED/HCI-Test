@@ -122,7 +122,9 @@ searchBar.addEventListener('keyup', (e) => {
 
 function searchProduct(e) {
   let text = e.target;
-  text.value = text.value.toUpperCase();
+  if(text.value.length == 1){
+    text.value = text.value.toUpperCase();
+  }
   suggestedProductBox.innerHTML = '';
   for(let i = 0; i < contentArr.length; i++){
     const suggestedProduct = document.createElement('div'); 

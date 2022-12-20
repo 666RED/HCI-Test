@@ -71,20 +71,23 @@
 
 .item-text-row {
   position: relative;
-  border: 1px solid black;
 }
 
 .suggested-product-box{
   position: absolute;
   border: 1px solid black;
-  left: 16rem;
-  top: -1rem;
+  left: 14rem;
+  top: -0.8rem;
   padding: .2rem .5rem; 
-  width: 22rem;
+  width: 26rem;
   background-color: white;
   max-height: 8rem;
   overflow: auto;
   display: none;
+  border-radius: .5rem;
+  border: none;
+  box-shadow: .1rem .1rem .1rem rgba(0, 0, 0, .3), 
+              -0.1rem .1rem .1rem rgba(0, 0, 0, .3);
 }
 
 .suggested-product {
