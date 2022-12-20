@@ -1,7 +1,7 @@
 const editButtons = document.querySelectorAll('.edit-btn');
 const productNames = document.querySelectorAll('.product-name');
 
-const contentContainer = document.querySelector('.inventory-main-content');
+const contentContainer = document.querySelector('.content-container');
 
 const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 
@@ -48,6 +48,12 @@ const displayInventory = () => {
   for(let i = 1; i <= contentArr.length; i++){
     createProduct(contentArr, i - 1);
   }
+  const priceAndEdit = document.querySelectorAll('.price-and-edit');
+  if(contentContainer.offsetHeight >= 368){
+    priceAndEdit.forEach(row => {
+      row.style.width = '175px';
+    });
+  } 
 };
 
 window.onload = displayInventory();

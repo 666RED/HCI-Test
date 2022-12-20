@@ -96,6 +96,11 @@
   font-size: 1rem;
 }
 
+.content-container {
+  max-height: 23rem;
+  overflow: auto;
+}
+
 .content-row > * {
   display: flex;
   align-items: center;
