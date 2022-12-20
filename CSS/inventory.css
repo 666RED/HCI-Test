@@ -78,7 +78,7 @@
   border: 1px solid black;
   left: 14rem;
   top: -0.8rem;
-  padding: .2rem .5rem; 
+  text-indent: .5rem;
   width: 26rem;
   background-color: white;
   max-height: 8rem;
@@ -93,6 +93,11 @@
 .suggested-product {
   font-size: 1rem;
   cursor: pointer;
+  padding: .2rem 0;
+}
+
+.suggested-product:hover {
+  background-color: #c9c9c9;
 }
 
 .item-text {
