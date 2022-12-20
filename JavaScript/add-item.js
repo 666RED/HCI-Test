@@ -156,6 +156,11 @@ const validation = () => {
   }
 
   if(validName && validCost && validPrice && validBarcode && validQuantity){
+    const arr = productName.value.split(' ');
+    for(let i = 0; i < arr.length; i++){
+      arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+    }
+    productName.value = arr.join(' ');
     addNewItem(productName.value, productCost.value, productPrice.value, productBarcode.value, productQuantity.value);
   }
 }

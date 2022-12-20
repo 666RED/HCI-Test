@@ -11,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/header.css">
   <link rel="stylesheet" href="CSS/general.css">
-  <link rel="stylesheet" href="CSS/inventory.css">
   <link rel="stylesheet" href="CSS/edit-item.css">
   <link rel="stylesheet" href="CSS/footer.css">
 </head>
@@ -39,46 +38,49 @@
     </div>
   </section>
 
-  <section class="add-item-main-content">
-    <div class="return-row">
-      <a href="inventory.html">
-        <img src="image/return.png" class="return-icon">
-      </a>
-      <hr>
-    </div>
-    <div class="page-title">Edit Item</div>
-    <form class="add-item-form">
-      <div class="item-detail">
-        <div class="item-name">
-          <label for="name">Product Name: </label>
-          <input type="text" name="name" id="name" required>
-        </div>
-        <div class="item-cost">
-          <label for="cost">Cost <span class="cost-colon">:</span> </label>
-          <input type="number" name="cost" id="cost" required min="0" placeholder="RM" step="0.10">
-        </div>
-        <div class="item-price">
-          <label for="price">Price <span class="price-colon">:</span> </label>
-          <input type="number" name="price" id="price" required min="0" placeholder="RM" step="0.10">
-        </div>
-        <div class="item-barcode">
-          <label for="barcode">Barcode <span class="barcode-colon">:</span> </label>
-          <input type="text" name="barcode" id="barcode" required>
-        </div>
-        <div class="item-quantity">
-          <label for="quantity">Quantity <span class="quantity-colon">:</span> </label>
-          <input type="number" name="quantity" id="quantity" required min="0">
-        </div>
+  <div class="whole-screen">
+    <section class="add-item-main-content">
+      <div class="return-row">
+        <a href="inventory.html">
+          <img src="image/return.png" class="return-icon">
+        </a>
+        <hr>
       </div>
+      <div class="page-title">Edit Item</div>
+      <form class="add-item-form">
+        <div class="item-detail">
+          <div class="item-name">
+            <label for="name">Product Name: </label>
+            <input type="text" name="name" id="name" class="product-name">
+          </div>
+          <div class="item-cost">
+            <label for="cost">Cost <span class="cost-colon">:</span> </label>
+            <input type="number" name="cost" id="cost" class="product-cost" min="0" placeholder="RM" step="0.10">
+          </div>
+          <div class="item-price">
+            <label for="price">Price <span class="price-colon">:</span> </label>
+            <input type="number" name="price" id="price" class="product-price" min="0" placeholder="RM" step="0.10">
+          </div>
+          <div class="item-barcode">
+            <label for="barcode">Barcode <span class="barcode-colon">:</span> </label>
+            <input type="number" name="barcode" id="barcode" class="product-barcode"
+              placeholder="13 digits:  e.g. 1234567890123">
+          </div>
+          <div class="item-quantity">
+            <label for="quantity">Quantity <span class="quantity-colon">:</span> </label>
+            <input type="number" name="quantity" id="quantity" class="product-quantity" min="0">
+          </div>
+        </div>
 
-      <div class="button-row">
-        <button type="button" class="delete-btn btn">Delete Item</button>
-        <button type="submit" class="save-btn btn">
-          <a href="javascript:delay('inventory.html')" class="save-link">Confirm and Save</a>
-        </button>
-      </div>
-    </form>
-  </section>
+        <div class="button-row">
+          <button type="button" class="delete-btn btn">Delete Item</button>
+          <button type="submit" class="save-btn btn">
+            <a href="javascript:delay('inventory.html')" class="save-link">Confirm and Save</a>
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
 
   <section class="footer">
     <div class="footer-upper-row">
@@ -115,6 +117,32 @@
       </button>
       <button class="logout-no-btn">No</button>
     </div>
+  </div>
+
+  <div class="delete-product-pop-up">
+    <div class="delete-product-upper-row">
+      <div>
+        <img src="image/warning.png" class="delete-product-danger-img">
+      </div>
+      <p>DELETE PRODUCT</p>
+      <div>
+        <img src="image/remove.png" class="delete-product-cancel-img">
+      </div>
+    </div>
+    <div class="delete-product-message-row">
+      <p>Do you want to delete this product?</p>
+    </div>
+    <div class="delete-product-btn-row">
+      <button class="delete-product-yes-btn">Yes</button>
+      <button class="delete-product-no-btn">No</button>
+    </div>
+  </div>
+
+  <div class="product-deleted-popup">
+    <img src="image/verified.png" class="verified-image">
+    <h1 class="product-deleted-header">Deleted</h1>
+    <p class="product-deleted-message">Product Deleted Successfully</p>
+    <button class="done-btn">Done</button>
   </div>
   <script src="JavaScript/general.js"></script>
   <script src="JavaScript/edit-item.js"></script>

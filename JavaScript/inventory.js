@@ -35,13 +35,9 @@ const createProduct = (contentArr, i) => {
   productPrice.classList.add('product-price');
   editButton.classList.add('edit-btn');
 
-  editButton.addEventListener('click', () => {
-    window.location.href = 'edit-item.html';
-  });
+  editButton.addEventListener('click', editItem);
 
-  productName.addEventListener('click', () => {
-    window.location.href = 'edit-item.html';
-  });
+  productName.addEventListener('click', editItem2);
 
   priceAndEdit.append(productPrice, editButton);
   container.append(productNo, productName, productBarcode, productQuantity, productCost, priceAndEdit);
@@ -57,13 +53,57 @@ const displayInventory = () => {
 window.onload = displayInventory();
 
 editButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    window.location.href = 'edit-item.html';
-  })
+  button.addEventListener('click', editItem(e));
 });
 
 productNames.forEach(name => {
-  name.addEventListener('click', () => {
-    window.location.href = 'edit-item.html';
-  });
+  name.addEventListener('click', editItem2(e));
 });
+
+function editItem(e) {
+  const buttonClicked = e.target;
+  const container = buttonClicked.parentElement.parentElement;
+
+  const arr = [];
+
+  const name = container.querySelector('.product-name').innerText;
+  const cost = container.querySelector('.product-cost').innerText;
+  const price = container.querySelector('.product-price').innerText;
+  const barcode = container.querySelector('.product-barcode').innerText;
+  const quantity = container.querySelector('.product-quantity').innerText;
+
+  arr.push({
+    name,
+    cost,
+    price,
+    barcode,
+    quantity
+  });
+
+  sessionStorage.setItem('Product', JSON.stringify(arr));
+  window.location.href = 'edit-item.html';
+}
+
+function editItem2(e) {
+  const buttonClicked = e.target;
+  const container = buttonClicked.parentElement;
+
+  const arr = [];
+
+  const name = container.querySelector('.product-name').innerText;
+  const cost = container.querySelector('.product-cost').innerText;
+  const price = container.querySelector('.product-price').innerText;
+  const barcode = container.querySelector('.product-barcode').innerText;
+  const quantity = container.querySelector('.product-quantity').innerText;
+
+  arr.push({
+    name,
+    cost,
+    price,
+    barcode,
+    quantity
+  });
+
+  sessionStorage.setItem('Product', JSON.stringify(arr));
+  window.location.href = 'edit-item.html';
+}
