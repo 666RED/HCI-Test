@@ -104,7 +104,6 @@ function appendProduct(e) {
       }
   }
 
-
   decreaseIcon.addEventListener('click', (e) => {
     const buttonClicked = e.target;
     const adjustQuantityRow = buttonClicked.parentElement;
@@ -148,6 +147,10 @@ function appendProduct(e) {
       });
       updateProductRow();
       updateTotalPrice();
+      if(contentContainer.childElementCount === 0){
+        payment.value = '';
+      }
+      updateChange();
     }, {once:true});
   });
 
@@ -157,7 +160,14 @@ function appendProduct(e) {
       window.alert("Tha product quantity must be greater than 0");
       inputChanged.value = 1;
     }
-  })
+  });
+
+  if(contentContainer.offsetHeight >= 200){
+  const productTotals = contentContainer.querySelectorAll('.product-total');
+  productTotals.forEach(row => {
+    row.style.width = '175px';
+  });
+}
 }
 
 function updateProductRow() {
@@ -189,6 +199,12 @@ payment.addEventListener('change', () => {
   updateChange();
 });
 
+payment.addEventListener('keyup', (e) => {
+  if(e.keyCode === 13){
+    updateChange();
+  }
+})
+
 function updateChange() {
   let totalChange;
   if(isNaN(payment)){
@@ -197,6 +213,8 @@ function updateChange() {
   totalChange = payment.value - Number(totalPrice.innerText.replace('RM ', ''));
   if(totalChange < 0){
     window.alert('Not enough');
+    payment.value = '';
+    change.innerText = '';
     return;
   }else { 
     change.innerText = 'RM ' + totalChange.toFixed(2);

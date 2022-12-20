@@ -98,6 +98,11 @@
   margin-left: 1rem;
 }
 
+.product-info {
+  max-height: 12.5rem;
+  overflow: auto;
+}
+
 .product-row > * {
   height: 3rem;
   display: flex;
