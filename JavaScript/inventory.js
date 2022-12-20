@@ -116,23 +116,40 @@ function editItem2(e) {
   window.location.href = 'edit-item.html';
 }
 
+function goToEdit(e) {
+  const productClicked = e.target;
+  for(let i = 0; i < contentArr.length; i++){
+    if(productClicked.innerText == contentArr[i].name){
+      const productArr = [];
+      productArr.push({
+        name:contentArr[i].name,
+        cost:contentArr[i].cost,
+        price:contentArr[i].price,
+        barcode:contentArr[i].barcode,
+        quantity:contentArr[i].quantity
+      });
+      sessionStorage.setItem('Product', JSON.stringify(productArr));
+      window.location.href = 'edit-item.html';
+    }
+  }
+}
+
 searchBar.addEventListener('keyup', (e) => {
   searchProduct(e);
 });
 
 function searchProduct(e) {
   let text = e.target;
-  if(text.value.length == 1){
-    text.value = text.value.toUpperCase();
-  }
   suggestedProductBox.innerHTML = '';
   for(let i = 0; i < contentArr.length; i++){
     const suggestedProduct = document.createElement('div'); 
-    if(contentArr[i].name.includes(text.value) && contentArr[i].name[0] === text.value[0]){
+    if(contentArr[i].name.toLowerCase().includes(text.value) && contentArr[i].name[0].toLowerCase() === text.value[0]){
       suggestedProductBox.style.display = 'block';
       suggestedProduct.classList.add('suggested-product');
       suggestedProduct.innerText = contentArr[i].name;
       suggestedProductBox.appendChild(suggestedProduct);
+
+      suggestedProduct.addEventListener('click', goToEdit);
     }else if(!suggestedProductBox.querySelector('.suggested-product') && i == contentArr.length - 1){
       suggestedProductBox.style.display = 'none';
     }
