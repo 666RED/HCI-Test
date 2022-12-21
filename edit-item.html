@@ -39,7 +39,7 @@
   </section>
 
   <div class="whole-screen">
-    <section class="add-item-main-content">
+    <section class="edit-item-main-content">
       <div class="return-row">
         <a href="inventory.html">
           <img src="image/return.png" class="return-icon" onclick="sessionStorage.clear()">
@@ -47,36 +47,67 @@
         <hr>
       </div>
       <div class="page-title">Edit Product</div>
-      <div class="add-item-form">
+      <div class="edit-item-form">
         <div class="item-detail">
-          <div class="item-name">
-            <label for="name">Product Name: </label>
-            <input type="text" name="name" id="name" class="product-name">
-            <div class="name-error-box error-box"></div>
-          </div>
-          <div class="item-cost">
-            <label for="cost">Cost (RM)<span class="cost-colon">:</span> </label>
-            <input type="number" name="cost" id="cost" class="product-cost" min="0" placeholder="RM" step="0.10">
-            <div class="cost-error-box error-box"></div>
-          </div>
-          <div class="item-price">
-            <label for="price">Price (RM)<span class="price-colon">:</span> </label>
-            <input type="number" name="price" id="price" class="product-price" min="0" placeholder="RM" step="0.10">
-            <div class="price-error-box error-box"></div>
-          </div>
-          <div class="item-barcode">
-            <label for="barcode">Barcode <span class="barcode-colon">:</span> </label>
-            <input type="number" name="barcode" id="barcode" class="product-barcode"
-              placeholder="13 digits:  e.g. 1234567890123">
+          <div class="first-column">
+            <div class="item-name">
+              <label for="name">Product Name: </label>
+              <input type="text" name="name" id="name" class="product-name">
+              <div class="name-error-box error-box"></div>
+            </div>
+            <div class="item-cost">
+              <label for="cost">Cost (RM)<span class="cost-colon">:</span> </label>
+              <input type="number" name="cost" id="cost" class="product-cost" min="0" placeholder="RM" step="0.10">
+              <div class="cost-error-box error-box"></div>
+            </div>
+            <div class="item-price">
+              <label for="price">Price (RM)<span class="price-colon">:</span> </label>
+              <input type="number" name="price" id="price" class="product-price" min="0" placeholder="RM" step="0.10">
+              <div class="price-error-box error-box"></div>
+            </div>
+            <div class="item-barcode">
+              <label for="barcode">Barcode <span class="barcode-colon">:</span> </label>
+              <input type="number" name="barcode" id="barcode" class="product-barcode" placeholder="13 digits:  e.g. 1234567890123">
               <div class="barcode-error-box error-box"></div>
+            </div>
+            <div class="item-category">
+              <label for="category" class="item-category">Category<span class="category-colon">:</span> </label>
+              <select name="category" id="category" class="category-box">
+                <option value="drink">Drink</option>
+                <option value="food">Food</option>
+              </select>
+            </div>
           </div>
-          <div class="item-quantity">
-            <label for="quantity">Quantity <span class="quantity-colon">:</span> </label>
-            <input type="number" name="quantity" id="quantity" class="product-quantity" min="0">
-            <div class="quantity-error-box error-box"></div>
+          <div class="second-column">
+            <div class="item-quantity">
+              <label for="quantity">Quantity <span class="quantity-colon">:</span> </label>
+              <input type="number" name="quantity" id="quantity" class="quantity" min="0">
+              <div class="item-unit">
+                <label for="unit">Unit <span class="unit-colon">:</span> </label>
+                <select name="unit" id="unit" class="unit-box">
+                  <option value="piece">pc</option>
+                  <option value="box">box</option>
+                </select>
+              </div>
+            </div>
+            <div class="quantity-error-box second-column-error-box"></div>
+            <div class="supplier-name-box">
+              <label for="supplier-name">Supplier Name<span class="supplier-name-colon">:</span></label>
+              <textarea name="supplier-name" id="supplier-name" class="supplier-name textarea-box"></textarea>
+            </div>
+            <div class="supplier-name-error-box second-column-error-box">hello</div>
+            <div class="supplier-phone-number-box">
+              <label for="supplier-phone-number">Supplier Phone Number<span class="supplier-phone-number-colon">:</span></label>
+              <input type="text" class="supplier-phone-number">
+            </div>
+            <div class="supplier-phone-number-error-box second-column-error-box"></div>
+            <div class="supplier-location-box">
+              <label for="supplier-location">Supplier Location<span class="supplier-location-colon">:</span></label>
+              <textarea name="supplier-location" id="supplier-location" class="supplier-location textarea-box"></textarea>
+            </div>
+            <div class="supplier-location-error-box second-column-error-box"></div>
           </div>
         </div>
-
         <div class="button-row">
           <button type="button" class="delete-btn btn">Delete Product</button>
           <button type="submit" class="save-btn btn">

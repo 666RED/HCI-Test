@@ -22,7 +22,7 @@ removeCancel.addEventListener('click', () => {
 });
 
 purchaseButton.addEventListener('click', () => {
-  window.location.href = 'receipt.html';
+  
 });
 
 // for searching product
@@ -36,7 +36,7 @@ function searchProduct(e) {
   suggestedProductBox.innerHTML = '';
   for(let i = 0; i < tempArr.length; i++){
     const suggestedProduct = document.createElement('div'); 
-    if(tempArr[i].name.toLowerCase().includes(text.value) && tempArr[i].name[0].toLowerCase() === text.value[0]){
+    if(tempArr[i].name.toLowerCase().includes(text.value.toLowerCase()) && tempArr[i].name[0].toLowerCase() == text.value[0].toLowerCase()){
       suggestedProductBox.style.display = 'block';
       suggestedProduct.classList.add('suggested-product');
       suggestedProduct.innerText = tempArr[i].name;
@@ -147,19 +147,20 @@ function appendProduct(e) {
       });
       updateProductRow();
       updateTotalPrice();
-      if(contentContainer.childElementCount === 0){
-        payment.value = '';
-      }
-      updateChange();
+      payment.value = '';
+      change.innerText = '';
     }, {once:true});
   });
 
   productQuantity.addEventListener('change', (e) => {
     const inputChanged = e.target;
+    const container = inputChanged.parentElement.parentElement;
     if(inputChanged.value <= 0){
       window.alert("Tha product quantity must be greater than 0");
       inputChanged.value = 1;
     }
+    updateSinglePrice(container);
+    updateTotalPrice();
   });
 
   if(contentContainer.offsetHeight >= 200){

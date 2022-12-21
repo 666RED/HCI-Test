@@ -2,7 +2,12 @@ const productName = document.querySelector('.product-name');
 const productCost = document.querySelector('.product-cost');
 const productPrice = document.querySelector('.product-price');
 const productBarcode = document.querySelector('.product-barcode');
-const productQuantity = document.querySelector('.product-quantity');
+const productQuantity = document.querySelector('.quantity');
+const supplierName = document.querySelector('.supplier-name');
+const supplierPhoneNumber = document.querySelector('.supplier-phone-number');
+const supplierLocation = document.querySelector('.supplier-location');
+const productCategory = document.querySelector('.category-box');
+const productUnit = document.querySelector('.unit-box');
 const deleteProductPopup = document.querySelector('.delete-product-pop-up');
 const wholeScreen = document.querySelector('.whole-screen');
 const productDeletedPopup = document.querySelector('.product-deleted-popup');
@@ -22,6 +27,9 @@ const costError = document.querySelector('.cost-error-box');
 const priceError = document.querySelector('.price-error-box');
 const barcodeError = document.querySelector('.barcode-error-box');
 const quantityError = document.querySelector('.quantity-error-box');
+const supplierNameError = document.querySelector('.supplier-name-error-box');
+const supplierPhoneNumberError = document.querySelector('.supplier-phone-number-error-box');
+const supplierLocationError = document.querySelector('.supplier-location-error-box');
 
 const singleProductArr = JSON.parse(sessionStorage.getItem('Product'));
 const productArr = JSON.parse(localStorage.getItem('Inventory'));
@@ -41,6 +49,11 @@ const displayProductDetail = () => {
   productPrice.value = singleProductArr[0].price.replace('RM ', '');
   productBarcode.value = singleProductArr[0].barcode;
   productQuantity.value = singleProductArr[0].quantity;
+  supplierName.value = singleProductArr[0].supplierName;
+  supplierPhoneNumber.value = singleProductArr[0].supplierPhoneNumber;
+  supplierLocation.value = singleProductArr[0].supplierLocation;
+  productCategory.value = singleProductArr[0].category;
+  productUnit.value = singleProductArr[0].unit;
 }
 
 window.onload = displayProductDetail();
@@ -78,15 +91,13 @@ productUpdatedDoneBtn.addEventListener('click', () => {
 saveBtn.addEventListener('click', validation);
 
 deleteNoBtn.addEventListener('click', closePopup);
-deleteCancelBtn.addEventListener('click', closePopup);  
+deleteCancelBtn.addEventListener('click', closePopup);
 
 function closePopup() {
   deleteProductPopup.classList.remove('open-popup');
 };
 
-const updateProductDetail = (name, cost, price, barcode, quantity) => {
-  console.log(productArr[0].name);
-  console.log(name);
+const updateProductDetail = (name, cost, price, barcode, quantity, category, unit, supplierName, supplierPhoneNumber, supplierLocation) => {
   for(let i = 0; i < productArr.length; i++){
     if(productArr[i].name === singleProductArr[0].name){
       productArr[i].name = name;
@@ -94,6 +105,11 @@ const updateProductDetail = (name, cost, price, barcode, quantity) => {
       productArr[i].price = price;
       productArr[i].barcode = barcode;
       productArr[i].quantity = quantity;
+      productArr[i].category = category;
+      productArr[i].unit = unit;
+      productArr[i].supplierName = supplierName;
+      productArr[i].supplierPhoneNumber = supplierPhoneNumber;
+      productArr[i].supplierLocation = supplierLocation;
       break;
     }
   }
@@ -108,12 +124,18 @@ function validation() {
   let emptyPrice = true;
   let emptyBarcode = true;
   let emptyQuantity = true;
+  let emptySupplierName = true;
+  let emptySupplierPhoneNumber = true;
+  let emptySupplierLocation = true;
 
   let validName = true;
   let validCost = true;
   let validPrice = true;
   let validBarcode = true;
   let validQuantity = true;
+  let validSupplierName = true;
+  let validSupplierPhoneNumber = true;
+  let validSupplierLocation = true;
 
   if(productName.value === ''){
     nameError.style.display = 'block';
@@ -158,6 +180,33 @@ function validation() {
   }else {
     quantityError.style.display = 'none';
     emptyQuantity = false;
+  }
+
+  if(supplierName.value === ''){
+    supplierNameError.style.display = 'block';
+    supplierNameError.innerText = 'Required*';
+    validSupplierName = false;
+  }else {
+    supplierNameError.style.display = 'none';
+    emptySupplierName = false;
+  }
+
+  if(supplierPhoneNumber.value === ''){
+    supplierPhoneNumberError.style.display = 'block';
+    supplierPhoneNumberError.innerText = 'Required*';
+    validSupplierPhoneNumber = false;
+  }else {
+    supplierPhoneNumberError.style.display = 'none';
+    emptySupplierPhoneNumber = false;
+  }
+
+  if(supplierLocation.value === ''){
+    supplierLocationError.style.display = 'block';
+    supplierLocationError.innerText = 'Required*';
+    validSupplierLocation = false;
+  }else {
+    supplierLocationError.style.display = 'none';
+    emptySupplierLocation = false;
   }
 
   if(!emptyName){
@@ -217,7 +266,7 @@ function validation() {
     validQuantity = false;
   }
 
-  if(validName && validCost && validPrice && validBarcode && validQuantity){
-    updateProductDetail(productName.value, productCost.value, productPrice.value, productBarcode.value, productQuantity.value);
+  if(validName && validCost && validPrice && validBarcode && validQuantity && validSupplierName && validSupplierPhoneNumber && validSupplierLocation){
+    updateProductDetail(productName.value, productCost.value, productPrice.value, productBarcode.value, productQuantity.value, productCategory.value, productUnit.value, supplierName.value, supplierPhoneNumber.value, supplierLocation.value);
   }
 }

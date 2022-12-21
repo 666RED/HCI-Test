@@ -1,8 +1,3 @@
-// function delay(URL){
-//   setTimeout( function() {
-//     window.location = URL }, 1000);
-// }
-
 const saveButton = document.querySelector('.save-btn');
 const clearAllButton = document.querySelector('.clear-btn');
 
@@ -10,13 +5,21 @@ const productName = document.querySelector('.product-name');
 const productCost = document.querySelector('.product-cost');
 const productPrice = document.querySelector('.product-price');
 const productBarcode = document.querySelector('.product-barcode');
-const productQuantity = document.querySelector('.product-quantity');
+const productQuantity = document.querySelector('.quantity');
+const productSupplierName = document.querySelector('.item-supplier-name-textarea');
+const productSupplierPhoneNumber = document.querySelector('.item-supplier-phone-number-text');
+const productSupplierLocation = document.querySelector('.item-supplier-location-textarea');
+const productCategory = document.querySelector('.category-box');
+const productUnit = document.querySelector('.unit-box');
 
 const nameError = document.querySelector('.name-error-box');
 const costError = document.querySelector('.cost-error-box');
 const priceError = document.querySelector('.price-error-box');
 const barcodeError = document.querySelector('.barcode-error-box');
 const quantityError = document.querySelector('.quantity-error-box');
+const supplierNameError = document.querySelector('.supplier-name-error-box');
+const supplierPhoneNumberError = document.querySelector('.supplier-phone-number-error-box');
+const supplierLocationError = document.querySelector('.supplier-location-error-box'); 
 
 const wholeScreen = document.querySelector('.whole-screen');
 const outsideScreen = document.querySelector('.item-detail');
@@ -33,14 +36,22 @@ outsideScreen.addEventListener('click', (e) => {
   }
 });
 
-const addNewItem = (name, cost, price, barcode, quantity) => {
+const addNewItem = (name, cost, price, barcode, quantity, category, unit, supplierName, supplierPhoneNumber, supplierLocation) => {
   productArr.push({
     name,
     cost, 
     price,
     barcode,
-    quantity
+    quantity,
+    category,
+    unit,
+    supplierName,
+    supplierPhoneNumber,
+    supplierLocation
   });
+
+  console.log(productCategory.value);
+  console.log(productUnit.value);
 
   localStorage.setItem('Inventory', JSON.stringify(productArr));
   addedItem.classList.add('open-popup');
@@ -54,12 +65,18 @@ const validation = () => {
   let emptyPrice = true;
   let emptyBarcode = true;
   let emptyQuantity = true;
+  let emptySupplierName = true;
+  let emptySupplierPhoneNumber = true;
+  let emptySupplierLocation = true;
 
   let validName = true;
   let validCost = true;
   let validPrice = true;
   let validBarcode = true;
   let validQuantity = true;
+  let validSupplierName = true;
+  let validSupplierPhoneNumber = true;
+  let validSupplierLocation = true;
 
   if(productName.value === ''){
     nameError.style.display = 'block';
@@ -104,6 +121,33 @@ const validation = () => {
   }else {
     quantityError.style.display = 'none';
     emptyQuantity = false;
+  }
+
+  if(productSupplierName.value === ''){
+    supplierNameError.style.display = 'block';
+    supplierNameError.value = 'Required*';
+    validSupplierName = false;
+  }else {
+    supplierNameError.style.display = 'none';
+    emptySupplierName = false;
+  }
+
+  if(productSupplierPhoneNumber.value === ''){
+    supplierPhoneNumberError.style.display = 'block';
+    supplierPhoneNumberError.value = 'Required*';
+    validSupplierPhoneNumber = false;
+  }else {
+    supplierPhoneNumberError.style.display = 'none';
+    emptySupplierPhoneNumber = false;
+  }
+
+  if(productSupplierLocation.value === ''){
+    supplierLocationError.style.display = 'block';
+    supplierLocationError.value = 'Required*';
+    validSupplierLocation = false;
+  }else {
+    supplierLocationError.style.display = 'none';
+    emptySupplierLocation = false;
   }
 
   if(!emptyName){
@@ -157,13 +201,13 @@ const validation = () => {
     validQuantity = false;
   }
 
-  if(validName && validCost && validPrice && validBarcode && validQuantity){
+  if(validName && validCost && validPrice && validBarcode && validQuantity && validSupplierName && validSupplierPhoneNumber && validSupplierLocation){
     const arr = productName.value.split(' ');
     for(let i = 0; i < arr.length; i++){
       arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
     }
     productName.value = arr.join(' ');
-    addNewItem(productName.value, productCost.value, productPrice.value, productBarcode.value, productQuantity.value);
+    addNewItem(productName.value, productCost.value, productPrice.value, productBarcode.value, productQuantity.value, productCategory.value, productUnit.value, productSupplierName.value, productSupplierPhoneNumber.value, productSupplierLocation.value);
   }
 }
 
@@ -175,6 +219,9 @@ clearAllButton.addEventListener('click', () => {
   priceError.style.display = 'none';
   barcodeError.style.display = 'none';
   quantityError.style.display = 'none';
+  supplierNameError.style.display = 'none';
+  supplierPhoneNumberError.style.display = 'none';
+  supplierLocationError.style.display = 'none';
 });
 
 doneButton.addEventListener('click', () => {
