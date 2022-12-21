@@ -258,9 +258,17 @@ function searchProduct(e) {
 
 category.addEventListener('change', (e) => {
   contentContainer.innerHTML = '';
+  searchBar.value = '';
+  suggestedProductBox.innerHTML = '';
   if(category.value == 'all'){
     createAll();
   }else {
     createByCategory(category);
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if(suggestedProductBox.childElementCount > 0 && !e.target.contains(suggestedProductBox)){
+    suggestedProductBox.innerHTML = '';
   }
 });
