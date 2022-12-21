@@ -19,11 +19,13 @@ const createAll = () => {
     const priceAndEdit = document.createElement('div');
     const productPrice = document.createElement('div');
     const editButton = document.createElement('button');
+    const productUnit = document.createElement('div');
 
     productNo.innerText = i + 1 + '.';
     productName.innerText = contentArr[i].name;
     productBarcode.innerText = contentArr[i].barcode;
     productQuantity.innerText = contentArr[i].quantity;
+    productUnit.innerText = contentArr[i].unit;
     productCost.innerText = 'RM ' + parseFloat(contentArr[i].cost).toFixed(2); 
     productPrice.innerText = 'RM ' + parseFloat(contentArr[i].price).toFixed(2);
     editButton.innerText = 'Edit';
@@ -37,13 +39,14 @@ const createAll = () => {
     priceAndEdit.classList.add('price-and-edit');
     productPrice.classList.add('product-price');
     editButton.classList.add('edit-btn');
+    productUnit.classList.add('product-unit');
 
     editButton.addEventListener('click', editItem);
 
     productName.addEventListener('click', editItem2);
 
     priceAndEdit.append(productPrice, editButton);
-    container.append(productNo, productName, productBarcode, productQuantity, productCost, priceAndEdit);
+    container.append(productNo, productName, productBarcode, productUnit, productQuantity, productCost, priceAndEdit);
     contentContainer.appendChild(container);
   }
 };

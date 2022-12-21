@@ -183,13 +183,24 @@
 .barcode-title,
 .product-barcode,
 .cost-title,
-.product-cost{
+.product-cost,
+.unit-title,
+.product-unit{
   text-align: center;
 } 
 
 .barcode-title,
 .product-barcode {
   width: 10rem;
+}
+
+.unit-title,
+.product-unit{
+  width: 5rem;
+}
+
+.product-unit {
+  border-left: .1rem solid #A8A8A8;
 }
 
 .quantity-title,
