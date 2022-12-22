@@ -130,7 +130,7 @@ const validation = () => {
 
   if(!emptyName && !emptyNotification){
     for(let i = 0; i < productArr.length; i++){
-      if(`${productName.value} (${productUnit.value})` == productArr[i].name){
+      if(`${productName.value.toLowerCase()} (${productUnit.value})` == productArr[i].name.toLowerCase()){
         nameError.style.display = 'block';
         nameError.innerText = 'This item had already in the inventory';
         validName = false;

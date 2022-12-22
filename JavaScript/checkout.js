@@ -9,9 +9,20 @@ const contentContainer = document.querySelector('.product-info');
 const totalPrice = document.querySelector('.total-price');
 const payment = document.querySelector('.payment');
 const change = document.querySelector('.change');
+const barcodeScanner = document.querySelector('.barcode-scan-icon');
+const connectedPopup = document.querySelector('.successful-popup');
 
 const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 const tempArr = JSON.parse(localStorage.getItem('Inventory')) || [];
+
+barcodeScanner.addEventListener('click', () => {
+  connectedPopup.classList.add('open-popup');
+  const myTimeout = setTimeout(toBarcodeScannerPage, 3000);
+});
+
+function toBarcodeScannerPage() {
+  window.location.href = 'barcode-scan.html';
+};
 
 removeNoBtn.addEventListener('click', (e) => {  
   removePopupMenu.classList.remove('open-popup');
@@ -31,6 +42,10 @@ searchBar.addEventListener('keyup', (e) => {
   searchProduct(e);
 });
 
+searchBar.addEventListener('click', (e) => {
+  searchProduct(e);
+});
+
 function searchProduct(e) {
   let text = e.target;
   suggestedProductBox.innerHTML = '';
@@ -40,6 +55,19 @@ function searchProduct(e) {
       suggestedProductBox.style.display = 'block';
       suggestedProduct.classList.add('suggested-product');
       suggestedProduct.innerText = tempArr[i].name;
+      suggestedProductBox.appendChild(suggestedProduct);
+
+      suggestedProduct.addEventListener('click', appendProduct);
+    }else if(!suggestedProductBox.querySelector('.suggested-product') && i == tempArr.length - 1){
+      suggestedProductBox.style.display = 'none';
+    }
+  }
+  for(let i = 0; i < tempArr.length; i++){
+    const suggestedProduct = document.createElement('div'); 
+    if(tempArr[i].barcode.includes(text.value) && tempArr[i].barcode[0] == text.value[0]){
+      suggestedProductBox.style.display = 'block';
+      suggestedProduct.classList.add('suggested-product');
+      suggestedProduct.innerText = tempArr[i].barcode;
       suggestedProductBox.appendChild(suggestedProduct);
 
       suggestedProduct.addEventListener('click', appendProduct);
@@ -96,12 +124,26 @@ function appendProduct(e) {
       searchBar.value = '';
       suggestedProductBox.innerHTML = '';
       break;
+    }else if(productClicked.innerText == tempArr[i].barcode){
+      productNo.innerText = contentContainer.childElementCount + 1 + '.';
+      productName.innerText = tempArr[i].name;
+      productNameRow.append(productName, removeIcon);
+      productPrice.innerText = 'RM ' + Number(tempArr[i].price).toFixed(2);
+      productTotal.innerText = 'RM ' + Number(tempArr[i].price).toFixed(2);
+      container.append(productNo, productNameRow, productPrice, adjustQuantityRow, productTotal);
+      contentContainer.appendChild(container);
+      updateTotalPrice();
+      searchBar.value = '';
+      suggestedProductBox.innerHTML = '';
+      break;
     }
   }
   for(let i = 0; i < tempArr.length; i++){
     if(tempArr[i].name == productClicked.innerText){
       tempArr.splice(i, 1);
-      }
+    }else if(tempArr[i].barcode == productClicked.innerText){
+      tempArr.splice(i, 1);
+    }
   }
 
   decreaseIcon.addEventListener('click', (e) => {
@@ -222,3 +264,9 @@ function updateChange() {
     payment.value = 'RM ' + Number(payment.value).toFixed(2);
   }
 }
+
+document.addEventListener('click', (e) => {
+  if(suggestedProductBox.childElementCount > 0 && !suggestedProductBox.contains(e.target) && !searchBar.contains(e.target)){
+    suggestedProductBox.innerHTML = '';
+  }
+});

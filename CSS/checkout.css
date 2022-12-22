@@ -29,7 +29,14 @@
   border: 1px solid grey;
   border-radius: 1rem;
   margin-left: 3rem;
+  margin-right: 2rem;
   width: 25rem;
+}
+
+.barcode-scan-icon {
+  width: 2.3rem;
+  height: 2.3rem;
+  cursor: pointer;
 }
 
 .checkout-main-content {
@@ -53,7 +60,6 @@
   background-color: white;
   max-height: 8rem;
   overflow: auto;
-  /* display: none; */
   border-radius: .5rem;
   border: none;
   box-shadow: .1rem .1rem .1rem rgba(0, 0, 0, .3),
@@ -304,6 +310,50 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.successful-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+
+  z-index: 100;
+  transform: translate(-50%, -50%) scale(0.1);
+  visibility: hidden;
+  transition: transform 0.2s;
+  border: .1rem solid black;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.verified-image {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.success-message {
+  margin-top: .5rem;
+  font-size: .8rem;
+}
+
+.done-btn {
+  margin-top: 1rem;
+  padding: .2rem 2rem;
+  border: none;
+  background-color: #D81919;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.done-btn:hover {
+  opacity: .7;
 }
 
 .open-popup {

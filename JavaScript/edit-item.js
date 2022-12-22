@@ -103,7 +103,7 @@ function closePopup() {
 const updateProductDetail = (name, cost, price, barcode, quantity, category, unit, supplierName, supplierPhoneNumber, supplierLocation, notification) => {
   for(let i = 0; i < productArr.length; i++){
     if(productArr[i].name === singleProductArr[0].name){
-      productArr[i].name = name.slice(0, name.indexOf('(')) + `(${unit})`;
+      productArr[i].name = name + `(${unit})`;
       productArr[i].cost = cost;
       productArr[i].price = price;
       productArr[i].barcode = barcode;
@@ -191,15 +191,21 @@ function validation() {
     emptyNotification = false;
   }
 
-  if(!emptyName){
-    const arr = productName.value.split(' ');
+  if(!emptyName && !emptyNotification){
+    let name;
+    if(productName.value.includes('(')){
+      name = productName.value.slice(0, productName.value.indexOf('('));
+    }else {
+      name = productName.value;
+    }
+    const arr = name.split(' ');
     for(let i = 0; i < arr.length; i++){
       arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
     }
-    productName.value = arr.join(' ');
+    name = arr.join(' ');
 
     for(let i = 0; i < productArr.length; i++){
-      if(`${productName.value} (${productUnit.value})` == productArr[i].name && `${productName.value} (${productUnit.value})` !== singleProductArr[0].name){
+      if(name + `(${productUnit.value})` == productArr[i].name && name + `(${productUnit.value})` !== singleProductArr[0].name){
         nameError.style.display = 'block';
         nameError.innerText = 'This item had already in the inventory';
         validName = false;
