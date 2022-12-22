@@ -74,6 +74,10 @@
                   <option value="drink">Drink</option>
                   <option value="food">Food</option>
                   <option value="daily-supplies">Daily Supplies</option>
+                  <option value="bread">Bread</option>
+                  <option value="biskuit">Biskuit</option>
+                  <option value="noodle">Noodle</option>
+                  <option value="Rice">Rice</option>
                 </select>
             </div>
           </div>
@@ -90,7 +94,12 @@
               </div>
             </div>
             <div class="quantity-error-box second-column-error-box"></div>
-
+            <div class="notification-box">
+              <label for="notification">Notify when quantity<br> less than</label>
+              <span class="notification-colon">:</span>
+              <input type="number" class="notification" value="0">
+            </div>
+            <div class="notification-error-box second-column-error-box"></div>
             <div class="item-supplier-name">
               <label for="item-supplier-name-textarea">Supplier Name<span class="supplier-name-colon">:</span></label>
               <textarea name="item-supplier-name-textarea" id="item-supplier-name-textarea" class="item-supplier-name-textarea"></textarea>

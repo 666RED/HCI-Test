@@ -170,6 +170,20 @@
   margin-left: .7rem;
 }
 
+.notification-box {
+  display: flex;
+  align-items: center;
+  margin: .1rem 0;
+}
+
+.notification-colon {
+  margin-left: 1.4rem;
+}
+
+.notification-box .notification {
+  margin-left: .7rem;
+}
+
 .supplier-name-colon {
   margin-left: 4.3rem;
 }

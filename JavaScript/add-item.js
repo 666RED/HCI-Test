@@ -11,6 +11,7 @@ const productSupplierPhoneNumber = document.querySelector('.item-supplier-phone-
 const productSupplierLocation = document.querySelector('.item-supplier-location-textarea');
 const productCategory = document.querySelector('.category-box');
 const productUnit = document.querySelector('.unit-box');
+const productNotification = document.querySelector('.notification');
 
 const nameError = document.querySelector('.name-error-box');
 const costError = document.querySelector('.cost-error-box');
@@ -20,6 +21,7 @@ const quantityError = document.querySelector('.quantity-error-box');
 const supplierNameError = document.querySelector('.supplier-name-error-box');
 const supplierPhoneNumberError = document.querySelector('.supplier-phone-number-error-box');
 const supplierLocationError = document.querySelector('.supplier-location-error-box'); 
+const notificationError = document.querySelector('.notification-error-box');
 
 const wholeScreen = document.querySelector('.whole-screen');
 const outsideScreen = document.querySelector('.item-detail');
@@ -36,7 +38,7 @@ outsideScreen.addEventListener('click', (e) => {
   }
 });
 
-const addNewItem = (name, cost, price, barcode, quantity, category, unit, supplierName, supplierPhoneNumber, supplierLocation) => {
+const addNewItem = (name, cost, price, barcode, quantity, category, unit, supplierName, supplierPhoneNumber, supplierLocation, notification) => {
   productArr.push({
     name,
     cost, 
@@ -47,11 +49,9 @@ const addNewItem = (name, cost, price, barcode, quantity, category, unit, suppli
     unit,
     supplierName,
     supplierPhoneNumber,
-    supplierLocation
+    supplierLocation,
+    notification
   });
-
-  console.log(productCategory.value);
-  console.log(productUnit.value);
 
   localStorage.setItem('Inventory', JSON.stringify(productArr));
   addedItem.classList.add('open-popup');
@@ -65,18 +65,14 @@ const validation = () => {
   let emptyPrice = true;
   let emptyBarcode = true;
   let emptyQuantity = true;
-  let emptySupplierName = true;
-  let emptySupplierPhoneNumber = true;
-  let emptySupplierLocation = true;
+  let emptyNotification = true;
 
   let validName = true;
   let validCost = true;
   let validPrice = true;
   let validBarcode = true;
   let validQuantity = true;
-  let validSupplierName = true;
-  let validSupplierPhoneNumber = true;
-  let validSupplierLocation = true;
+  let validNotification = true;
 
   if(productName.value === ''){
     nameError.style.display = 'block';
@@ -123,36 +119,18 @@ const validation = () => {
     emptyQuantity = false;
   }
 
-  if(productSupplierName.value === ''){
-    supplierNameError.style.display = 'block';
-    supplierNameError.value = 'Required*';
-    validSupplierName = false;
+  if(productNotification.value === ''){
+    notificationError.style.display = 'block';
+    notificationError.innerText = 'Required*';
+    validNotification = false;
   }else {
-    supplierNameError.style.display = 'none';
-    emptySupplierName = false;
+    notificationError.style.display = 'none';
+    emptyNotification = false;
   }
 
-  if(productSupplierPhoneNumber.value === ''){
-    supplierPhoneNumberError.style.display = 'block';
-    supplierPhoneNumberError.value = 'Required*';
-    validSupplierPhoneNumber = false;
-  }else {
-    supplierPhoneNumberError.style.display = 'none';
-    emptySupplierPhoneNumber = false;
-  }
-
-  if(productSupplierLocation.value === ''){
-    supplierLocationError.style.display = 'block';
-    supplierLocationError.value = 'Required*';
-    validSupplierLocation = false;
-  }else {
-    supplierLocationError.style.display = 'none';
-    emptySupplierLocation = false;
-  }
-
-  if(!emptyName){
+  if(!emptyName && !emptyNotification){
     for(let i = 0; i < productArr.length; i++){
-      if(productName.value == productArr[i].name){
+      if(`${productName.value} (${productUnit.value})` == productArr[i].name){
         nameError.style.display = 'block';
         nameError.innerText = 'This item had already in the inventory';
         validName = false;
@@ -201,13 +179,13 @@ const validation = () => {
     validQuantity = false;
   }
 
-  if(validName && validCost && validPrice && validBarcode && validQuantity && validSupplierName && validSupplierPhoneNumber && validSupplierLocation){
+  if(validName && validCost && validPrice && validBarcode && validQuantity && validNotification){
     const arr = productName.value.split(' ');
     for(let i = 0; i < arr.length; i++){
       arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
     }
-    productName.value = arr.join(' ');
-    addNewItem(productName.value, productCost.value, productPrice.value, productBarcode.value, productQuantity.value, productCategory.value, productUnit.value, productSupplierName.value, productSupplierPhoneNumber.value, productSupplierLocation.value);
+    productName.value = arr.join(' ') + ` (${productUnit.value})`;
+    addNewItem(productName.value, productCost.value, productPrice.value, productBarcode.value, productQuantity.value, productCategory.value, productUnit.value, productSupplierName.value, productSupplierPhoneNumber.value, productSupplierLocation.value, productNotification.value);
   }
 }
 
@@ -219,9 +197,7 @@ clearAllButton.addEventListener('click', () => {
   priceError.style.display = 'none';
   barcodeError.style.display = 'none';
   quantityError.style.display = 'none';
-  supplierNameError.style.display = 'none';
-  supplierPhoneNumberError.style.display = 'none';
-  supplierLocationError.style.display = 'none';
+  notificationError.style.display = 'none';
 });
 
 doneButton.addEventListener('click', () => {

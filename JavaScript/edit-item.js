@@ -8,6 +8,7 @@ const supplierPhoneNumber = document.querySelector('.supplier-phone-number');
 const supplierLocation = document.querySelector('.supplier-location');
 const productCategory = document.querySelector('.category-box');
 const productUnit = document.querySelector('.unit-box');
+const productNotification = document.querySelector('.notification');
 const deleteProductPopup = document.querySelector('.delete-product-pop-up');
 const wholeScreen = document.querySelector('.whole-screen');
 const productDeletedPopup = document.querySelector('.product-deleted-popup');
@@ -30,6 +31,7 @@ const quantityError = document.querySelector('.quantity-error-box');
 const supplierNameError = document.querySelector('.supplier-name-error-box');
 const supplierPhoneNumberError = document.querySelector('.supplier-phone-number-error-box');
 const supplierLocationError = document.querySelector('.supplier-location-error-box');
+const notificationError = document.querySelector('.notification-error-box');
 
 const singleProductArr = JSON.parse(sessionStorage.getItem('Product'));
 const productArr = JSON.parse(localStorage.getItem('Inventory'));
@@ -54,6 +56,7 @@ const displayProductDetail = () => {
   supplierLocation.value = singleProductArr[0].supplierLocation;
   productCategory.value = singleProductArr[0].category;
   productUnit.value = singleProductArr[0].unit;
+  productNotification.value = singleProductArr[0].notification;
 }
 
 window.onload = displayProductDetail();
@@ -97,10 +100,10 @@ function closePopup() {
   deleteProductPopup.classList.remove('open-popup');
 };
 
-const updateProductDetail = (name, cost, price, barcode, quantity, category, unit, supplierName, supplierPhoneNumber, supplierLocation) => {
+const updateProductDetail = (name, cost, price, barcode, quantity, category, unit, supplierName, supplierPhoneNumber, supplierLocation, notification) => {
   for(let i = 0; i < productArr.length; i++){
     if(productArr[i].name === singleProductArr[0].name){
-      productArr[i].name = name;
+      productArr[i].name = name.slice(0, name.indexOf('(')) + `(${unit})`;
       productArr[i].cost = cost;
       productArr[i].price = price;
       productArr[i].barcode = barcode;
@@ -110,6 +113,7 @@ const updateProductDetail = (name, cost, price, barcode, quantity, category, uni
       productArr[i].supplierName = supplierName;
       productArr[i].supplierPhoneNumber = supplierPhoneNumber;
       productArr[i].supplierLocation = supplierLocation;
+      productArr[i].notification = notification;
       break;
     }
   }
@@ -124,18 +128,14 @@ function validation() {
   let emptyPrice = true;
   let emptyBarcode = true;
   let emptyQuantity = true;
-  let emptySupplierName = true;
-  let emptySupplierPhoneNumber = true;
-  let emptySupplierLocation = true;
+  let emptyNotification = true;
 
   let validName = true;
   let validCost = true;
   let validPrice = true;
   let validBarcode = true;
   let validQuantity = true;
-  let validSupplierName = true;
-  let validSupplierPhoneNumber = true;
-  let validSupplierLocation = true;
+  let validNotification = true;
 
   if(productName.value === ''){
     nameError.style.display = 'block';
@@ -182,31 +182,13 @@ function validation() {
     emptyQuantity = false;
   }
 
-  if(supplierName.value === ''){
-    supplierNameError.style.display = 'block';
-    supplierNameError.innerText = 'Required*';
-    validSupplierName = false;
+  if(productNotification.value === ''){
+    notificationError.style.display = 'block';
+    notificationError.innerText = 'Required*';
+    validNotification = false;
   }else {
-    supplierNameError.style.display = 'none';
-    emptySupplierName = false;
-  }
-
-  if(supplierPhoneNumber.value === ''){
-    supplierPhoneNumberError.style.display = 'block';
-    supplierPhoneNumberError.innerText = 'Required*';
-    validSupplierPhoneNumber = false;
-  }else {
-    supplierPhoneNumberError.style.display = 'none';
-    emptySupplierPhoneNumber = false;
-  }
-
-  if(supplierLocation.value === ''){
-    supplierLocationError.style.display = 'block';
-    supplierLocationError.innerText = 'Required*';
-    validSupplierLocation = false;
-  }else {
-    supplierLocationError.style.display = 'none';
-    emptySupplierLocation = false;
+    notificationError.style.display = 'none';
+    emptyNotification = false;
   }
 
   if(!emptyName){
@@ -217,7 +199,7 @@ function validation() {
     productName.value = arr.join(' ');
 
     for(let i = 0; i < productArr.length; i++){
-      if(productName.value == productArr[i].name && productName.value !== singleProductArr[0].name){
+      if(`${productName.value} (${productUnit.value})` == productArr[i].name && `${productName.value} (${productUnit.value})` !== singleProductArr[0].name){
         nameError.style.display = 'block';
         nameError.innerText = 'This item had already in the inventory';
         validName = false;
@@ -266,7 +248,7 @@ function validation() {
     validQuantity = false;
   }
 
-  if(validName && validCost && validPrice && validBarcode && validQuantity && validSupplierName && validSupplierPhoneNumber && validSupplierLocation){
-    updateProductDetail(productName.value, productCost.value, productPrice.value, productBarcode.value, productQuantity.value, productCategory.value, productUnit.value, supplierName.value, supplierPhoneNumber.value, supplierLocation.value);
+  if(validName && validCost && validPrice && validBarcode && validQuantity && validNotification){
+    updateProductDetail(productName.value, productCost.value, productPrice.value, productBarcode.value, productQuantity.value, productCategory.value, productUnit.value, supplierName.value, supplierPhoneNumber.value, supplierLocation.value, productNotification.value);
   }
 }

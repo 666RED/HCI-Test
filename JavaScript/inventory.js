@@ -124,9 +124,6 @@ function editItem(e) {
   const barcode = container.querySelector('.product-barcode').innerText;
   const quantity = container.querySelector('.product-quantity').innerText;
 
-  console.log(name);
-  console.log(contentArr[0].name);
-
   for(let i = 0; i < contentArr.length; i++){
     if(name == contentArr[i].name){
       const supplierName = contentArr[i].supplierName;
@@ -134,6 +131,7 @@ function editItem(e) {
       const supplierLocation = contentArr[i].supplierLocation;
       const category = contentArr[i].category;
       const unit = contentArr[i].unit;
+      const notification = contentArr[i].notification;
 
       arr.push({
         name,
@@ -145,7 +143,8 @@ function editItem(e) {
         unit,
         supplierName,
         supplierPhoneNumber,
-        supplierLocation
+        supplierLocation,
+        notification
       });
       break;
     }
@@ -174,6 +173,7 @@ function editItem2(e) {
       const supplierLocation = contentArr[i].supplierLocation;
       const category = contentArr[i].category;
       const unit = contentArr[i].unit;
+      const notification = contentArr[i].notification;
 
       arr.push({
         name,
@@ -185,7 +185,8 @@ function editItem2(e) {
         unit,
         supplierName,
         supplierPhoneNumber,
-        supplierLocation
+        supplierLocation,
+        notification
       });
       break;
     }
@@ -210,7 +211,8 @@ function goToEdit(e) {
         unit:contentArr[i].unit,
         supplierName:contentArr[i].supplierName,
         supplierPhoneNumber:contentArr[i].supplierPhoneNumber,
-        supplierLocation:contentArr[i].supplierLocation
+        supplierLocation:contentArr[i].supplierLocation,
+        notification:contentArr[i].notification
       });
       sessionStorage.setItem('Product', JSON.stringify(productArr));
       window.location.href = 'edit-item.html';
