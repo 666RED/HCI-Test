@@ -65,9 +65,15 @@ function searchProduct(e) {
   for(let i = 0; i < tempArr.length; i++){
     const suggestedProduct = document.createElement('div'); 
     if(tempArr[i].barcode.includes(text.value) && tempArr[i].barcode[0] == text.value[0]){
+      const suggestedNames = suggestedProductBox.querySelectorAll('.suggested-product');
+      for(let j = 0; j < suggestedNames.length; j++){
+        if(suggestedNames[j].innerText == tempArr[i].name){
+          return;
+        }
+      }
       suggestedProductBox.style.display = 'block';
       suggestedProduct.classList.add('suggested-product');
-      suggestedProduct.innerText = tempArr[i].barcode;
+      suggestedProduct.innerText = tempArr[i].name;
       suggestedProductBox.appendChild(suggestedProduct);
 
       suggestedProduct.addEventListener('click', appendProduct);
