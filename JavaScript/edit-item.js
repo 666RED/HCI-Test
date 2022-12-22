@@ -103,7 +103,7 @@ function closePopup() {
 const updateProductDetail = (name, cost, price, barcode, quantity, category, unit, supplierName, supplierPhoneNumber, supplierLocation, notification) => {
   for(let i = 0; i < productArr.length; i++){
     if(productArr[i].name === singleProductArr[0].name){
-      productArr[i].name = name + `(${unit})`;
+      productArr[i].name = name + ` (${unit})`;
       productArr[i].cost = cost;
       productArr[i].price = price;
       productArr[i].barcode = barcode;
@@ -202,14 +202,17 @@ function validation() {
     for(let i = 0; i < arr.length; i++){
       arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
     }
-    name = arr.join(' ');
+    name = arr.join(' ').trim();
 
     for(let i = 0; i < productArr.length; i++){
-      if(name + `(${productUnit.value})` == productArr[i].name && name + `(${productUnit.value})` !== singleProductArr[0].name){
+      if(name + ` (${productUnit.value})` == productArr[i].name && name + ` (${productUnit.value})` !== singleProductArr[0].name){
         nameError.style.display = 'block';
         nameError.innerText = 'This item had already in the inventory';
         validName = false;
         break;
+      }
+      if(i == productArr.length - 1){
+        productName.value = name;
       }
     }
   }

@@ -2,7 +2,7 @@ const removeYesBtn = document.querySelector('.remove-product-yes-btn');
 const removeNoBtn = document.querySelector('.remove-product-no-btn');
 const removePopupMenu = document.querySelector('.remove-product-pop-up');
 const removeCancel = document.querySelector('.remove-product-cancel-img');
-const purchaseButton = document.querySelector('.purchase-btn');
+const checkoutButton = document.querySelector('.purchase-btn');
 const searchBar = document.querySelector('#search-bar');
 const suggestedProductBox = document.querySelector('.suggested-product-box');
 const contentContainer = document.querySelector('.product-info');
@@ -32,7 +32,7 @@ removeCancel.addEventListener('click', () => {
   removePopupMenu.classList.remove('open-popup');
 });
 
-purchaseButton.addEventListener('click', () => {
+checkoutButton.addEventListener('click', () => {
   
 });
 
@@ -63,20 +63,24 @@ function searchProduct(e) {
     }
   }
   for(let i = 0; i < tempArr.length; i++){
+    let repeated = false;
     const suggestedProduct = document.createElement('div'); 
     if(tempArr[i].barcode.includes(text.value) && tempArr[i].barcode[0] == text.value[0]){
       const suggestedNames = suggestedProductBox.querySelectorAll('.suggested-product');
       for(let j = 0; j < suggestedNames.length; j++){
         if(suggestedNames[j].innerText == tempArr[i].name){
-          return;
+          repeated = true;
+          break;
         }
       }
-      suggestedProductBox.style.display = 'block';
-      suggestedProduct.classList.add('suggested-product');
-      suggestedProduct.innerText = tempArr[i].name;
-      suggestedProductBox.appendChild(suggestedProduct);
+      if(!repeated){
+        suggestedProductBox.style.display = 'block';
+        suggestedProduct.classList.add('suggested-product');
+        suggestedProduct.innerText = tempArr[i].name;
+        suggestedProductBox.appendChild(suggestedProduct);
 
-      suggestedProduct.addEventListener('click', appendProduct);
+        suggestedProduct.addEventListener('click', appendProduct);
+      }
     }else if(!suggestedProductBox.querySelector('.suggested-product') && i == tempArr.length - 1){
       suggestedProductBox.style.display = 'none';
     }
@@ -130,24 +134,10 @@ function appendProduct(e) {
       searchBar.value = '';
       suggestedProductBox.innerHTML = '';
       break;
-    }else if(productClicked.innerText == tempArr[i].barcode){
-      productNo.innerText = contentContainer.childElementCount + 1 + '.';
-      productName.innerText = tempArr[i].name;
-      productNameRow.append(productName, removeIcon);
-      productPrice.innerText = 'RM ' + Number(tempArr[i].price).toFixed(2);
-      productTotal.innerText = 'RM ' + Number(tempArr[i].price).toFixed(2);
-      container.append(productNo, productNameRow, productPrice, adjustQuantityRow, productTotal);
-      contentContainer.appendChild(container);
-      updateTotalPrice();
-      searchBar.value = '';
-      suggestedProductBox.innerHTML = '';
-      break;
     }
   }
   for(let i = 0; i < tempArr.length; i++){
     if(tempArr[i].name == productClicked.innerText){
-      tempArr.splice(i, 1);
-    }else if(tempArr[i].barcode == productClicked.innerText){
       tempArr.splice(i, 1);
     }
   }

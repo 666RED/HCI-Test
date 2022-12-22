@@ -245,6 +245,29 @@ function searchProduct(e) {
         suggestedProductBox.style.display = 'none';
       }
     }
+    for(let i = 0; i < contentArr.length; i++){
+      let repeated = false;
+      const suggestedProduct = document.createElement('div'); 
+      if(contentArr[i].barcode.includes(text.value) && contentArr[i].barcode[0] == text.value[0]){
+        const suggestedNames = suggestedProductBox.querySelectorAll('.suggested-product');
+        for(let j = 0; j < suggestedNames.length; j++){
+          if(suggestedNames[j].innerText == contentArr[i].name){
+            repeated = true;
+            break;
+          }
+        }
+        if(!repeated){
+          suggestedProductBox.style.display = 'block';
+          suggestedProduct.classList.add('suggested-product');
+          suggestedProduct.innerText = contentArr[i].name;
+          suggestedProductBox.appendChild(suggestedProduct);
+
+          suggestedProduct.addEventListener('click', goToEdit);
+        }
+      }else if(!suggestedProductBox.querySelector('.suggested-product') && i == contentArr.length - 1){
+        suggestedProductBox.style.display = 'none';
+      }
+    }
   }else{
     for(let i = 0; i < contentArr.length; i++){
       const suggestedProduct = document.createElement('div'); 
@@ -255,6 +278,29 @@ function searchProduct(e) {
         suggestedProductBox.appendChild(suggestedProduct);
 
         suggestedProduct.addEventListener('click', goToEdit);
+      }else if(!suggestedProductBox.querySelector('.suggested-product') && i == contentArr.length - 1){
+        suggestedProductBox.style.display = 'none';
+      }
+    }
+    for(let i = 0; i < contentArr.length; i++){
+      let repeated = false;
+      const suggestedProduct = document.createElement('div'); 
+      if(contentArr[i].barcode.includes(text.value) && contentArr[i].barcode[0] == text.value[0] && contentArr[i].category == category.value){
+        const suggestedNames = suggestedProductBox.querySelectorAll('.suggested-product');
+        for(let j = 0; j < suggestedNames.length; j++){
+          if(suggestedNames[j].innerText == contentArr[i].name){
+            repeated = true;
+            break;
+          }
+        }
+        if(!repeated){
+          suggestedProductBox.style.display = 'block';
+          suggestedProduct.classList.add('suggested-product');
+          suggestedProduct.innerText = contentArr[i].name;
+          suggestedProductBox.appendChild(suggestedProduct);
+
+          suggestedProduct.addEventListener('click', goToEdit);
+        }
       }else if(!suggestedProductBox.querySelector('.suggested-product') && i == contentArr.length - 1){
         suggestedProductBox.style.display = 'none';
       }
