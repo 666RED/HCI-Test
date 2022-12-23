@@ -55,7 +55,7 @@ checkoutButton.addEventListener('click', () => {
       date:currentDate
     });
     sessionStorage.setItem('Purchased Product', JSON.stringify(purchasedArr));
-    window.location.href = '/HTML/General/receipt.html';  
+    window.location.href = 'receipt.html';  
   }
 });
 
@@ -73,7 +73,7 @@ barcodeScanner.addEventListener('click', () => {
 });
 
 function toBarcodeScannerPage() {
-  window.location.href = '/HTML/General/barcode-scan.html';
+  window.location.href = 'barcode-scan.html';
 };
 
 removeNoBtn.addEventListener('click', (e) => {  

@@ -69,7 +69,7 @@ printAndSaveButton.addEventListener('click', () => {
   setTimeout(() => {
     saveData();
     sessionStorage.clear();
-    window.location.href = '/HTML/General/checkout.html';
+    window.location.href = 'checkout.html';
   },5000);
 });
 
@@ -83,7 +83,7 @@ doneButton.addEventListener('click', () => {
   successfulPopup.classList.remove('open-popup');
   saveData();
   sessionStorage.clear();
-  window.location.href = '/HTML/General/checkout.html';
+  window.location.href = 'checkout.html';
 });
 
 function saveData() {

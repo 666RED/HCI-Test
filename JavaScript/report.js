@@ -14,6 +14,6 @@ if(contentContainer.offsetHeight >= 360){
 
 dates.forEach(date => {
   date.addEventListener('click', () => {
-    window.location.href = '/HTML/Owner/daily-sales.html';
+    window.location.href = 'daily-sales.html';
   })
 });

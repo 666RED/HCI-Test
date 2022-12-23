@@ -14,11 +14,11 @@ ownerRegister.addEventListener('click', () => {
   if(userArr.length != 0){
     
   }
-  window.location.href = '/HTML/Owner/register-owner.html';
+  window.location.href = 'register-owner.html';
 });
 
 employeeRegister.addEventListener('click', () => {
-  window.location.href = '/HTML/Owner/register-employee.html';
+  window.location.href = 'register-employee.html';
 });
 
 viewPasswordButton.addEventListener('click', () => {
@@ -63,7 +63,7 @@ const validation = () => {
   if(!emptyId && !emptyPassword){
     for(let i = 0; i < userArr.length; i++){
       if(id.value == userArr[i].id && password.value == userArr[i].password){
-        window.location.href = '/HTML/General/checkout.html';
+        window.location.href = 'checkout.html';
       }else if(id.value == userArr[i].id && password.value != userArr[i].password){
         passwordErrorBox.style.display = 'block';
         passwordErrorBox.innerText = 'Incorrect Password';

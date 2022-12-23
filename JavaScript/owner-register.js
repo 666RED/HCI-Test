@@ -15,7 +15,7 @@ const returnIcon = document.querySelector('.return-icon');
 const userArr = JSON.parse(localStorage.getItem('Owner')) || [];
 
 returnIcon.addEventListener('click', () => {
-  window.location.href = 'inventory.html';  
+  window.location.href = 'index.html';  
 });
 
 doneButton.addEventListener('click', () => {
