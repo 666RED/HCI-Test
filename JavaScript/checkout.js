@@ -11,6 +11,7 @@ const payment = document.querySelector('.payment');
 const change = document.querySelector('.change');
 const barcodeScanner = document.querySelector('.barcode-scan-icon');
 const connectedPopup = document.querySelector('.successful-popup');
+const category = document.querySelector('.category-box');
 
 const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 const tempArr = JSON.parse(localStorage.getItem('Inventory')) || [];
@@ -49,40 +50,79 @@ searchBar.addEventListener('click', (e) => {
 function searchProduct(e) {
   let text = e.target;
   suggestedProductBox.innerHTML = '';
-  for(let i = 0; i < tempArr.length; i++){
-    const suggestedProduct = document.createElement('div'); 
-    if(tempArr[i].name.toLowerCase().includes(text.value.toLowerCase()) && tempArr[i].name[0].toLowerCase() == text.value[0].toLowerCase()){
+  if(category.value == 'all'){
+    for(let i = 0; i < tempArr.length; i++){
+      const suggestedProduct = document.createElement('div'); 
+      if(tempArr[i].name.toLowerCase().includes(text.value.toLowerCase()) && tempArr[i].name[0].toLowerCase() == text.value[0].toLowerCase()){
       suggestedProductBox.style.display = 'block';
       suggestedProduct.classList.add('suggested-product');
       suggestedProduct.innerText = tempArr[i].name;
       suggestedProductBox.appendChild(suggestedProduct);
 
       suggestedProduct.addEventListener('click', appendProduct);
-    }else if(!suggestedProductBox.querySelector('.suggested-product') && i == tempArr.length - 1){
+      }else if(!suggestedProductBox.querySelector('.suggested-product') && i == tempArr.length - 1){
       suggestedProductBox.style.display = 'none';
-    }
-  }
-  for(let i = 0; i < tempArr.length; i++){
-    let repeated = false;
-    const suggestedProduct = document.createElement('div'); 
-    if(tempArr[i].barcode.includes(text.value) && tempArr[i].barcode[0] == text.value[0]){
-      const suggestedNames = suggestedProductBox.querySelectorAll('.suggested-product');
-      for(let j = 0; j < suggestedNames.length; j++){
-        if(suggestedNames[j].innerText == tempArr[i].name){
-          repeated = true;
-          break;
-        }
       }
-      if(!repeated){
+    }
+    for(let i = 0; i < tempArr.length; i++){
+      let repeated = false;
+      const suggestedProduct = document.createElement('div'); 
+      if(tempArr[i].barcode.includes(text.value) && tempArr[i].barcode[0] == text.value[0]){
+        const suggestedNames = suggestedProductBox.querySelectorAll('.suggested-product');
+        for(let j = 0; j < suggestedNames.length; j++){
+          if(suggestedNames[j].innerText == tempArr[i].name){
+            repeated = true;
+            break;
+          }
+        }
+        if(!repeated){
+          suggestedProductBox.style.display = 'block';
+          suggestedProduct.classList.add('suggested-product');
+          suggestedProduct.innerText = tempArr[i].name;
+          suggestedProductBox.appendChild(suggestedProduct);
+
+          suggestedProduct.addEventListener('click', appendProduct);
+        }
+      }else if(!suggestedProductBox.querySelector('.suggested-product') && i == tempArr.length - 1){
+        suggestedProductBox.style.display = 'none';
+      }
+    }
+  }else {
+    for(let i = 0; i < tempArr.length; i++){
+      const suggestedProduct = document.createElement('div'); 
+      if(tempArr[i].name.toLowerCase().includes(text.value.toLowerCase()) && tempArr[i].name[0].toLowerCase() == text.value[0].toLowerCase() && tempArr[i].category == category.value){
         suggestedProductBox.style.display = 'block';
         suggestedProduct.classList.add('suggested-product');
         suggestedProduct.innerText = tempArr[i].name;
         suggestedProductBox.appendChild(suggestedProduct);
 
         suggestedProduct.addEventListener('click', appendProduct);
-      }
-    }else if(!suggestedProductBox.querySelector('.suggested-product') && i == tempArr.length - 1){
+      }else if(!suggestedProductBox.querySelector('.suggested-product') && i == tempArr.length - 1){
       suggestedProductBox.style.display = 'none';
+      }
+    }
+    for(let i = 0; i < tempArr.length; i++){
+      let repeated = false;
+      const suggestedProduct = document.createElement('div'); 
+      if(tempArr[i].barcode.includes(text.value) && tempArr[i].barcode[0] == text.value[0] && tempArr[i].category == category.value){
+        const suggestedNames = suggestedProductBox.querySelectorAll('.suggested-product');
+        for(let j = 0; j < suggestedNames.length; j++){
+          if(suggestedNames[j].innerText == tempArr[i].name){
+            repeated = true;
+            break;
+          }
+        }
+        if(!repeated){
+          suggestedProductBox.style.display = 'block';
+          suggestedProduct.classList.add('suggested-product');
+          suggestedProduct.innerText = tempArr[i].name;
+          suggestedProductBox.appendChild(suggestedProduct);
+
+          suggestedProduct.addEventListener('click', appendProduct);
+        }
+      }else if(!suggestedProductBox.querySelector('.suggested-product') && i == tempArr.length - 1){
+        suggestedProductBox.style.display = 'none';
+      }
     }
   }
 }
@@ -265,4 +305,10 @@ document.addEventListener('click', (e) => {
   if(suggestedProductBox.childElementCount > 0 && !suggestedProductBox.contains(e.target) && !searchBar.contains(e.target)){
     suggestedProductBox.innerHTML = '';
   }
+});
+
+category.addEventListener('change', (e) => {
+  contentContainer.innerHTML = '';
+  searchBar.value = '';
+  suggestedProductBox.innerHTML = '';
 });
