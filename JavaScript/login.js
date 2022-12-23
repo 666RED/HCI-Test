@@ -7,18 +7,54 @@ const passwordErrorBox = document.querySelector('.password-error-box');
 const passwordBox = document.querySelector('.password-box');
 const ownerRegister = document.querySelector('.owner-option');
 const employeeRegister = document.querySelector('.employee-option');
+const radioButtons = document.getElementsByName('staff')
+const errorPopup = document.querySelector('.error-pop-up');
+const okBtn = document.querySelector('.error-ok-btn');
+const cancelBtn = document.querySelector('.error-cancel-img');
+const errorMessage = document.querySelector('.error-message');
+// const radioValue = document.querySelector('.')
 
 const userArr = JSON.parse(localStorage.getItem('Owner')) || [];
 
+okBtn.addEventListener('click', () => {
+  errorPopup.classList.remove('open-popup');
+});
+
+cancelBtn.addEventListener('click', () => {
+  errorPopup.classList.remove('open-popup');
+});
+
 ownerRegister.addEventListener('click', () => {
-  if(userArr.length != 0){
-    
+  let radioResult;
+  for(let i = 0; i < radioButtons.length; i++){
+    if(radioButtons[i].checked){
+      radioResult = radioButtons[i].value;
+    }
   }
-  window.location.href = 'register-owner.html';
+  if(radioResult == 'employee'){
+    errorPopup.classList.add('open-popup');
+    errorMessage.textContent = 'You don\'t have permission to do this';
+  }else if(userArr.length != 0){
+    errorPopup.classList.add('open-popup');
+    errorMessage.textContent = 'Already registered';
+  }else {
+    window.location.href = 'register-owner.html';
+  }
 });
 
 employeeRegister.addEventListener('click', () => {
-  window.location.href = 'register-employee.html';
+  let radioResult;
+  for(let i = 0; i < radioButtons.length; i++){
+    if(radioButtons[i].checked){
+      radioResult = radioButtons[i].value;
+    }
+  }
+  if(radioResult == 'employee'){
+    errorPopup.classList.add('open-popup');
+    errorMessage.textContent = 'You don\'t have permission to do this';
+  }else{
+    window.location.href = 'register-employee.html';
+  }
 });
 
 viewPasswordButton.addEventListener('click', () => {
