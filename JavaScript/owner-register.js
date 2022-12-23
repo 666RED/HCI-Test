@@ -15,13 +15,13 @@ const returnIcon = document.querySelector('.return-icon');
 const userArr = JSON.parse(localStorage.getItem('Owner')) || [];
 
 returnIcon.addEventListener('click', () => {
-  window.location.href = '/HTML/General/index.html';
+  window.location.href = 'inventory.html';  
 });
 
 doneButton.addEventListener('click', () => {
   successfulPopup.classList.remove('open-popup');
   blur.classList.remove('active');
-  window.location.href = '/HTML/General/index.html';
+  window.location.href = 'index.html';
 });
 
 const validation = () => {

@@ -15,7 +15,7 @@ const userArr = JSON.parse(localStorage.getItem('User')) || [];
 doneButton.addEventListener('click', () => {
   successfulPopup.classList.remove('open-popup');
   blur.classList.remove('active');
-  window.location.href = '/HTML/General/index.html';
+  window.location.href = 'index.html';
 });
 
 const validation = () => {
