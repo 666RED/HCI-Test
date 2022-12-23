@@ -366,7 +366,6 @@ document.addEventListener('click', (e) => {
 });
 
 category.addEventListener('change', (e) => {
-  contentContainer.innerHTML = '';
   searchBar.value = '';
   suggestedProductBox.innerHTML = '';
 });

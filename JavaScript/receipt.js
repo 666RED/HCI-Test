@@ -92,7 +92,7 @@ function saveData() {
     localStorage.setItem('Daily Sales', JSON.stringify(dailySalesArr));
     return;
   }
-  if(dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date !== productArr[productArr.length - 1].date){
+  if(dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date !== productArr[productArr.length - 1].date + 1){
     dailySalesArr.push({
       currentDate,
       currentMonth,
