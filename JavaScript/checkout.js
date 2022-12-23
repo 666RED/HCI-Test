@@ -2,7 +2,7 @@ const removeYesBtn = document.querySelector('.remove-product-yes-btn');
 const removeNoBtn = document.querySelector('.remove-product-no-btn');
 const removePopupMenu = document.querySelector('.remove-product-pop-up');
 const removeCancel = document.querySelector('.remove-product-cancel-img');
-const checkoutButton = document.querySelector('.purchase-btn');
+const checkoutButton = document.querySelector('.checkout-button');
 const searchBar = document.querySelector('#search-bar');
 const suggestedProductBox = document.querySelector('.suggested-product-box');
 const contentContainer = document.querySelector('.product-info');
@@ -12,9 +12,60 @@ const change = document.querySelector('.change');
 const barcodeScanner = document.querySelector('.barcode-scan-icon');
 const connectedPopup = document.querySelector('.successful-popup');
 const category = document.querySelector('.category-box');
+const errorPopupMenu = document.querySelector('.error-pop-up');
+const errorOkButton = document.querySelector('.error-ok-btn');
+const errorCancelButton = document.querySelector('.error-cancel-img');
+const errorMessage = document.querySelector('.error-message');
+const currentDate = new Date().getDate();
 
 const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 const tempArr = JSON.parse(localStorage.getItem('Inventory')) || [];
+
+checkoutButton.addEventListener('click', () => {
+  if(totalPrice.innerText == ''){
+    errorPopupMenu.classList.add('open-popup');
+    errorMessage.innerText = 'No purchased product';
+  }else if(payment.value == ''){
+    errorPopupMenu.classList.add('open-popup');
+    errorMessage.innerText = 'Please enter the payment';
+  }else {
+    const purchasedArr = [];
+    const productRows = contentContainer.querySelectorAll('.product-row');
+    let totalCost = 0;
+    let totalPrice = 0;
+    for(let i = 0; i < productRows.length; i++){
+      for(let j = 0; j < contentArr.length; j++){
+        if(productRows[i].querySelector('.product-name').innerText == contentArr[j].name){
+          totalCost += productRows[i].querySelector('.quantity').value * Number(contentArr[j].cost);
+          totalPrice += productRows[i].querySelector('.quantity').value * Number(contentArr[j].price);
+        }
+      }
+      purchasedArr.push({
+        name:productRows[i].querySelector('.product-name').innerText,
+        price:productRows[i].querySelector('.product-price').innerText,
+        quantity:productRows[i].querySelector('.quantity').value,
+        singlePrice:productRows[i].querySelector('.product-total').innerText,
+      });
+    }
+    purchasedArr.push({
+      totalPrice,
+      totalCost,
+      payment:payment.value,
+      change:change.innerText,
+      date:currentDate
+    });
+    sessionStorage.setItem('Purchased Product', JSON.stringify(purchasedArr));
+    window.location.href = 'receipt.html';  
+  }
+});
+
+errorOkButton.addEventListener('click', () => {
+  errorPopupMenu.classList.remove('open-popup');
+});
+
+errorCancelButton.addEventListener('click', () => {
+  errorPopupMenu.classList.remove('open-popup');
+});
 
 barcodeScanner.addEventListener('click', () => {
   connectedPopup.classList.add('open-popup');
@@ -31,10 +82,6 @@ removeNoBtn.addEventListener('click', (e) => {
 
 removeCancel.addEventListener('click', () => {
   removePopupMenu.classList.remove('open-popup');
-});
-
-checkoutButton.addEventListener('click', () => {
-  
 });
 
 // for searching product
@@ -173,6 +220,8 @@ function appendProduct(e) {
       updateTotalPrice();
       searchBar.value = '';
       suggestedProductBox.innerHTML = '';
+      payment.value = '';
+      change.innerText = '';
       break;
     }
   }
@@ -189,9 +238,12 @@ function appendProduct(e) {
     const productRow = buttonClicked.parentElement.parentElement;
     const productQuantity = adjustQuantityRow.querySelector('.quantity');
     if(productQuantity.value === '1'){
-      window.alert("The product quantity must be greater than 0")
+      errorPopupMenu.classList.add('open-popup');
+      errorMessage.innerText = "The product quantity must be greater than 0";
     }else {
       productQuantity.value--;
+      payment.value = '';
+      change.innerText = '';
       updateSinglePrice(productRow);
       updateTotalPrice();
     }
@@ -204,6 +256,8 @@ function appendProduct(e) {
     const productRow = buttonClicked.parentElement.parentElement;
     const productQuantity = adjustQuantityRow.querySelector('.quantity');
     productQuantity.value++;
+    payment.value = '';
+    change.innerText = '';
     updateSinglePrice(productRow);
     updateTotalPrice();
   });
@@ -227,6 +281,9 @@ function appendProduct(e) {
       updateTotalPrice();
       payment.value = '';
       change.innerText = '';
+      if(contentContainer.childElementCount == 0){
+        totalPrice.innerText = '';
+      }
     }, {once:true});
   });
 
@@ -242,11 +299,11 @@ function appendProduct(e) {
   });
 
   if(contentContainer.offsetHeight >= 200){
-  const productTotals = contentContainer.querySelectorAll('.product-total');
-  productTotals.forEach(row => {
-    row.style.width = '175px';
-  });
-}
+    const productTotals = contentContainer.querySelectorAll('.product-total');
+    productTotals.forEach(row => {
+      row.style.width = '175px';
+    });
+  }
 }
 
 function updateProductRow() {
@@ -291,7 +348,8 @@ function updateChange() {
   }
   totalChange = payment.value - Number(totalPrice.innerText.replace('RM ', ''));
   if(totalChange < 0){
-    window.alert('Not enough');
+    errorPopupMenu.classList.add('open-popup');
+    errorMessage.innerText = 'Payment is not enough';
     payment.value = '';
     change.innerText = '';
     return;
@@ -312,3 +370,134 @@ category.addEventListener('change', (e) => {
   searchBar.value = '';
   suggestedProductBox.innerHTML = '';
 });
+
+window.onload = () => {
+  const restoredProductArr = JSON.parse(sessionStorage.getItem('Purchased Product')) || [];
+
+  if(restoredProductArr.length != 0){
+    for(let i = 0; i < restoredProductArr.length - 1; i++){
+      const container = document.createElement('div');
+      const productNo = document.createElement('div');
+      const productNameRow = document.createElement('div');
+      const productName = document.createElement('div');
+      const removeIcon = document.createElement('img');
+      const productPrice = document.createElement('div');
+      const adjustQuantityRow = document.createElement('div');
+      const decreaseIcon = document.createElement('img');
+      const productQuantity = document.createElement('input');
+      const increaseIcon = document.createElement('img');
+      const productTotal = document.createElement('div');
+
+      container.classList.add('product-row');
+      productNo.classList.add('product-no');
+      productNameRow.classList.add('product-name-row');
+      productName.classList.add('product-name');
+      removeIcon.classList.add('remove-icon');
+      productPrice.classList.add('product-price');
+      adjustQuantityRow.classList.add('adjust-quantity');
+      decreaseIcon.classList.add('icon');
+      productQuantity.classList.add('quantity');
+      increaseIcon.classList.add('icon');
+      productTotal.classList.add('product-total');
+
+      removeIcon.src = 'image/dustbin.png';
+      decreaseIcon.src = 'image/minus.png';
+      increaseIcon.src = 'image/plus.png';
+      productQuantity.setAttribute('type', 'number');
+      adjustQuantityRow.append(decreaseIcon, productQuantity, increaseIcon);
+
+      productNo.innerText = i + 1 + '.';
+      productName.innerText = restoredProductArr[i].name;
+      productNameRow.append(productName, removeIcon);
+      productPrice.innerText = restoredProductArr[i].price;
+      productQuantity.value = restoredProductArr[i].quantity;
+      productTotal.innerText = restoredProductArr[i].singlePrice;
+      container.append(productNo, productNameRow, productPrice, adjustQuantityRow, productTotal);
+      contentContainer.appendChild(container);
+
+      decreaseIcon.addEventListener('click', (e) => {
+        const buttonClicked = e.target;
+        const adjustQuantityRow = buttonClicked.parentElement;
+
+        const productRow = buttonClicked.parentElement.parentElement;
+        const productQuantity = adjustQuantityRow.querySelector('.quantity');
+        if(productQuantity.value === '1'){
+          errorPopupMenu.classList.add('open-popup');
+          errorMessage.innerText = "The product quantity must be greater than 0";
+        }else {
+          productQuantity.value--;
+          payment.value = '';
+          change.innerText = '';
+          updateSinglePrice(productRow);
+          updateTotalPrice();
+        }
+      });
+
+      increaseIcon.addEventListener('click', (e) => {
+        const buttonClicked = e.target;
+        const adjustQuantityRow = buttonClicked.parentElement;
+
+        const productRow = buttonClicked.parentElement.parentElement;
+        const productQuantity = adjustQuantityRow.querySelector('.quantity');
+        productQuantity.value++;
+        payment.value = '';
+        change.innerText = '';
+        updateSinglePrice(productRow);
+        updateTotalPrice();
+      });
+
+      removeIcon.addEventListener('click', (e) => {
+        const buttonClicked = e.target;
+        const adjustQuantityRow = buttonClicked.parentElement;
+        const restoredProductName = buttonClicked.parentElement.querySelector('.product-name');
+
+        removePopupMenu.classList.add('open-popup');
+        removeYesBtn.addEventListener('click', (e) => {
+          removePopupMenu.classList.remove('open-popup');
+          const productRow = adjustQuantityRow.parentElement;
+          productRow.remove();
+          contentArr.forEach(product => {
+            if(product.name == restoredProductName.innerText){
+              tempArr.push(product);
+            }
+          });
+          updateProductRow();
+          updateTotalPrice();
+          payment.value = '';
+          change.innerText = '';
+          if(contentContainer.childElementCount == 0){
+            totalPrice.innerText = '';
+          }
+        }, {once:true});
+      });
+
+      productQuantity.addEventListener('change', (e) => {
+        const inputChanged = e.target;
+        const container = inputChanged.parentElement.parentElement;
+        if(inputChanged.value <= 0){
+          window.alert("Tha product quantity must be greater than 0");
+          inputChanged.value = 1;
+        }
+        updateSinglePrice(container);
+        updateTotalPrice();
+      });
+
+      if(contentContainer.offsetHeight >= 200){
+        const productTotals = contentContainer.querySelectorAll('.product-total');
+        productTotals.forEach(row => {
+          row.style.width = '175px';
+        });
+      }
+    }
+    totalPrice.innerText = 'RM ' + restoredProductArr[restoredProductArr.length - 1].totalPrice.toFixed(2);
+    payment.value = restoredProductArr[restoredProductArr.length - 1].payment;
+    change.innerText = restoredProductArr[restoredProductArr.length - 1].change;
+    for(let i = 0; i < restoredProductArr.length; i++){
+      for(let j = 0; j < tempArr.length; j++){
+        if(tempArr[j].name == restoredProductArr[i].name){
+          tempArr.splice(j, 1);
+        }
+      }
+    }
+  }
+};  
