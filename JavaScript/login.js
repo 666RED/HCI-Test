@@ -11,6 +11,9 @@ const employeeRegister = document.querySelector('.employee-option');
 const userArr = JSON.parse(localStorage.getItem('Owner')) || [];
 
 ownerRegister.addEventListener('click', () => {
+  if(userArr.length != 0){
+    
+  }
   window.location.href = '/HTML/Owner/register-owner.html';
 });
 
