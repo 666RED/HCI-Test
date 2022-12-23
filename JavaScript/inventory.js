@@ -151,7 +151,7 @@ function editItem(e) {
   }
 
   sessionStorage.setItem('Product', JSON.stringify(arr));
-  window.location.href = 'edit-item.html';
+  window.location.href = '/HTML/General/edit-item.html';
 }
 
 function editItem2(e) {
@@ -193,7 +193,7 @@ function editItem2(e) {
   }
 
   sessionStorage.setItem('Product', JSON.stringify(arr));
-  window.location.href = 'edit-item.html';
+  window.location.href = '/HTML/General/edit-item.html';
 }
 
 function goToEdit(e) {
@@ -215,7 +215,7 @@ function goToEdit(e) {
         notification:contentArr[i].notification
       });
       sessionStorage.setItem('Product', JSON.stringify(productArr));
-      window.location.href = 'edit-item.html';
+      window.location.href = '/HTML/General/edit-item.html';
     }
   }
 }

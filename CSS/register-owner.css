@@ -34,7 +34,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 35rem;
+  width: 32rem;
   padding: 0 2rem;
 }
 
@@ -63,13 +63,15 @@ body {
   width: 100%;
   height: 3rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  align-items: center;
 }
 
-.title-row button {
-  flex: 1;
-  background-color: white;
+.return-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 4.5rem;
+  cursor: pointer;
 }
 
 .login {
@@ -77,28 +79,12 @@ body {
   border: none;
 }
 
-.login a {
-  text-decoration: none;
-  color: rgb(150, 150, 150);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.login a:hover {
-  color: rgb(53, 52, 52);
-  background-color: rgb(248, 248, 248);
-
-}
-
 .register {
-  color: #D81919;
+  color: #EB2828;
+  font-weight: bold;
   border: none;
-  margin: 0 .5rem;
   padding: 1rem 0;
-  border-bottom: 0.15rem solid #D81919;
+  font-size: 1rem;
 }
 
 .info-section {
@@ -110,32 +96,34 @@ body {
   font-size: 1rem;
 }
 
-.id-box {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
-}
-
-.password-box,
-.confirmed-password-box{
+.phone-number-box {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
 }
 
+.id-box,
+.password-box,
+.confirmed-password-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: .5rem;
+}
+
+.phone-number-box input,
 .id-box input,
 .password-box input,
-.confirmed-password-box input{
+.confirmed-password-box input {
   padding: 1rem;
   border: 1px solid rgb(150, 150, 150);
   border-radius: .2rem;
 }
 
+.phone-number-box label,
 .id-box label,
 .password-box label,
-.confirmed-password-box label{
+.confirmed-password-box label {
   font-size: .8rem;
-  margin-bottom: .3rem;
 }
 
 .error-message {
@@ -154,7 +142,7 @@ body {
   border: .1rem solid black;
   box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .2);
   border-radius: .3rem;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   margin-bottom: 1.5rem;
   cursor: pointer;
 }

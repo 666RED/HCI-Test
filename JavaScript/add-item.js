@@ -32,7 +32,7 @@ const productArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 
 outsideScreen.addEventListener('click', (e) => {
   if(!addedItem.contains(e.target) && addedItem.classList.contains('open-popup')){
-    window.location.href = 'inventory.html';  
+    window.location.href = '/HTML/General/inventory.html';  
     addedItem.classList.remove('open-popup');
     wholeScreen.classList.remove('active');
   }
@@ -203,5 +203,5 @@ clearAllButton.addEventListener('click', () => {
 doneButton.addEventListener('click', () => {
   addedItem.classList.remove('open-popup');
   wholeScreen.classList.remove('active');
-  window.location.href = 'inventory.html';
+  window.location.href = '/HTML/General/inventory.html';
 });  

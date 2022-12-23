@@ -69,7 +69,7 @@ printAndSaveButton.addEventListener('click', () => {
   setTimeout(() => {
     saveData();
     sessionStorage.clear();
-    window.location.href = 'checkout.html';
+    window.location.href = '/HTML/General/checkout.html';
   },5000);
 });
 
@@ -83,7 +83,7 @@ doneButton.addEventListener('click', () => {
   successfulPopup.classList.remove('open-popup');
   saveData();
   sessionStorage.clear();
-  window.location.href = 'checkout.html';
+  window.location.href = '/HTML/General/checkout.html';
 });
 
 function saveData() {
@@ -92,7 +92,7 @@ function saveData() {
     localStorage.setItem('Daily Sales', JSON.stringify(dailySalesArr));
     return;
   }
-  if(dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date !== productArr[productArr.length - 1].date + 1){
+  if(dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date !== productArr[productArr.length - 1].date){
     dailySalesArr.push({
       currentDate,
       currentMonth,

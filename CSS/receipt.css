@@ -15,7 +15,7 @@
 
   display: flex;
   flex: row;
-  justify-content: center;
+  justify-content: center; 
 }
 
 .active {
@@ -69,6 +69,7 @@ p {
   flex-direction: column;
   flex: 1;
   margin-top: 1rem;
+  height: 0%;
 }
 
 .title-row, .product-row{

@@ -38,7 +38,7 @@ const productArr = JSON.parse(localStorage.getItem('Inventory'));
 
 outsideScreen.addEventListener('click', (e) => {
   if(!productUpdatedPopup.contains(e.target) && productUpdatedPopup.classList.contains('open-popup')){
-    window.location.href = 'inventory.html';  
+    window.location.href = '/HTML/General/inventory.html';  
     productUpdatedPopup.classList.remove('open-popup');
     wholeScreen.classList.remove('active');
     sessionStorage.clear();
@@ -81,14 +81,14 @@ doneBtn.addEventListener('click', () => {
   wholeScreen.classList.remove('active');
   productDeletedPopup.classList.remove('open-popup');
   sessionStorage.clear();
-  window.location.href = 'inventory.html';
+  window.location.href = '/HTML/General/inventory.html';
 });
 
 productUpdatedDoneBtn.addEventListener('click', () => {
   wholeScreen.classList.remove('active');
   productUpdatedPopup.classList.remove('open-popup');
   sessionStorage.clear();
-  window.location.href = 'inventory.html';
+  window.location.href = '/HTML/General/inventory.html';
 });
 
 saveBtn.addEventListener('click', validation);

@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register</title>
+  <title>Register For Employee</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="CSS/register.css">
+  <link rel="stylesheet" href="/CSS/register-owner.css">
 </head>
+
 <body>
   <div class="whole-screen">
     <div class="whole-container">
       <h1 class="shop-name">KMS</h1>
       <div class="form-container">
         <div class="title-row">
-          <button class="register">Register</button>
-          <button class="login">
-            <a href="index.html">Login</a>
-          </button>
+          <img src="/image/return.png" class="return-icon">
+          <p class="register">Register For Employee</p>
         </div>
-
+        <hr>
         <div class="info-section">
+          <div class="phone-number-box">
+            <label for="phone-number">Phone Number Shop Owner <span class="star">*</span></label>
+            <input type="text" name="phone-number" id="phone-number" class="phone-number-input"
+              placeholder="e.g. 01X-XXXXXXX">
+            <div class="phone-number-error-box error-message"></div>
+          </div>
           <div class="id-box">
             <label for="id">Staff Id <span class="star">*</span></label>
             <input type="text" name="id" id="id" class="id-input" placeholder="4 digit:  e.g. 1234">
-            <div class="id-error-box error-message">hello</div>
+            <div class="id-error-box error-message"></div>
           </div>
 
           <div class="password-box">
             <label for="password">Password <span class="star">*</span></label>
             <input type="password" id="password" name="password" placeholder="12345678abc+-*/" class="password-input">
-            <div class="password-error-box error-message">hello</div>
+            <div class="password-error-box error-message"></div>
           </div>
 
           <div class="confirmed-password-box">
             <label for="confirmed-password">Confirmed Password <span class="star">*</span></label>
             <input type="password" id="confirmed-password" name="confirmed-password" placeholder="12345678abc+-*/"
               class="confirmed-password-input">
-            <div class="confirmed-password-error-box error-message">hello</div>
+            <div class="confirmed-password-error-box error-message"></div>
           </div>
           <button class="register-btn">Register</button>
         </div>
@@ -48,12 +54,13 @@
   </div>
 
   <div class="successful-popup">
-    <img src="image/verified.png" class="verified-image">
+    <img src="/image/verified.png" class="verified-image">
     <h1 class="success-header">SUCCESS!</h1>
     <p class="success-message">You Registered Successfully</p>
     <button class="done-btn">Done</button>
   </div>
-  
-  <script src="JavaScript/register.js"></script>
+
+  <script src="/JavaScript/owner-register.js"></script>
 </body>
+
 </html>

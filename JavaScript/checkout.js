@@ -55,7 +55,7 @@ checkoutButton.addEventListener('click', () => {
       date:currentDate
     });
     sessionStorage.setItem('Purchased Product', JSON.stringify(purchasedArr));
-    window.location.href = 'receipt.html';  
+    window.location.href = '/HTML/General/receipt.html';  
   }
 });
 
@@ -73,7 +73,7 @@ barcodeScanner.addEventListener('click', () => {
 });
 
 function toBarcodeScannerPage() {
-  window.location.href = 'barcode-scan.html';
+  window.location.href = '/HTML/General/barcode-scan.html';
 };
 
 removeNoBtn.addEventListener('click', (e) => {  
@@ -201,9 +201,9 @@ function appendProduct(e) {
   increaseIcon.classList.add('icon');
   productTotal.classList.add('product-total');
 
-  removeIcon.src = 'image/dustbin.png';
-  decreaseIcon.src = 'image/minus.png';
-  increaseIcon.src = 'image/plus.png';
+  removeIcon.src = '/image/dustbin.png';
+  decreaseIcon.src = '/image/minus.png';
+  increaseIcon.src = '/image/plus.png';
   productQuantity.setAttribute('type', 'number');
   productQuantity.value = 1;
   adjustQuantityRow.append(decreaseIcon, productQuantity, increaseIcon);
@@ -399,9 +399,9 @@ window.onload = () => {
       increaseIcon.classList.add('icon');
       productTotal.classList.add('product-total');
 
-      removeIcon.src = 'image/dustbin.png';
-      decreaseIcon.src = 'image/minus.png';
-      increaseIcon.src = 'image/plus.png';
+      removeIcon.src = '/image/dustbin.png';
+      decreaseIcon.src = '/image/minus.png';
+      increaseIcon.src = '/image/plus.png';
       productQuantity.setAttribute('type', 'number');
       adjustQuantityRow.append(decreaseIcon, productQuantity, increaseIcon);
 
