@@ -5,9 +5,14 @@ const phoneNumberInput = document.querySelector('.phone-number-input');
 const phoneNumberError = document.querySelector('.phone-number-error-box');
 const message = document.querySelector('.success-message');
 const wholeContainer = document.querySelector('.whole-container');
+const returnIcon = document.querySelector('.return-icon');
 
 const shopOwnerArr = JSON.parse(localStorage.getItem('Owner')) || [];
 const employeeArr = JSON.parse(localStorage.getItem('Employee')) || [];
+
+returnIcon.addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
 
 okButton.addEventListener('click', () => {
   window.location.href = 'index.html';

@@ -18,7 +18,12 @@ const shopOwnerArr = JSON.parse(localStorage.getItem('Owner')) || [];
 const employeeArr = JSON.parse(localStorage.getItem('Employee')) || [];
 
 forgetPassword.addEventListener('click', () => {
-  window.location.href = 'reset-password.html';
+  if(shopOwnerArr.length == 0 && employeeArr.length == 0){
+    errorPopup.classList.add('open-popup');
+    errorMessage.innerText = 'No staff registered';
+  }else{
+    window.location.href = 'reset-password.html';
+  }
 });
 
 const radioSelect = () => {
