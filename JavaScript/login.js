@@ -12,9 +12,24 @@ const errorPopup = document.querySelector('.error-pop-up');
 const okBtn = document.querySelector('.error-ok-btn');
 const cancelBtn = document.querySelector('.error-cancel-img');
 const errorMessage = document.querySelector('.error-message');
-// const radioValue = document.querySelector('.')
+const forgetPassword = document.querySelector('.forget-password-text');
 
-const userArr = JSON.parse(localStorage.getItem('Owner')) || [];
+const shopOwnerArr = JSON.parse(localStorage.getItem('Owner')) || [];
+const employeeArr = JSON.parse(localStorage.getItem('Employee')) || [];
+
+forgetPassword.addEventListener('click', () => {
+  window.location.href = 'reset-password.html';
+});
+
+const radioSelect = () => {
+  let radioResult;
+  for(let i = 0; i < radioButtons.length; i++){
+    if(radioButtons[i].checked){
+      radioResult = radioButtons[i].value;
+    }
+  }
+  return radioResult;
+}
 
 okBtn.addEventListener('click', () => {
   errorPopup.classList.remove('open-popup');
@@ -25,16 +40,11 @@ cancelBtn.addEventListener('click', () => {
 });
 
 ownerRegister.addEventListener('click', () => {
-  let radioResult;
-  for(let i = 0; i < radioButtons.length; i++){
-    if(radioButtons[i].checked){
-      radioResult = radioButtons[i].value;
-    }
-  }
+  const radioResult = radioSelect();
   if(radioResult == 'employee'){
     errorPopup.classList.add('open-popup');
     errorMessage.textContent = 'You don\'t have permission to do this';
-  }else if(userArr.length != 0){
+  }else if(shopOwnerArr.length != 0){
     errorPopup.classList.add('open-popup');
     errorMessage.textContent = 'Already registered';
   }else {
@@ -43,16 +53,15 @@ ownerRegister.addEventListener('click', () => {
 });
 
 employeeRegister.addEventListener('click', () => {
-  let radioResult;
-  for(let i = 0; i < radioButtons.length; i++){
-    if(radioButtons[i].checked){
-      radioResult = radioButtons[i].value;
-    }
-  }
+  const radioResult = radioSelect();
   if(radioResult == 'employee'){
     errorPopup.classList.add('open-popup');
     errorMessage.textContent = 'You don\'t have permission to do this';
-  }else{
+  }else if(shopOwnerArr.length == 0){
+    errorPopup.classList.add('open-popup');
+    errorMessage.textContent = 'Register a shop owner first';
+  }
+  else{
     window.location.href = 'register-employee.html';
   }
 });
@@ -62,16 +71,19 @@ viewPasswordButton.addEventListener('click', () => {
 });
 
 const validation = () => {
+  const radioResult = radioSelect();
 
   let emptyId = true;
   let emptyPassword = true;
-  let idExist = false;
+
+  let validId = false;
+  let validPassword = false;
 
   if(id.value === ''){
-    idErrorBox.style.visibility = 'visible';
+    idErrorBox.style.display = 'block';
     idErrorBox.innerText = 'Required*';
   }else{
-    idErrorBox.style.visibility = 'hidden';
+    idErrorBox.style.display = 'none';
     emptyId = false;
   }
 
@@ -84,28 +96,51 @@ const validation = () => {
   }
 
   if(!emptyId){
-    for(let i = 0; i < userArr.length; i++){
-      if(id.value == userArr[i].id){
-        idExist = true;
-        break;
+    if(radioResult == 'shop-owner'){
+      if(id.value == shopOwnerArr[0].id){
+        validId = true;
+      }else {
+        idErrorBox.style.display = 'block';
+        idErrorBox.innerText = 'Id doesn\'t exist';
+      }
+    }else if(radioResult == 'employee'){
+      for(let i = 0; i < employeeArr.length; i++){
+        if(employeeArr[i].id == id.value){
+          validId = true;
+          break;
+        }
+      }
+      if(!validId){
+        idErrorBox.style.display = 'block';
+        idErrorBox.innerText = 'Id doesn\'t exist';
       }
     }
-    if(idExist === false){
-      idErrorBox.style.visibility = 'visible';
-      idErrorBox.innerText = 'Id doesn\'t exist';
-    } 
   }
 
-  if(!emptyId && !emptyPassword){
-    for(let i = 0; i < userArr.length; i++){
-      if(id.value == userArr[i].id && password.value == userArr[i].password){
-        window.location.href = 'checkout.html';
-      }else if(id.value == userArr[i].id && password.value != userArr[i].password){
+  if(!emptyPassword){
+    if(radioResult == 'shop-owner'){
+      if(password.value == shopOwnerArr[0].password){
+        validPassword = true;
+      }else {
         passwordErrorBox.style.display = 'block';
         passwordErrorBox.innerText = 'Incorrect Password';
-        password.value = '';
+      }
+    }else if(radioResult == 'employee'){
+      for(let i = 0; i < employeeArr.length; i++){
+        if(employeeArr[i].password == password.value){
+          validPassword = true;
+          break;
+        }
+      }
+      if(!validPassword){
+        passwordErrorBox.style.display = 'block';
+        passwordErrorBox.innerText = 'Incorrect Password';
       }
     }
+  }
+
+  if(validId && validPassword){
+    window.location.href = 'checkout.html';
   }
 }
 

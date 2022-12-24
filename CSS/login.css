@@ -21,7 +21,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 32rem;
   width: 30rem;
   padding: 0 2rem;
 }
@@ -143,7 +142,7 @@ body {
 }
 
 .id-error-box {
-  visibility: hidden;
+  display: none;
   font-size: .8rem;
   color: red;
   margin-left: .5rem;
@@ -216,6 +215,8 @@ body {
   color: red;
   cursor: pointer;
   text-decoration: none;
+  margin-left: .5rem;
+  margin-bottom: 1rem;
 }
 
 .error-pop-up {
