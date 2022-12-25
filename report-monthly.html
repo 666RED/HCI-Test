@@ -5,10 +5,199 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Monthly Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/general.css">
+  <link rel="stylesheet" href="/CSS/header.css">
+  <link rel="stylesheet" href="/CSS/footer.css">
+  <link rel="stylesheet" href="/CSS/report-monthly.css">
 </head>
 
 <body>
-  This is monthly report page
-  <a href="report.html">Back</a>  
+  <section class="header">
+    <div class="left-section">
+      <h1 class="shop-name">KMS</h1>
+    </div>
+    <div class="middle-section">
+      <button class="checkout-btn">
+        <a href="checkout.html">Checkout</a>
+      </button>
+      <button class="inventory-btn">
+        <a href="inventory.html">Inventory</a>
+      </button>
+      <button class="report-btn">Report</button>
+    </div>
+    <div class="right-section">
+      <div class="user-box">
+        <img src="/image/user.png" class="user-img">
+        <p class="user-id">owner</p>
+      </div>
+      <img src="/image/logout.png" class="logout-img">
+    </div>
+  </section>
+
+  <section class="daily-report-main-content">
+    <div class="upper-row">
+      <div class="header-title">Report</div>
+      <div class="month-section">
+        <label for="month">Year :</label>
+        <input type="month" class="month" id="month" min="2022-01" value="2022-12">
+      </div>
+      <div class="period-section">
+        <div class="daily">
+          <a href="report.html">Daily</a>
+        </div>
+        <div class="weekly">
+          <a href="report-weekly.html">Weekly</a>
+        </div>
+        <div class="monthly">Monthly</div>
+      </div>
+    </div>
+
+    <div class="report-info">
+      <div class="title-row">
+        <div class="no-title">No</div>
+        <div class="date-title">Month</div>
+        <div class="cost-title">Cost</div>
+        <div class="price-title">Price</div>
+        <div class="profit-title">Profit</div>
+      </div>
+
+      <div class="content-container">
+        <div class="content-row">
+          <div class="date-no">01.</div>
+          <div class="date">2022-01</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">02.</div>
+          <div class="date">2022-02</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">03.</div>
+          <div class="date">2022-03</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">04.</div>
+          <div class="date">2022-04</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">05.</div>
+          <div class="date">2022-05</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">06.</div>
+          <div class="date">2022-06</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">07.</div>
+          <div class="date">2022-07</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">08.</div>
+          <div class="date">2022-08</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">09.</div>
+          <div class="date">2022-09</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">10.</div>
+          <div class="date">2022-10</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">11.</div>
+          <div class="date">2022-11</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="date-no">12.</div>
+          <div class="date">2022-12</div>
+          <div class="date-cost">RM 100.00</div>
+          <div class="date-price">RM 200.00</div>
+          <div class="date-profit">RM 100.00</div>
+        </div>
+      </div>
+
+      <div class="total-row">
+        <div class="date-no"></div>
+        <div class="total-text">Total</div>
+        <div class="total-cost">RM 100.00</div>
+        <div class="total-price">RM 200.00</div>
+        <div class="total-profit">RM 100.00</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer">
+    <div class="footer-upper-row">
+      <div class="terms-of-use">
+        <img src="/image/book.png" class="book-img">
+        <a href="terms-of-use.html">Terms of use</a>
+      </div>
+      <div class="contact-us">
+        <img src="/image/telephone.png" class="phone-img">
+        <p>Contact us: 012-xxxxxxx</p>
+      </div>
+    </div>
+    <div class="footer-bottom-row">
+      <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
+    </div>
+  </section>
+
+  <div class="logout-pop-up">
+    <div class="logout-upper-row">
+      <div>
+        <img src="/image/warning.png" class="logout-danger-img">
+      </div>
+      <p>LOGOUT</p>
+      <div>
+        <img src="/image/remove.png" class="logout-cancel-img">
+      </div>
+    </div>
+    <div class="logout-message-row">
+      <p>Are you sure you want to logout?</p>
+    </div>
+    <div class="logout-btn-row">
+      <button class="logout-yes-btn">
+        <a href="index.html" class="logout-yes-link">Yes</a>
+      </button>
+      <button class="logout-no-btn">No</button>
+    </div>
+  </div>
+  <script src="/JavaScript/general.js"></script>
+  <script src="/JavaScript/report-monthly.js"></script>
 </body>
 </html>
