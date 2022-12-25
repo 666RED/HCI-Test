@@ -1,7 +1,8 @@
-const editButtons = document.querySelectorAll('.edit-btn');
+const editButtons = document.querySelectorAll('.status-btn');
 const productNames = document.querySelectorAll('.product-name');
 
 const contentContainer = document.querySelector('.content-container');
+const contentRows = document.querySelectorAll('.content-row');
 const searchBar = document.querySelector('#search-bar');
 const suggestedProductBox = document.querySelector('.suggested-product-box');
 const category = document.querySelector('.category-box');
@@ -40,9 +41,7 @@ const createAll = () => {
     if(Number(contentArr[i].notification) >= Number(contentArr[i].quantity)){
       statusButton.innerText = 'Low';
       statusButton.style.backgroundColor = 'red';
-    }else {
-      statusButton.innerText = 'High';
-      statusButton.style.backgroundColor = 'green';
+      statusButton.style.display = 'inline-block';
     }
 
     container.classList.add('content-row');
@@ -55,12 +54,9 @@ const createAll = () => {
     productPrice.classList.add('product-price');
     statusButton.classList.add('status-btn');
 
-    statusButton.addEventListener('click', editItem);
-
-    productName.addEventListener('click', editItem2);
-
     quantityAndEdit.append(productQuantity, statusButton);
     container.append(productNo, productName, productBarcode, productCost, productPrice, quantityAndEdit);
+    container.addEventListener('click', editItem2);
     contentContainer.appendChild(container);
   }
 };
@@ -88,9 +84,7 @@ const createByCategory = (category) => {
       if(Number(contentArr[i].notification) >= Number(contentArr[i].quantity)){
         statusButton.innerText = 'Low';
         statusButton.style.backgroundColor = 'red';
-      }else {
-        statusButton.innerText = 'High';
-        statusButton.style.backgroundColor = 'green';
+        statusButton.style.display = 'block';
       }
 
       container.classList.add('content-row');
@@ -101,11 +95,9 @@ const createByCategory = (category) => {
       productCost.classList.add('product-cost');
       quantityAndEdit.classList.add('quantity-and-status');
       productPrice.classList.add('product-price');
-      statusButton.classList.add('edit-btn');
+      statusButton.classList.add('status-btn');
 
-      statusButton.addEventListener('click', editItem);
-
-      productName.addEventListener('click', editItem2);
+      container.addEventListener('click', editItem2);
 
       quantityAndEdit.append(productQuantity, statusButton);
       container.append(productNo, productName, productBarcode, productCost, productPrice, quantityAndEdit);
@@ -134,59 +126,62 @@ window.onload = () => {
   }
   displayInventory();
 }
-editButtons.forEach(button => {
-  button.addEventListener('click', editItem(e));
+
+contentRows.forEach(row => {
+  row.addEventListener('click', editItem2(e));
 });
 
-productNames.forEach(name => {
-  name.addEventListener('click', editItem2(e));
-});
+// function editItem(e) {
+//   const buttonClicked = e.target;
+//   const container = buttonClicked.parentElement.parentElement;
 
-function editItem(e) {
-  const buttonClicked = e.target;
-  const container = buttonClicked.parentElement.parentElement;
+//   const arr = [];
 
-  const arr = [];
+//   const name = container.querySelector('.product-name').innerText;
+//   const cost = container.querySelector('.product-cost').innerText;
+//   const price = container.querySelector('.product-price').innerText;
+//   const barcode = container.querySelector('.product-barcode').innerText;
+//   const quantity = container.querySelector('.product-quantity').innerText;
 
-  const name = container.querySelector('.product-name').innerText;
-  const cost = container.querySelector('.product-cost').innerText;
-  const price = container.querySelector('.product-price').innerText;
-  const barcode = container.querySelector('.product-barcode').innerText;
-  const quantity = container.querySelector('.product-quantity').innerText;
+//   for(let i = 0; i < contentArr.length; i++){
+//     if(name == contentArr[i].name){
+//       const supplierName = contentArr[i].supplierName;
+//       const supplierPhoneNumber = contentArr[i].supplierPhoneNumber;
+//       const supplierLocation = contentArr[i].supplierLocation;
+//       const category = contentArr[i].category;
+//       const unit = contentArr[i].unit;
+//       const notification = contentArr[i].notification;
 
-  for(let i = 0; i < contentArr.length; i++){
-    if(name == contentArr[i].name){
-      const supplierName = contentArr[i].supplierName;
-      const supplierPhoneNumber = contentArr[i].supplierPhoneNumber;
-      const supplierLocation = contentArr[i].supplierLocation;
-      const category = contentArr[i].category;
-      const unit = contentArr[i].unit;
-      const notification = contentArr[i].notification;
+//       arr.push({
+//         name,
+//         cost,
+//         price,
+//         barcode,
+//         quantity,
+//         category,
+//         unit,
+//         supplierName,
+//         supplierPhoneNumber,
+//         supplierLocation,
+//         notification
+//       });
+//       break;
+//     }
+//   }
 
-      arr.push({
-        name,
-        cost,
-        price,
-        barcode,
-        quantity,
-        category,
-        unit,
-        supplierName,
-        supplierPhoneNumber,
-        supplierLocation,
-        notification
-      });
-      break;
-    }
-  }
-
-  sessionStorage.setItem('Product', JSON.stringify(arr));
-  window.location.href = 'edit-item.html';
-}
+//   sessionStorage.setItem('Product', JSON.stringify(arr));
+//   window.location.href = 'edit-item.html';
+// }
 
 function editItem2(e) {
-  const buttonClicked = e.target;
-  const container = buttonClicked.parentElement;
+  const elementClicked = e.target;
+  let container;
+  if(elementClicked.className == 'product-quantity' || elementClicked.className == 'status-btn'){
+    container = elementClicked.parentElement.parentElement;
+  }else {
+    container = elementClicked.parentElement;
+  }
+  console.log(container);
 
   const arr = [];
 

@@ -170,6 +170,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 
 .content-row:hover {
@@ -197,7 +198,6 @@
   border-right: .1rem solid #A8A8A8;
   justify-content: flex-start;
   width: 100%;
-  cursor: pointer;
 }
 
 .barcode-title,
@@ -243,7 +243,8 @@
 }
 
 .product-quantity {
-  padding-left: 3rem;
+  width: 6.5rem;
+  text-align: center;
 }
 
 .quantity-and-status {
@@ -254,12 +255,11 @@
 }
 
 .status-btn {
+  display: none;
   padding: .2rem .5rem;
   border: none;
   border-radius: 1rem;
-  background-color: green;
   color: white;
-  cursor: pointer;
   margin-right: .5rem;
 }
 
