@@ -17,6 +17,7 @@ const currentDate = d.getDate();
 const currentMonth = d.getMonth() + 1;
 const currentYear = d.getFullYear();
 
+const inventoryArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 const productArr = JSON.parse(sessionStorage.getItem('Purchased Product'));
 let dailySalesArr = JSON.parse(localStorage.getItem('Daily Sales')) || [];
 let totalSalesArr = JSON.parse(localStorage.getItem('Total Sales')) || [];
@@ -68,6 +69,7 @@ printAndSaveButton.addEventListener('click', () => {
   }, 3000);
   setTimeout(() => {
     saveData();
+    decreaseInventory();
     sessionStorage.clear();
     window.location.href = 'checkout.html';
   },5000);
@@ -82,6 +84,7 @@ doneButton.addEventListener('click', () => {
   wholeContainer.classList.remove('active');
   successfulPopup.classList.remove('open-popup');
   saveData();
+  decreaseInventory();
   sessionStorage.clear();
   window.location.href = 'checkout.html';
 });
@@ -107,4 +110,16 @@ function saveData() {
     dailySalesArr.push({productArr});
     localStorage.setItem('Daily Sales', JSON.stringify(dailySalesArr));
   }
+}
+
+function decreaseInventory(){
+  for(let i = 0; i < productArr.length; i++){
+    for(let j = 0; j < inventoryArr.length; j++){
+      if(productArr[i].name == inventoryArr[j].name){
+        inventoryArr[j].quantity = Number(inventoryArr[j].quantity) - Number(productArr[i].quantity);
+        break;
+      }
+    }
+  }
+  localStorage.setItem('Inventory', JSON.stringify(inventoryArr));
 }

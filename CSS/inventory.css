@@ -86,13 +86,18 @@
   padding: 0 .5rem;
   border-radius: .5rem;
   font-size: .8rem;
-  font-weight: bold;
-  background-color: lime;
+  font-weight: normal;
+  background-color: #2d2dff;
+  border-color: #0d00ff;
+  color: #f9f9f9;
   cursor: pointer;
+  transition: color .2s, background-color .2s;
 }
 
 .restock-btn:hover {
   opacity: .7;
+  /* color: #2d2dff;
+  background-color: #f9f9f9; */
 }
 
 .suggested-product-box{
@@ -199,8 +204,8 @@
 .product-barcode,
 .cost-title,
 .product-cost,
-.unit-title,
-.product-unit{
+.price-title,
+.product-title {
   text-align: center;
 } 
 
@@ -210,13 +215,11 @@
 }
 
 .quantity-title,
-.product-quantity {
-  text-align: center;
-  width: 8rem;
+.quantity-and-status {
+  width: 10rem;
 }
 
-.product-quantity {
-  border-left: .1rem solid #A8A8A8;
+.product-price {
   border-right: .1rem solid #A8A8A8;
 }
 
@@ -227,29 +230,30 @@
 
 .product-cost {
   border-right: .1rem solid #A8A8A8;
+  border-left: .1rem solid #A8A8A8;
 }
 
-.price-title {
+.quantity-title {
   text-indent: 1rem;
 }
 
 .price-title,
-.price-and-edit{
-  width: 12rem;
+.product-price{
+  width: 8rem;
 }
 
-.product-price {
-  padding-left: 2rem;
+.product-quantity {
+  padding-left: 3rem;
 }
 
-.price-and-edit {
+.quantity-and-status {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.edit-btn {
+.status-btn {
   padding: .2rem .5rem;
   border: none;
   border-radius: 1rem;
@@ -259,7 +263,7 @@
   margin-right: .5rem;
 }
 
-.edit-btn:hover {
+.status-btn:hover {
   opacity: .7;
 }
 

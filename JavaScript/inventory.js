@@ -27,9 +27,9 @@ const createAll = () => {
     const productBarcode = document.createElement('div');
     const productQuantity = document.createElement('div');
     const productCost = document.createElement('div');
-    const priceAndEdit = document.createElement('div');
+    const quantityAndEdit = document.createElement('div');
     const productPrice = document.createElement('div');
-    const editButton = document.createElement('button');
+    const statusButton = document.createElement('button');
 
     productNo.innerText = i + 1 + '.';
     productName.innerText = contentArr[i].name;
@@ -37,12 +37,12 @@ const createAll = () => {
     productQuantity.innerText = contentArr[i].quantity;
     productCost.innerText = 'RM ' + parseFloat(contentArr[i].cost).toFixed(2); 
     productPrice.innerText = 'RM ' + parseFloat(contentArr[i].price).toFixed(2);
-    if(contentArr[i].notification >= contentArr[i].quantity){
-      editButton.innerText = 'Low';
-      editButton.style.backgroundColor = 'red';
+    if(Number(contentArr[i].notification) >= Number(contentArr[i].quantity)){
+      statusButton.innerText = 'Low';
+      statusButton.style.backgroundColor = 'red';
     }else {
-      editButton.innerText = 'High';
-      editButton.style.backgroundColor = 'green';
+      statusButton.innerText = 'High';
+      statusButton.style.backgroundColor = 'green';
     }
 
     container.classList.add('content-row');
@@ -51,16 +51,16 @@ const createAll = () => {
     productBarcode.classList.add('product-barcode');
     productQuantity.classList.add('product-quantity');
     productCost.classList.add('product-cost');
-    priceAndEdit.classList.add('price-and-edit');
+    quantityAndEdit.classList.add('quantity-and-status');
     productPrice.classList.add('product-price');
-    editButton.classList.add('edit-btn');
+    statusButton.classList.add('status-btn');
 
-    editButton.addEventListener('click', editItem);
+    statusButton.addEventListener('click', editItem);
 
     productName.addEventListener('click', editItem2);
 
-    priceAndEdit.append(productPrice, editButton);
-    container.append(productNo, productName, productBarcode, productQuantity, productCost, priceAndEdit);
+    quantityAndEdit.append(productQuantity, statusButton);
+    container.append(productNo, productName, productBarcode, productCost, productPrice, quantityAndEdit);
     contentContainer.appendChild(container);
   }
 };
@@ -75,9 +75,9 @@ const createByCategory = (category) => {
       const productBarcode = document.createElement('div');
       const productQuantity = document.createElement('div');
       const productCost = document.createElement('div');
-      const priceAndEdit = document.createElement('div');
+      const quantityAndEdit = document.createElement('div');
       const productPrice = document.createElement('div');
-      const editButton = document.createElement('button');
+      const statusButton = document.createElement('button');
 
       productNo.innerText = numOfElement + '.';
       productName.innerText = contentArr[i].name;
@@ -85,7 +85,13 @@ const createByCategory = (category) => {
       productQuantity.innerText = contentArr[i].quantity;
       productCost.innerText = 'RM ' + parseFloat(contentArr[i].cost).toFixed(2); 
       productPrice.innerText = 'RM ' + parseFloat(contentArr[i].price).toFixed(2);
-      editButton.innerText = 'Edit';
+      if(Number(contentArr[i].notification) >= Number(contentArr[i].quantity)){
+        statusButton.innerText = 'Low';
+        statusButton.style.backgroundColor = 'red';
+      }else {
+        statusButton.innerText = 'High';
+        statusButton.style.backgroundColor = 'green';
+      }
 
       container.classList.add('content-row');
       productNo.classList.add('product-no');
@@ -93,16 +99,16 @@ const createByCategory = (category) => {
       productBarcode.classList.add('product-barcode');
       productQuantity.classList.add('product-quantity');
       productCost.classList.add('product-cost');
-      priceAndEdit.classList.add('price-and-edit');
+      quantityAndEdit.classList.add('quantity-and-status');
       productPrice.classList.add('product-price');
-      editButton.classList.add('edit-btn');
+      statusButton.classList.add('edit-btn');
 
-      editButton.addEventListener('click', editItem);
+      statusButton.addEventListener('click', editItem);
 
       productName.addEventListener('click', editItem2);
 
-      priceAndEdit.append(productPrice, editButton);
-      container.append(productNo, productName, productBarcode, productQuantity, productCost, priceAndEdit);
+      quantityAndEdit.append(productQuantity, statusButton);
+      container.append(productNo, productName, productBarcode, productCost, productPrice, quantityAndEdit);
       contentContainer.appendChild(container);
       numOfElement++;
     }
@@ -111,10 +117,10 @@ const createByCategory = (category) => {
 
 const displayInventory = () => {
   createAll();
-  const priceAndEdit = document.querySelectorAll('.price-and-edit');
+  const quantityAndEdit = document.querySelectorAll('.quantity-and-status');
   if(contentContainer.offsetHeight >= 368){
-    priceAndEdit.forEach(row => {
-      row.style.width = '175px';
+    quantityAndEdit.forEach(row => {
+      row.style.width = '145px';
     });
   }
 };

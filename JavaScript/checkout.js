@@ -100,7 +100,7 @@ function searchProduct(e) {
   if(category.value == 'all'){
     for(let i = 0; i < tempArr.length; i++){
       const suggestedProduct = document.createElement('div'); 
-      if(tempArr[i].name.toLowerCase().includes(text.value.toLowerCase()) && tempArr[i].name[0].toLowerCase() == text.value[0].toLowerCase()){
+      if(tempArr[i].name.toLowerCase().includes(text.value.toLowerCase()) && tempArr[i].name[0].toLowerCase() == text.value[0].toLowerCase() && Number(tempArr[i].quantity) > 0){
       suggestedProductBox.style.display = 'block';
       suggestedProduct.classList.add('suggested-product');
       suggestedProduct.innerText = tempArr[i].name;
@@ -114,7 +114,7 @@ function searchProduct(e) {
     for(let i = 0; i < tempArr.length; i++){
       let repeated = false;
       const suggestedProduct = document.createElement('div'); 
-      if(tempArr[i].barcode.includes(text.value) && tempArr[i].barcode[0] == text.value[0]){
+      if(tempArr[i].barcode.includes(text.value) && tempArr[i].barcode[0] == text.value[0] && Number(tempArr[i].quantity) > 0){
         const suggestedNames = suggestedProductBox.querySelectorAll('.suggested-product');
         for(let j = 0; j < suggestedNames.length; j++){
           if(suggestedNames[j].innerText == tempArr[i].name){
@@ -137,7 +137,7 @@ function searchProduct(e) {
   }else {
     for(let i = 0; i < tempArr.length; i++){
       const suggestedProduct = document.createElement('div'); 
-      if(tempArr[i].name.toLowerCase().includes(text.value.toLowerCase()) && tempArr[i].name[0].toLowerCase() == text.value[0].toLowerCase() && tempArr[i].category == category.value){
+      if(tempArr[i].name.toLowerCase().includes(text.value.toLowerCase()) && tempArr[i].name[0].toLowerCase() == text.value[0].toLowerCase() && tempArr[i].category == category.value && Number(tempArr[i].quantity) > 0){
         suggestedProductBox.style.display = 'block';
         suggestedProduct.classList.add('suggested-product');
         suggestedProduct.innerText = tempArr[i].name;
@@ -151,7 +151,7 @@ function searchProduct(e) {
     for(let i = 0; i < tempArr.length; i++){
       let repeated = false;
       const suggestedProduct = document.createElement('div'); 
-      if(tempArr[i].barcode.includes(text.value) && tempArr[i].barcode[0] == text.value[0] && tempArr[i].category == category.value){
+      if(tempArr[i].barcode.includes(text.value) && tempArr[i].barcode[0] == text.value[0] && tempArr[i].category == category.value && Number(tempArr[i].quantity) > 0){
         const suggestedNames = suggestedProductBox.querySelectorAll('.suggested-product');
         for(let j = 0; j < suggestedNames.length; j++){
           if(suggestedNames[j].innerText == tempArr[i].name){
