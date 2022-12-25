@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Sales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/general.css">
+  <link rel="stylesheet" href="/CSS/header.css">
+  <link rel="stylesheet" href="/CSS/footer.css">
+  <link rel="stylesheet" href="/CSS/weekly-sales.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+
+<body>
+  <section class="header">
+    <div class="left-section">
+      <h1 class="shop-name">KMS</h1>
+    </div>
+    <div class="middle-section">
+      <button class="checkout-btn">
+        <a href="checkout.html">Checkout</a>
+      </button>
+      <button class="inventory-btn">
+        <a href="inventory.html">Inventory</a>
+      </button>
+      <button class="report-btn">Report</button>
+    </div>
+    <div class="right-section">
+      <div class="user-box">
+        <img src="/image/user.png" class="user-img">
+        <p class="user-id">owner</p>
+      </div>
+      <img src="/image/logout.png" class="logout-img">
+    </div>
+  </section>
+
+  <section class="weekly-report-main-content">
+    <img src="/image/return.png" class="return-icon">
+    <hr>
+    <div class="upper-row">
+      <div class="header-title">Weekly Sales</div>
+      <div class="week-section">Week: 2022-11-1 <span class="arrow">-></span>2022-11-7</div>
+    </div>
+
+    <div class="weekly-sales-info">
+      <div class="title-row">
+        <div class="no-title">No</div>
+        <div class="name-title">Product Sold</div>
+        <div class="quantity-title">Quantity</div>
+        <div class="cost-title">Cost</div>
+        <div class="price-title">Price</div>
+        <div class="profit-title">Profit</div>
+      </div>
+
+      <div class="content-container">
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+        <div class="content-row">
+          <div class="product-no">01.</div>
+          <div class="name">Coke (box)</div>
+          <div class="quantity">2</div>
+          <div class="product-cost">RM 100.00</div>
+          <div class="product-price">RM 200.00</div>
+          <div class="product-profit">RM 100.00</div>
+        </div>
+      </div>
+
+      <div class="total-row">
+        <div class="product-no"></div>
+        <div class="total-text">Total</div>
+        <div class="total-cost">RM 100.00</div>
+        <div class="total-price">RM 200.00</div>
+        <div class="total-profit">RM 100.00</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer">
+    <div class="footer-upper-row">
+      <div class="terms-of-use">
+        <img src="/image/book.png" class="book-img">
+        <a href="terms-of-use.html">Terms of use</a>
+      </div>
+      <div class="contact-us">
+        <img src="/image/telephone.png" class="phone-img">
+        <p>Contact us: 012-xxxxxxx</p>
+      </div>
+    </div>
+    <div class="footer-bottom-row">
+      <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
+    </div>
+  </section>
+  
+  <div class="logout-pop-up">
+    <div class="logout-upper-row">
+      <div>
+        <img src="/image/warning.png" class="logout-danger-img">
+      </div>
+      <p>LOGOUT</p>
+      <div>
+        <img src="/image/remove.png" class="logout-cancel-img">
+      </div>
+    </div>
+    <div class="logout-message-row">
+      <p>Are you sure you want to logout?</p>
+    </div>
+    <div class="logout-btn-row">
+      <button class="logout-yes-btn">
+        <a href="index.html" class="logout-yes-link">Yes</a>
+      </button>
+      <button class="logout-no-btn">No</button>
+    </div>
+  </div>
+  <script src="/JavaScript/weekly-sales.js"></script> 
+</body>
+</html>

@@ -5,8 +5,19 @@ const contentContainer = document.querySelector('.content-container');
 const searchBar = document.querySelector('#search-bar');
 const suggestedProductBox = document.querySelector('.suggested-product-box');
 const category = document.querySelector('.category-box');
+const restockButton = document.querySelector('.restock-btn');
+const outOfStockPopup = document.querySelector('.out-of-stock-popup');
+const okButton = document.querySelector('.ok-btn');
 
 const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
+
+okButton.addEventListener('click', () => {
+  outOfStockPopup.classList.remove('open-popup');
+});
+
+restockButton.addEventListener('click', () => {
+  window.location.href = 'restock.html';
+});
 
 const createAll = () => {
   for(let i = 0; i < contentArr.length; i++){
@@ -26,7 +37,13 @@ const createAll = () => {
     productQuantity.innerText = contentArr[i].quantity;
     productCost.innerText = 'RM ' + parseFloat(contentArr[i].cost).toFixed(2); 
     productPrice.innerText = 'RM ' + parseFloat(contentArr[i].price).toFixed(2);
-    editButton.innerText = 'Edit';
+    if(contentArr[i].notification >= contentArr[i].quantity){
+      editButton.innerText = 'Low';
+      editButton.style.backgroundColor = 'red';
+    }else {
+      editButton.innerText = 'High';
+      editButton.style.backgroundColor = 'green';
+    }
 
     container.classList.add('content-row');
     productNo.classList.add('product-no');
@@ -99,11 +116,18 @@ const displayInventory = () => {
     priceAndEdit.forEach(row => {
       row.style.width = '175px';
     });
-  } 
+  }
 };
 
-window.onload = displayInventory();
-
+window.onload = () => {
+  for(let i = 0; i < contentArr.length; i++){
+    if(contentArr[i].notification >= contentArr[i].quantity && localStorage.getItem('Timer') == undefined){
+      localStorage.setItem('Timer', 1);
+      // outOfStockPopup.classList.add('open-popup');
+    }
+  }
+  displayInventory();
+}
 editButtons.forEach(button => {
   button.addEventListener('click', editItem(e));
 });

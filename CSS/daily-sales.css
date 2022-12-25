@@ -18,7 +18,7 @@ body {
 
   display: flex;
   flex: row;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .active {
@@ -30,7 +30,7 @@ p {
   margin: 0;
 }
 
-.receipt-container {
+.daily-sales-container {
   background-color: white;
   border: 1px solid black;
   padding: .5rem 1rem 1rem;
@@ -50,24 +50,23 @@ p {
   cursor: pointer;
   width: 1.5rem;
   height: 1.5rem;
-
-  margin-right: 9.2rem;
 }
 
-.receipt-title {
+.daily-sales-title {
   font-size: 1.6rem;
+  margin-left: 7.5rem;
 }
 
-.receipt-info {
+.daily-sales-info {
   text-align: center;
   margin-top: .5rem;
 }
 
-.receipt-info-shop-name {
+.daily-sales-info-shop-name {
   font-weight: bold;
 }
 
-.receipt-detail {
+.daily-sales-detail {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -75,18 +74,19 @@ p {
   height: 0%;
 }
 
-.title-row, .product-row{
+.title-row,
+.product-row {
   display: flex;
   flex-direction: row;
 }
 
-.title-row > * {
+.title-row>* {
   font-weight: bold;
 }
 
 .no-title,
 .quantity-title,
-.price-title{
+.price-title {
   text-align: center;
 }
 
@@ -115,7 +115,7 @@ p {
 .quantity-title,
 .product-quantity,
 .price-title,
-.product-price{
+.product-price {
   width: 6rem;
 }
 
@@ -130,7 +130,7 @@ p {
   margin-top: .5rem;
 }
 
-.purchase-section > * {
+.purchase-section>* {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -138,20 +138,24 @@ p {
 }
 
 .total,
-.total-price{
+.total-price,
+.cost,
+.total-cost,
+.profit,
+.total-profit {
   font-weight: bold;
   font-size: 1.2rem;
 }
 
 .total-row,
-.payment-row,
-.change-row { 
+.cost-row,
+.profit-row {
   justify-content: flex-end;
 }
 
 .total-price,
-.total-payment,
-.total-change {
+.total-cost,
+.total-profit {
   width: 7rem;
   text-align: right;
   margin-right: 1rem;
@@ -160,7 +164,7 @@ p {
 .button-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 2rem;
 }
@@ -180,7 +184,7 @@ p {
   opacity: .7;
 }
 
-.print-and-save-popup {
+.print-popup {
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -203,54 +207,11 @@ p {
 .printer-icon {
   width: 3rem;
   height: 3rem;
-  margin-right: .5rem ;
+  margin-right: .5rem;
 }
 
 .printing-message {
   font-size: 1.5rem;
-}
-
-.successful-popup {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  background-color: white;
-
-  z-index: 100;
-  transform: translate(-50%, -50%) scale(0.1);
-  visibility: hidden;
-  transition: transform 0.2s;
-  border: .1rem solid black;
-  overflow: hidden;
-  padding: 1rem;
-}
-
-.verified-image {
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 1.5rem;
-}
-
-.success-message {
-  font-size: .8rem;
-}
-
-.done-btn {
-  margin-top: 1rem;
-  padding: .2rem 2rem;
-  border: none;
-  background-color: #D81919;
-  color: white;
-  border-radius: 1rem;
-  cursor: pointer;
-}
-
-.done-btn:hover {
-  opacity: .7;
 }
 
 .open-popup {

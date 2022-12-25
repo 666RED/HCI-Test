@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventory</title>
+  <title>Restock</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/CSS/general.css">
   <link rel="stylesheet" href="/CSS/header.css">
   <link rel="stylesheet" href="/CSS/footer.css">
-  <link rel="stylesheet" href="/CSS/inventory.css">
+  <link rel="stylesheet" href="/CSS/restock.css">
 </head>
-
 <body>
   <section class="header">
     <div class="left-section">
@@ -21,7 +20,7 @@
     </div>
     <div class="middle-section">
       <button class="checkout-btn">
-        <a href="checkout.html">Checkout</a> 
+        <a href="checkout.html">Checkout</a>
       </button>
       <button class="inventory-btn">Inventory</button>
       <button class="report-btn">
@@ -37,16 +36,11 @@
     </div>
   </section>
 
-  <section class="item-row">
-    <button class="add-item-button">
-      <a href="add-item.html">
-        <img src="/image/plus.png" class="plus-icon">
-        <div class="add-item-text">Add New Product</div>
-      </a>
-    </button>
-    <div class="search-item-box">
-      <input type="text" placeholder="Product Name" id="search-bar">
-    </div>
+  <img src="/image/return.png" class="return-icon">
+  <hr>
+
+  <section class="heading-row">
+    <h1>Restock</h1>
     <select name="category" id="category" class="category-box">
       <option value="all" selected>All Category</option>
       <option value="food">Food</option>
@@ -59,22 +53,69 @@
     </select>
   </section>
 
-  <div class="item-text-row">
-    <h3 class="item-text">Inventory</h3>
-    <div class="suggested-product-box"></div>
-    <button class="restock-btn">Restock</button>
-  </div>
-
-  <section class="inventory-main-content">
+  <section class="main-content">
     <div class="title-row">
       <h3 class="no-title">No.</h3>
-      <h3 class="name-title">Name</h3>
-      <h3 class="barcode-title">Barcode</h3>
-      <h3 class="quantity-title">Quantity</h3>
-      <h3 class="cost-title">Cost(Each)</h3>
-      <h3 class="price-title">Price(Each)</h3>
+      <h3 class="name-title">Product Name</h3>
+      <h3 class="supplier-title">Supplier</h3>
+      <h3 class="remaining-quantity-title">Remaining Quantity</h3>
+      <h3 class="restock-quantity-title">Restock Quantity</h3>
+      <h3 class="placed-title">Placed</h3>
+      <h3 class="status-title">Status</h3>
     </div>
-    <div class="content-container"></div>
+    <div class="content-container">
+      <div class="content-row">
+        <div class="product-no">1.</div>
+        <div class="product-name">name</div>
+        <div class="supplier-name">Supplier name</div>
+        <div class="remaining-quantity">3</div>
+        <input type="number" class="restock-quantity" value="0">
+        <div class="placed">2022/12/25</div>
+        <div class="status-and-order">
+          <div class="status">Confirm</div>
+          <button class="order-btn">Order</button>
+        </div>
+      </div>
+
+      <div class="content-row">
+        <div class="product-no">1.</div>
+        <div class="product-name">name</div>
+        <div class="supplier-name">Supplier name</div>
+        <div class="remaining-quantity">3</div>
+        <input type="number" class="restock-quantity" value="0">
+        <div class="placed">2022/12/25</div>
+        <div class="status-and-order">
+          <div class="status">Complete</div>
+          <button class="order-btn">Order</button>
+        </div>
+      </div>
+
+      <div class="content-row">
+        <div class="product-no">1.</div>
+        <div class="product-name">name</div>
+        <div class="supplier-name">Supplier name</div>
+        <div class="remaining-quantity">3</div>
+        <input type="number" class="restock-quantity" value="0">
+        <div class="placed">2022/12/25</div>
+        <div class="status-and-order">
+          <div class="status">Complete</div>
+          <button class="order-btn">Order</button>
+        </div>
+      </div>
+      
+      <div class="content-row">
+        <div class="product-no">1.</div>
+        <div class="product-name">name</div>
+        <div class="supplier-name">Supplier name</div>
+        <div class="remaining-quantity">3</div>
+        <input type="number" class="restock-quantity" value="0">
+        <div class="placed">2022/12/25</div>
+        <div class="status-and-order">
+          <div class="status">Complete</div>
+          <button class="order-btn">Order</button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="footer">
@@ -92,7 +133,7 @@
       <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
     </div>
   </section>
-
+  
   <div class="logout-pop-up">
     <div class="logout-upper-row">
       <div>
@@ -113,16 +154,7 @@
       <button class="logout-no-btn">No</button>
     </div>
   </div>
-
-  <div class="out-of-stock-popup">
-    <img src="/image/info.png" class="info-image">
-    <h1 class="out-of-stock-header">Out of stock</h1>
-    <p class="out-of-stock-message">Some products in low quantity</p>
-    <button class="ok-btn">Done</button>
-  </div>
-
   <script src="/JavaScript/general.js"></script>
-  <script src="/JavaScript/inventory.js"></script>
-  <script src="/JavaScript/timer.js"></script>
+  <script src="/JavaScript/restock.js"></script>
 </body>
 </html>
