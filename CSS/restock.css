@@ -1,0 +1,108 @@
+.whole-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+.return-row {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.return-icon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.restock-main-content {
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main-content-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-content-box > *{
+  flex: 1;
+}
+
+.first-column div{
+  display: flex;
+  margin-top: 1rem;
+}
+
+.first-column input,
+.supplier-name,
+.supplier-location{
+  width: 20rem;
+  padding: .1rem .3rem;
+  margin-left: .2rem;
+}
+
+.supplier-location {
+  resize: none;
+}
+
+/* Colon */
+
+.supplier-name-colon {
+  margin-left: 3.4rem;
+}
+
+.supplier-location-colon {
+  margin-left: 3.1rem;
+}
+
+.invoice-no-colon {
+  margin-left: 2.2rem;
+}
+
+.restock-fee-colon {
+  margin-left: 1.4rem;
+}
+
+.placed-date-colon {
+  margin-left: 1.5rem;
+}
+
+.received-date-colon {
+  margin-left: .3rem;
+}
+
+/* End */
+
+.button-box {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.8rem;
+}
+
+.button-box button {
+  font-weight: bold;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+}
+
+.clear-all-btn {
+  background-color: red;
+  padding: .2rem 1rem;
+}
+
+.confirm-and-save-btn {
+  background-color: #F65446;
+  width: 12rem;
+  height: 3rem;
+}

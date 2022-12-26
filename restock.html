@@ -37,10 +37,16 @@
     </div>
   </section>
 
+
   <div class="whole-screen">
+    <div class="return-row">
+      <img src="/image/return.png" class="return-icon">
+      <hr>
+    </div>
     <section class="restock-main-content">
       <div class="main-content-box">
         <div class="first-column">
+          <h1 class="first-column-header">Restock Information</h1>
           <div class="supplier-name-box">
             <label for="supplier-name">Supplier <span class="supplier-name-colon">:</span></label>
             <select name="supplier-name" id="supplier-name" class="supplier-name">
@@ -48,6 +54,14 @@
               <option value="supplier-2">Supplier 2</option>
               <option value="supplier-3">Supplier 3</option>
             </select>
+          </div>
+          <div class="supplier-phone-number-box">
+            <label for="supplier-phone-number">Phone Number <span class="supplier-phone-number-colon">:</span></label>
+            <input type="text" class="supplier-phone-number" id="supplier-phone-number" name="suppllier-phone-number">
+          </div>
+          <div class="supplier-location-box">
+            <label for="supplier-location">Location <span class="supplier-location-colon">:</span></label>
+            <textarea name="supplier-location" id="supplier-location" class="supplier-location"></textarea>
           </div>
           <div class="invoice-no-box">
             <label for="invoice-no">Invoice No <span class="invoice-no-colon">:</span></label>
@@ -58,16 +72,44 @@
             <input type="text" class="restock-fee" id="restock-fee" name="restock-fee">
           </div>
           <div class="placed-date-box">
-            <label for="placed-date">Placed <span class="placed-date-colon">:</span></label>
-            <input type="text" class="placed-date" id="placed-date" name="placed-date">
+            <label for="placed-date">Placed Date<span class="placed-date-colon">:</span></label>
+            <input type="date" class="placed-date" id="placed-date" name="placed-date">
           </div>
           <div class="received-date-box">
-            <label for="received-date">Received <span class="received-date-colon">:</span></label>
-            <input type="text" class="received-date" id="received-date" name="received-date">
+            <label for="received-date">Received Date<span class="received-date-colon">:</span></label>
+            <input type="date" class="received-date" id="received-date" name="received-date">
           </div>
         </div>
         <div class="second-column">
-          
+          <h1 class="second-column-header">Restock Product</h1>
+          <div class="search-row">
+            <input type="text" placeholder="Product Name / Barcode" id="search-bar">
+            <div class="suggested-product-box"></div>
+            <select name="category" id="category" class="category-box">
+              <option value="all" selected>All Category</option>
+              <option value="food">Food</option>
+              <option value="drink">Drink</option>
+              <option value="daily-supplies">Daily Supplies</option>
+              <option value="bread">Bread</option>
+              <option value="biskuit">Biskuit</option>
+              <option value="noodle">Noodle</option>
+              <option value="Rice">Rice</option>
+            </select>
+          </div>
+          <div class="title-row">
+            <div class="product-no-title">No.</div>
+            <div class="product-name-title">Name</div>
+            <div class="product-quantity-title">Qtr</div>
+            <div class="product-price">Price</div>
+          </div>
+          <div class="content-container">
+            <div class="content-row">
+              <div class="product-no">1.</div>
+              <div class="product-name">Coke</div>
+              <input type="number" class="product-quantity" value="0">
+              <div class="produt-price">RM 1.00</div>
+            </div>  
+          </div>
         </div>
       </div>
       <div class="button-box">
