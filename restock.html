@@ -53,6 +53,8 @@
               <option value="supplier-1">Supplier 1</option>
               <option value="supplier-2">Supplier 2</option>
               <option value="supplier-3">Supplier 3</option>
+              <option value="supplier-4">Supplier 4</option>
+              <option value="supplier-5">Supplier 5</option>
             </select>
           </div>
           <div class="supplier-phone-number-box">
@@ -81,19 +83,22 @@
           </div>
         </div>
         <div class="second-column">
-          <h1 class="second-column-header">Restock Product</h1>
+          <div class="header-row">
+            <h1 class="second-column-header">Restock Product</h1>
+            <div class="restock-history-row">
+              <img src="/image/history.png" class="history-icon">
+              <div class="restock-history">Restock History</div>
+            </div>
+          </div>
           <div class="search-row">
             <input type="text" placeholder="Product Name / Barcode" id="search-bar">
             <div class="suggested-product-box"></div>
             <select name="category" id="category" class="category-box">
-              <option value="all" selected>All Category</option>
-              <option value="food">Food</option>
-              <option value="drink">Drink</option>
-              <option value="daily-supplies">Daily Supplies</option>
-              <option value="bread">Bread</option>
-              <option value="biskuit">Biskuit</option>
-              <option value="noodle">Noodle</option>
-              <option value="Rice">Rice</option>
+              <option value="supplier-1" selected>Supplier 1</option>
+              <option value="supplier-2">Supplier 2</option>
+              <option value="supplier-3">Supplier 3</option>
+              <option value="supplier-4">Supplier 4</option>
+              <option value="supplier-5">Supplier 5</option>
             </select>
           </div>
           <div class="title-row">
@@ -228,6 +233,7 @@
       </button>
       <button class="logout-no-btn">No</button>
     </div>
+    <script src="/JavaScript/restock.js"></script>
   </div>
 </body>
 </html>

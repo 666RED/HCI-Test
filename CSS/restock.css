@@ -1,3 +1,12 @@
+.inventory-btn {
+  color: rgba(211, 211, 211, 0.779);
+}
+
+.checkout-btn:hover,
+.report-btn:hover {
+  background-color: rgba(255, 255, 255, .5);
+}
+
 .whole-screen {
   position: fixed;
   top: 0;
@@ -58,6 +67,7 @@
 
 .supplier-location {
   resize: none;
+  height: 4.1rem;
 }
 
 /* Colon */
@@ -67,7 +77,7 @@
 }
 
 .supplier-location-colon {
-  margin-left: 3.1rem;
+  margin-left: 3.2rem;
 }
 
 .invoice-no-colon {
@@ -75,15 +85,15 @@
 }
 
 .restock-fee-colon {
-  margin-left: 1.4rem;
-}
-
-.placed-date-colon {
   margin-left: 1.5rem;
 }
 
+.placed-date-colon {
+  margin-left: 1.6rem;
+}
+
 .received-date-colon {
-  margin-left: .3rem;
+  margin-left: .4rem;
 }
 
 /* End */
@@ -119,6 +129,32 @@
 .second-column {
   display: flex;
   flex-direction: column;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restock-history-row {
+  display: flex;
+  align-items: center;
+}
+
+.history-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: .2rem;
+}
+
+.restock-history {
+  cursor: pointer;
+  color: blue;
+  margin-right: 2rem;
+  text-decoration: underline;
+  text-decoration-color: blue;
+  text-underline-offset: .4rem;
 }
 
 .search-row {
