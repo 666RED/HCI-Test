@@ -1,28 +1,27 @@
 const id = document.querySelector('.id-input');
 const password = document.querySelector('.password-input');
-const confirmedPassword = document.querySelector('.confirmed-password-input');
 const idErrorBox = document.querySelector('.id-error-box');
 const passwordErrorBox = document.querySelector('.password-error-box');
-const confirmedPasswordErrorBox = document.querySelector('.confirmed-password-error-box');
-const registerButton = document.querySelector('.register-btn');  
-const wholeScreen = document.querySelector('body');
-const blur = document.querySelector('.whole-screen');
-const successfulPopup = document.querySelector('.successful-popup');
-const doneButton = document.querySelector('.done-btn');
+const nextButton = document.querySelector('.next-btn');
+const viewPasswordButton = document.querySelector('.view-password-btn');
 
-const userArr = JSON.parse(localStorage.getItem('User')) || [];
+const shopOwnerArr = JSON.parse(localStorage.getItem('Owner'));
 
-doneButton.addEventListener('click', () => {
-  successfulPopup.classList.remove('open-popup');
-  blur.classList.remove('active');
-  window.location.href = 'index.html';
+viewPasswordButton.addEventListener('click', () => {
+  password.type === 'password' ? password.type = 'text' : password.type = 'password';
+});
+
+nextButton.addEventListener('click', () => {
+  validation();
 });
 
 const validation = () => {
 
   let emptyIdInput = true;
   let emptyPasswordInput = true;
-  let emptyConfirmedPasswordInput = true;
+
+  let validIdInput = false;
+  let validPasswordInput = false;
 
   if(id.value === ''){
     idErrorBox.style.display = 'block';
@@ -40,14 +39,6 @@ const validation = () => {
     emptyPasswordInput = false;
   }
 
-  if(confirmedPassword.value === ''){
-    confirmedPasswordErrorBox.style.display = 'block';
-    confirmedPasswordErrorBox.innerText = 'Required*';
-  }else{
-    confirmedPasswordErrorBox.style.display = 'none';
-    emptyConfirmedPasswordInput = false;
-  }
-
   if(!emptyIdInput){
     if(isNaN(Number(id.value))){
       idErrorBox.style.display = 'block';
@@ -57,37 +48,25 @@ const validation = () => {
       idErrorBox.style.display = 'block';
       idErrorBox.innerText = 'Must be in 4 digits';
       id.value = '';
+    }else if(id.value != shopOwnerArr[0].id){
+      idErrorBox.style.display = 'block';
+      idErrorBox.innerText = 'Id doesn\'t exist';
     }else {
-      for(let i = 0; i < userArr.length; i++){
-        if(id.value === userArr[i].id){
-          idErrorBox.style.display = 'block';
-          idErrorBox.innerText = 'User already existed';
-          id.value = '';
-          return;
-        }
-      }
+      validIdInput = true;
     }
   }
 
-  if(!emptyPasswordInput && !emptyConfirmedPasswordInput){
-    if(password.value !== confirmedPassword.value){
-      confirmedPasswordErrorBox.style.display = 'block';
-      confirmedPasswordErrorBox.innerText = 'Passwords are not the same';
-    }else if(!emptyIdInput){
-      registerNewUser(id.value, password.value);
+  if(!emptyPasswordInput && validIdInput){
+    if(password.value != shopOwnerArr[0].password){
+      passwordErrorBox.style.display = 'block';
+      passwordErrorBox.innerText = 'Incorrect Password';
+      password.value = '';
+    }else {
+      validPasswordInput = true;
     }
   }
+
+  if(validIdInput && validPasswordInput){
+    window.location.href = 'register-employee.html';
+  }
 };
-
-const registerNewUser = (id, password) => {
-  userArr.push({
-    id,
-    password
-  });
-
-  localStorage.setItem('User', JSON.stringify(userArr));
-  blur.classList.add('active');
-  successfulPopup.classList.add('open-popup');
-};
-
-registerButton.addEventListener('click', validation);

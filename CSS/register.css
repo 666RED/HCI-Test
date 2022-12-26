@@ -1,0 +1,172 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eeeef4;
+}
+
+.whole-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-name {
+  color: #EB2828;
+  -webkit-text-stroke: .05rem black;
+  font-weight: bold;
+  text-shadow: 2px 2px 3px black;
+  font-size: 2.5rem;
+}
+
+.form-container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: .1rem solid rgba(150, 150, 150, .5);
+  border-radius: .5rem;
+  overflow: hidden;
+  box-shadow: 1px 1.2px 1px lightgrey, -1px 1.2px 1px lightgrey;
+  width: 25rem;
+}
+
+.title-row {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+}
+
+.title-row button {
+  background-color: white;
+  flex: 1;
+}
+
+.register {
+  color: #D81919;
+  border: none;
+  margin: 0 .5rem;
+  padding: 1rem 0;
+  border-bottom: 0.15rem solid #D81919;
+}
+
+.login {
+  border: none;
+  outline: .1rem solid rgba(150, 150, 150, .5);
+}
+
+.login a {
+  text-decoration: none;
+  color: rgb(150, 150, 150);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.login:hover a{
+  color: black;
+  background-color: rgb(231, 231, 231);
+}
+
+.info-section {
+  padding: 0 .8rem;
+}
+
+.star {
+  color: red;
+  font-size: 1rem;
+}
+
+.id-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.id-error-box {
+  display: none;
+  font-size: .8rem;
+  color: red;
+  margin-left: .5rem;
+  margin-top: .2rem;
+}
+
+.password-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.id-box input,
+.password-box input {
+  padding: 1rem;
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: .2rem;
+}
+
+.id-box label,
+.password-box label {
+  font-size: .8rem;
+  margin-bottom: .3rem;
+}
+
+.view-password-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: .5rem;
+}
+
+.view-password-btn {
+  width: 1rem;
+  height: 1rem;
+  border: 0.1rem solid rgb(150, 150, 150);
+  border-radius: .2rem;
+  margin-right: .5rem;
+}
+
+.view-password-text {
+  font-size: .8rem;
+}
+
+.password-error-box {
+  display: none;
+  font-size: .8rem;
+  margin-left: .5rem;
+  color: red;
+}
+
+.next-btn {
+  width: 5rem;
+  padding: .5rem .5rem;
+  margin-top: 4rem;
+  margin-left: 9rem;
+  margin-bottom: 1rem;
+  background-color: #5d5858;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: .5rem;
+}
+
+.next-btn:hover {
+  opacity: .7;
+}

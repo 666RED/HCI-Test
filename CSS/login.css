@@ -87,10 +87,12 @@ body {
   width: 100%;
   border: none;
   color: rgb(150, 150, 150);
+  cursor: pointer;
 }
 
 .register:hover{
   color: black;
+  background-color: rgb(231, 231, 231);
 }
 
 .options {

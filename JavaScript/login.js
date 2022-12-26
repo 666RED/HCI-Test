@@ -5,24 +5,38 @@ const viewPasswordButton = document.querySelector('.view-password-btn');
 const idErrorBox = document.querySelector('.id-error-box');
 const passwordErrorBox = document.querySelector('.password-error-box');
 const passwordBox = document.querySelector('.password-box');
-const ownerRegister = document.querySelector('.owner-option');
-const employeeRegister = document.querySelector('.employee-option');
 const radioButtons = document.getElementsByName('staff')
 const errorPopup = document.querySelector('.error-pop-up');
 const okBtn = document.querySelector('.error-ok-btn');
 const cancelBtn = document.querySelector('.error-cancel-img');
 const errorMessage = document.querySelector('.error-message');
 const forgetPassword = document.querySelector('.forget-password-text');
+const register = document.querySelector('.register');
 
-const shopOwnerArr = JSON.parse(localStorage.getItem('Owner')) || [];
+const shopOwnerArr = [];
+shopOwnerArr.push({
+  id:'1234',
+  password:'qwer',
+  phoneNumber:'01110789940'
+});
+localStorage.setItem('Owner', JSON.stringify(shopOwnerArr));
+
 const employeeArr = JSON.parse(localStorage.getItem('Employee')) || [];
 
+register.addEventListener('click', () => {
+  window.location.href = 'register.html';
+});
+
 forgetPassword.addEventListener('click', () => {
-  if(shopOwnerArr.length == 0 && employeeArr.length == 0){
+  const radioResult = radioSelect();
+
+  if(radioResult == 'employee' && employeeArr.length != 0){
+    window.location.href = 'reset-password.html';
+  }else if(radioResult == 'shop-owner'){
+    window.location.href = 'reset-password.html';
+  }else{
     errorPopup.classList.add('open-popup');
     errorMessage.innerText = 'No staff registered';
-  }else{
-    window.location.href = 'reset-password.html';
   }
 });
 
@@ -42,33 +56,6 @@ okBtn.addEventListener('click', () => {
 
 cancelBtn.addEventListener('click', () => {
   errorPopup.classList.remove('open-popup');
-});
-
-ownerRegister.addEventListener('click', () => {
-  const radioResult = radioSelect();
-  if(radioResult == 'employee'){
-    errorPopup.classList.add('open-popup');
-    errorMessage.textContent = 'You don\'t have permission to do this';
-  }else if(shopOwnerArr.length != 0){
-    errorPopup.classList.add('open-popup');
-    errorMessage.textContent = 'Already registered';
-  }else {
-    window.location.href = 'register-owner.html';
-  }
-});
-
-employeeRegister.addEventListener('click', () => {
-  const radioResult = radioSelect();
-  if(radioResult == 'employee'){
-    errorPopup.classList.add('open-popup');
-    errorMessage.textContent = 'You don\'t have permission to do this';
-  }else if(shopOwnerArr.length == 0){
-    errorPopup.classList.add('open-popup');
-    errorMessage.textContent = 'Register a shop owner first';
-  }
-  else{
-    window.location.href = 'register-employee.html';
-  }
 });
 
 viewPasswordButton.addEventListener('click', () => {
@@ -122,7 +109,7 @@ const validation = () => {
     }
   }
 
-  if(!emptyPassword){
+  if(!emptyPassword && validId){
     if(radioResult == 'shop-owner'){
       if(password.value == shopOwnerArr[0].password){
         validPassword = true;
