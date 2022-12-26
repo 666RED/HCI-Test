@@ -25,15 +25,22 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .main-content-box {
   display: flex;
   flex-direction: row;
+  flex: 1;
 }
 
-.main-content-box > *{
-  flex: 1;
+.first-column {
+  width: 40%;
+}
+
+.second-column {
+  width: 60%;
 }
 
 .first-column div{
@@ -83,8 +90,10 @@
 
 .button-box {
   display: flex;
+  width: 100%;
   justify-content: space-between;
-  margin-top: 2.8rem;
+  bottom: 4.5rem;
+  position: absolute;
 }
 
 .button-box button {
@@ -105,4 +114,112 @@
   background-color: #F65446;
   width: 12rem;
   height: 3rem;
+}
+
+.second-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+#search-bar {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png');
+  background-size: 1rem;
+  background-position: left;
+  background-position-x: .5rem;
+  background-repeat: no-repeat;
+
+  padding: .2rem 2rem;
+  border: 1px solid grey;
+  border-radius: 1rem;
+  width: 20rem;
+  margin-right: 1rem;
+}
+
+.content-container {
+  height: 15rem;
+  overflow: auto;
+}
+
+.title-row,
+.content-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.title-row {
+  margin-top: 1rem;
+  background-color: #A8A8A8;
+  font-weight: bold;
+}
+
+.content-row {
+  height: 2rem;
+  background-color: white;
+}
+
+.content-row > * {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-no-title,
+.product-no {
+  width: 2rem;
+  text-align: center;
+}
+
+.product-name-title,
+.product-name {
+  justify-content: flex-start;
+  flex: 1;
+  text-indent: .5rem  ;
+}
+
+.product-quantity-title,
+.product-quantity-row {
+  width: 6rem;
+  text-align: center;
+}
+
+.product-quantity-row {
+  display: flex;
+  justify-content: space-evenly;
+  border-right: .1rem solid #A8A8A8;
+  border-left: .1rem solid #A8A8A8;
+}
+
+.product-quantity {
+  width: 2rem;
+  text-align: center;
+  border: none;
+}
+
+.product-quantity::-webkit-outer-spin-button,
+.product-quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.product-price-title,
+.product-price {
+  width: 7rem;
+  text-align: center;
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.product-no {
+  background-color:rgb(206, 205, 205);
 }
