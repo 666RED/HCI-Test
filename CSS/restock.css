@@ -178,7 +178,7 @@
 }
 
 .content-container {
-  height: 15rem;
+  max-height: 16rem;
   overflow: auto;
 }
 
@@ -195,7 +195,7 @@
 }
 
 .content-row {
-  height: 2rem;
+  height: 2.5rem;
   background-color: white;
 }
 
@@ -246,7 +246,7 @@
 
 .product-price-title,
 .product-price {
-  width: 7rem;
+  width: 8rem;
   text-align: center;
 }
 
