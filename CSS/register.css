@@ -91,6 +91,22 @@ body {
   padding: 0 .8rem;
 }
 
+.info-message {
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.info-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: .5rem;
+  margin-top: .2rem;
+}
+
+.info-message p {
+  font-size: .8rem;
+}
+
 .star {
   color: red;
   font-size: 1rem;
