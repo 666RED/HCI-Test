@@ -93,101 +93,33 @@
           <div class="search-row">
             <input type="text" placeholder="Product Name / Barcode" id="search-bar">
             <div class="suggested-product-box"></div>
-            <select name="category" id="category" class="category-box">
-              <option value="supplier-1" selected>Supplier 1</option>
-              <option value="supplier-2">Supplier 2</option>
-              <option value="supplier-3">Supplier 3</option>
-              <option value="supplier-4">Supplier 4</option>
-              <option value="supplier-5">Supplier 5</option>
-            </select>
           </div>
           <div class="title-row">
             <div class="product-no-title">No.</div>
             <div class="product-name-title">Name</div>
             <div class="product-quantity-title">Qtr</div>
+            <div class="unit-title">Unit</div>
             <div class="product-price-title">Price</div>
           </div>
           <div class="content-container">
-            <div class="content-row">
+            <!-- <div class="content-row">
               <div class="product-no">1.</div>
-              <div class="product-name">Coke</div>
+              <div class="product-name-row">
+                <div class="product-name">Coke</div>
+                <img src="/image/dustbin.png" class="remove-icon">
+              </div>
               <div class="product-quantity-row">
                 <img src="/image/minus.png" class="decrease-icon icon">
                 <input type="number" class="product-quantity" value="1">
                 <img src="/image/plus.png" class="increase-quantity icon">
               </div>
+              <div class="product-unit">Box</div>
               <div class="product-price">RM 1.00</div>
-            </div> 
-            <div class="content-row">
-              <div class="product-no">1.</div>
-              <div class="product-name">Coke</div>
-              <div class="product-quantity-row">
-                <img src="/image/minus.png" class="decrease-icon icon">
-                <input type="number" class="product-quantity" value="1">
-                <img src="/image/plus.png" class="increase-quantity icon">
-              </div>
-              <div class="product-price">RM 1.00</div>
-            </div>
-            <div class="content-row">
-              <div class="product-no">1.</div>
-              <div class="product-name">Coke</div>
-              <div class="product-quantity-row">
-                <img src="/image/minus.png" class="decrease-icon icon">
-                <input type="number" class="product-quantity" value="1">
-                <img src="/image/plus.png" class="increase-quantity icon">
-              </div>
-              <div class="product-price">RM 1.00</div>
-            </div>
-            <div class="content-row">
-              <div class="product-no">1.</div>
-              <div class="product-name">Coke</div>
-              <div class="product-quantity-row">
-                <img src="/image/minus.png" class="decrease-icon icon">
-                <input type="number" class="product-quantity" value="1">
-                <img src="/image/plus.png" class="increase-quantity icon">
-              </div>
-              <div class="product-price">RM 1.00</div>
-            </div>
-            <div class="content-row">
-              <div class="product-no">1.</div>
-              <div class="product-name">Coke</div>
-              <div class="product-quantity-row">
-                <img src="/image/minus.png" class="decrease-icon icon">
-                <input type="number" class="product-quantity" value="1">
-                <img src="/image/plus.png" class="increase-quantity icon">
-              </div>
-              <div class="product-price">RM 1.00</div>
-            </div>
-            <div class="content-row">
-              <div class="product-no">1.</div>
-              <div class="product-name">Coke</div>
-              <div class="product-quantity-row">
-                <img src="/image/minus.png" class="decrease-icon icon">
-                <input type="number" class="product-quantity" value="1">
-                <img src="/image/plus.png" class="increase-quantity icon">
-              </div>
-              <div class="product-price">RM 1.00</div>
-            </div>
-            <div class="content-row">
-              <div class="product-no">1.</div>
-              <div class="product-name">Coke</div>
-              <div class="product-quantity-row">
-                <img src="/image/minus.png" class="decrease-icon icon">
-                <input type="number" class="product-quantity" value="1">
-                <img src="/image/plus.png" class="increase-quantity icon">
-              </div>
-              <div class="product-price">RM 1.00</div>
-            </div>
-            <div class="content-row">
-              <div class="product-no">1.</div>
-              <div class="product-name">Coke</div>
-              <div class="product-quantity-row">
-                <img src="/image/minus.png" class="decrease-icon icon">
-                <input type="number" class="product-quantity" value="1">
-                <img src="/image/plus.png" class="increase-quantity icon">
-              </div>
-              <div class="product-price">RM 1.00</div>
-            </div>
+            </div>  -->
+          </div>
+          <div class="total-row">
+            <div class="total-text">Total :</div>
+            <div class="total-price">RM 50.00</div>
           </div>
         </div>
       </div>
@@ -232,6 +164,43 @@
         <a href="index.html" class="logout-yes-link">Yes</a>
       </button>
       <button class="logout-no-btn">No</button>
+    </div>
+  </div>
+
+  <div class="error-pop-up">
+    <div class="error-upper-row">
+      <div>
+        <img src="/image/warning.png" class="error-danger-img">
+      </div>
+      <p>ERROR</p>
+      <div>
+        <img src="/image/remove.png" class="error-cancel-img">
+      </div>
+    </div>
+    <div class="error-message-row">
+      <p class="error-message">hello</p>
+    </div>
+    <div class="error-btn-row">
+      <button class="error-ok-btn">Ok</button>
+    </div>
+  </div>
+
+  <div class="remove-product-pop-up">
+    <div class="remove-product-upper-row">
+      <div>
+        <img src="/image/warning.png" class="remove-product-danger-img">
+      </div>
+      <p>REMOVE PRODUCT</p>
+      <div>
+        <img src="/image/remove.png" class="remove-product-cancel-img">
+      </div>
+    </div>
+    <div class="remove-product-message-row">
+      <p>Do you want to remove this product?</p>
+    </div>
+    <div class="remove-product-btn-row">
+      <button class="remove-product-yes-btn">Yes</button>
+      <button class="remove-product-no-btn">No</button>
     </div>
     <script src="/JavaScript/restock.js"></script>
   </div>

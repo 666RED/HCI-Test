@@ -100,7 +100,7 @@ searchBar.addEventListener('click', (e) => {
 
 function searchProduct(e) {
   let text = e.target;
-  suggestedProductBox.innerHTML = '';
+  suggestedProductBox.innerHTML = ''; 
   if(category.value == 'all'){
     for(let i = 0; i < tempArr.length; i++){
       const suggestedProduct = document.createElement('div'); 
@@ -295,7 +295,8 @@ function appendProduct(e) {
     const inputChanged = e.target;
     const container = inputChanged.parentElement.parentElement;
     if(inputChanged.value <= 0){
-      window.alert("Tha product quantity must be greater than 0");
+      errorPopupMenu.classList.add('open-popup');
+      errorMessage.innerText = "The product quantity must be greater than 0";
       inputChanged.value = 1;
     }
     updateSinglePrice(container);

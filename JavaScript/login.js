@@ -21,6 +21,76 @@ shopOwnerArr.push({
 });
 localStorage.setItem('Owner', JSON.stringify(shopOwnerArr));
 
+const supplierArr = [
+  {
+    name:'supplier-1',
+    phoneNumber:'1111111111',
+    location:'hello world'
+  },
+
+  {
+    name:'supplier-2',
+    phoneNumber:'2222222222',
+    location:'Parit Raja'
+  },
+
+  {
+    name:'supplier-3',
+    phoneNumber:'3333333333',
+    location:'UTHM'
+  },
+
+  {
+    name:'supplier-4',
+    phoneNumber:'4444444444',
+    location:'Batu Pahat'
+  },
+
+  {
+    name:'supplier-5',
+    phoneNumber:'5555555555',
+    location:'Johor'
+  },
+];
+
+localStorage.setItem('Supplier', JSON.stringify(supplierArr));
+
+const productArr = [
+  {
+    name:'100 Plus (x24)',
+    price:'50.00',
+    barcode:'1231231231234',
+    unit:'piece',
+    supplier:'supplier-1'
+  },
+
+  {
+    name:'Coke (x24)',
+    price:'60.00',
+    barcode:'1231231231235',
+    unit:'box',
+    supplier:'supplier-1'
+  },
+
+  {
+    name:'Orange Juice (x24)',
+    price:'30.00',
+    barcode:'1231231231236',
+    unit:'box',
+    supplier:'supplier-2'
+  },
+
+  {
+    name:'Sprite (x24)',
+    price:'100.00',
+    barcode:'1231231231237',
+    unit:'box',
+    supplier:'supplier-2'
+  }
+];
+
+localStorage.setItem('Supplier Product', JSON.stringify(productArr));
+
 const employeeArr = JSON.parse(localStorage.getItem('Employee')) || [];
 
 register.addEventListener('click', () => {
