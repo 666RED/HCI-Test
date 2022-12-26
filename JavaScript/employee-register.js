@@ -18,7 +18,7 @@ const shopOwnerArr = JSON.parse(localStorage.getItem('Owner')) || [];
 const employeeArr = JSON.parse(localStorage.getItem('Employee')) || [];
 
 returnIcon.addEventListener('click', () => {
-  window.location.href = 'index.html';  
+  window.location.href = 'register.html';  
 });
 
 doneButton.addEventListener('click', () => {

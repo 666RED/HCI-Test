@@ -4,6 +4,16 @@ const idErrorBox = document.querySelector('.id-error-box');
 const passwordErrorBox = document.querySelector('.password-error-box');
 const nextButton = document.querySelector('.next-btn');
 const viewPasswordButton = document.querySelector('.view-password-btn');
+const infoIcon = document.querySelector('.info-icon');
+const infoMessageText = document.querySelector('.info-message-text');
+
+infoIcon.addEventListener('mouseover', () => {
+  infoMessageText.style.visibility = 'visible';
+});
+
+infoIcon.addEventListener('mouseleave', () => {
+  infoMessageText.style.visibility = 'hidden';
+});
 
 const shopOwnerArr = JSON.parse(localStorage.getItem('Owner'));
 

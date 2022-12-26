@@ -151,7 +151,7 @@ const validation = () => {
     validPrice = false;
   }
 
-  if(!emptyCost && !emptyPrice && Number(productCost.value) == Number(productPrice.value)){
+  if(!emptyCost && !emptyPrice && Number(productCost.value) >= Number(productPrice.value)){
     priceError.style.display = 'block';
     priceError.innerText = 'Price should be greater than Cost';
     validPrice = false;

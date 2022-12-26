@@ -92,7 +92,7 @@ body {
 }
 
 .info-message {
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   display: flex;
 }
 
@@ -103,8 +103,9 @@ body {
   margin-top: .2rem;
 }
 
-.info-message p {
+.info-message-text {
   font-size: .8rem;
+  visibility: hidden;
 }
 
 .star {
@@ -173,7 +174,7 @@ body {
 .next-btn {
   width: 5rem;
   padding: .5rem .5rem;
-  margin-top: 4rem;
+  margin-top: 1.5rem;
   margin-left: 9rem;
   margin-bottom: 1rem;
   background-color: #5d5858;

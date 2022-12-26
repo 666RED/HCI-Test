@@ -17,6 +17,8 @@ const errorOkButton = document.querySelector('.error-ok-btn');
 const errorCancelButton = document.querySelector('.error-cancel-img');
 const errorMessage = document.querySelector('.error-message');
 const currentDate = new Date().getDate();
+const currentMonth = new Date().getMonth() + 1;
+const currentYear = new Date().getFullYear();
 
 const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 const tempArr = JSON.parse(localStorage.getItem('Inventory')) || [];
@@ -52,7 +54,9 @@ checkoutButton.addEventListener('click', () => {
       totalCost,
       payment:payment.value,
       change:change.innerText,
-      date:currentDate
+      date:currentDate,
+      month:currentMonth,
+      year:currentYear
     });
     sessionStorage.setItem('Purchased Product', JSON.stringify(purchasedArr));
     window.location.href = 'receipt.html';  

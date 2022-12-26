@@ -13,20 +13,19 @@ const successfulPopup = document.querySelector('.successful-popup');
 const doneButton = document.querySelector('.done-btn');
 
 const d = new Date();
-const currentDate = d.getDate();
-const currentMonth = d.getMonth() + 1;
-const currentYear = d.getFullYear();
 
 const inventoryArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 const productArr = JSON.parse(sessionStorage.getItem('Purchased Product'));
+productArr[productArr.length - 1].date = 1;
+
 let dailySalesArr = JSON.parse(localStorage.getItem('Daily Sales')) || [];
 let totalSalesArr = JSON.parse(localStorage.getItem('Total Sales')) || [];
 
-const receiptNo = dailySalesArr.length + 1;
 const preReceiptNo = dailySalesArr;
 
 window.onload = () => {
-  const lastElement = productArr[productArr.length - 1];
+  determineDate();
+  const receiptNo = dailySalesArr.length + 1; 
   receiptNoText.innerText = 'Receipt No: ' + receiptNo;
   receiptDate.innerText = 'Date: ' + d.toLocaleDateString();
   receiptTime.innerText = 'Time: ' + d.toLocaleTimeString();
@@ -90,26 +89,8 @@ doneButton.addEventListener('click', () => {
 });
 
 function saveData() {
-  if(dailySalesArr.length == 0){
-    dailySalesArr.push({productArr});
-    localStorage.setItem('Daily Sales', JSON.stringify(dailySalesArr));
-    return;
-  }
-  if(dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date !== productArr[productArr.length - 1].date){
-    dailySalesArr.push({
-      currentDate,
-      currentMonth,
-      currentYear
-    });
-    totalSalesArr.push({dailySalesArr});
-    localStorage.setItem('Total Sales', JSON.stringify(totalSalesArr));
-    dailySalesArr = [];
-    dailySalesArr.push({productArr});
-    localStorage.setItem('Daily Sales', JSON.stringify(dailySalesArr));
-  }else {
-    dailySalesArr.push({productArr});
-    localStorage.setItem('Daily Sales', JSON.stringify(dailySalesArr));
-  }
+  dailySalesArr.push({productArr});
+  localStorage.setItem('Daily Sales', JSON.stringify(dailySalesArr));
 }
 
 function decreaseInventory(){
@@ -122,4 +103,20 @@ function decreaseInventory(){
     }
   }
   localStorage.setItem('Inventory', JSON.stringify(inventoryArr));
+}
+
+function determineDate() {
+  if(dailySalesArr.length == 0){
+    return;
+  }
+  if(dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date != productArr[productArr.length - 1].date){
+    dailySalesArr.push({
+      currentDate:dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date,
+      currentMonth:dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).month,
+      currentYear:dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).year
+    });
+    totalSalesArr.push({dailySalesArr});
+    localStorage.setItem('Total Sales', JSON.stringify(totalSalesArr));
+    dailySalesArr = [];
+  }
 }

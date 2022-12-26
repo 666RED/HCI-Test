@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restock</title>
+  <title>Restock History</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/CSS/header.css">
   <link rel="stylesheet" href="/CSS/general.css">
-  <link rel="stylesheet" href="/CSS/restock.css">
+  <link rel="stylesheet" href="/CSS/header.css">
   <link rel="stylesheet" href="/CSS/footer.css">
+  <link rel="stylesheet" href="/CSS/restock-history.css">
 </head>
-
 <body>
   <section class="header">
     <div class="left-section">
@@ -37,46 +36,39 @@
     </div>
   </section>
 
-  <div class="whole-screen">
-    <section class="restock-main-content">
-      <div class="main-content-box">
-        <div class="first-column">
-          <div class="supplier-name-box">
-            <label for="supplier-name">Supplier <span class="supplier-name-colon">:</span></label>
-            <select name="supplier-name" id="supplier-name" class="supplier-name">
-              <option value="supplier-1">Supplier 1</option>
-              <option value="supplier-2">Supplier 2</option>
-              <option value="supplier-3">Supplier 3</option>
-            </select>
-          </div>
-          <div class="invoice-no-box">
-            <label for="invoice-no">Invoice No <span class="invoice-no-colon">:</span></label>
-            <input type="text" class="invoice-no" id="invoice-no" name="invoice-no">
-          </div>
-          <div class="restock-fee-box">
-            <label for="restock-fee">Restock Fee <span class="restock-fee-colon">:</span></label>
-            <input type="text" class="restock-fee" id="restock-fee" name="restock-fee">
-          </div>
-          <div class="placed-date-box">
-            <label for="placed-date">Placed <span class="placed-date-colon">:</span></label>
-            <input type="text" class="placed-date" id="placed-date" name="placed-date">
-          </div>
-          <div class="received-date-box">
-            <label for="received-date">Received <span class="received-date-colon">:</span></label>
-            <input type="text" class="received-date" id="received-date" name="received-date">
-          </div>
-        </div>
-        <div class="second-column">
-          
-        </div>
+  <img src="/image/return.png" class="return-icon">
+  <hr>
+
+  <section class="heading-row">
+    <h1>Restock History</h1>
+    <select name="category" id="category" class="category-box">
+      <option value="supplier-1" selected>Supplier 1</option>
+      <option value="supplier-2">Supplier 2</option>
+      <option value="supplier-3">Supplier 3</option>
+    </select>
+  </section>
+
+  <section class="main-content">
+    <div class="title-row">
+      <h3 class="no-title">No.</h3>
+      <h3 class="supplier-title">Supplier</h3>
+      <h3 class="invoice-no-title">Invoice No.</h3>
+      <h3 class="restock-fee-title">Restock Fee</h3>
+      <h3 class="placed-title">Placed</h3>
+      <h3 class="received-title">Received</h3>
+    </div>
+    <div class="content-container">
+      <div class="content-row">
+        <div class="invoice-no">1.</div>
+        <div class="supplier-name">Supplier name</div>
+        <div class="invoice-no">invoice no</div>
+        <div class="restock-fee">RM 3.00</div>
+        <div class="placed">2022/12/01</div>
+        <div class="received">2022/12/07</div>
       </div>
-      <div class="button-box">
-        <button class="clear-all-btn">Clear All</button>
-        <button class="confirm-and-save-btn">Confirm and Save</button>
-      </div>
-    </section>
-  </div>
-  
+    </div>
+  </section>
+
   <section class="footer">
     <div class="footer-upper-row">
       <div class="terms-of-use">
@@ -113,5 +105,7 @@
       <button class="logout-no-btn">No</button>
     </div>
   </div>
+  <script src="/JavaScript/general.js"></script>
+  <script src="/JavaScript/restock-history.js"></script>
 </body>
 </html>
