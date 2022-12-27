@@ -72,28 +72,28 @@
 
 /* Colon */
 
+.supplier-phone-number-colon {
+  margin-left: .3rem;
+}
+
 .supplier-name-colon {
-  margin-left: 3.4rem;
+  margin-left: 3.7rem;
 }
 
 .supplier-location-colon {
-  margin-left: 3.2rem;
+  margin-left: 3.5rem;
 }
 
 .invoice-no-colon {
-  margin-left: 2.2rem;
+  margin-left: 2.5rem;
 }
 
 .restock-fee-colon {
-  margin-left: 1.5rem;
+  margin-left: 1.8rem;
 }
 
 .placed-date-colon {
-  margin-left: 1.6rem;
-}
-
-.received-date-colon {
-  margin-left: .4rem;
+  margin-left: 1.2rem;
 }
 
 /* End */

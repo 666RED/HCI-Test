@@ -185,7 +185,7 @@ function appendProduct(e) {
       updateProductRow();
       updateTotalPrice();
       if(contentContainer.childElementCount == 0){
-        totalPrice.innerText = '';
+        totalPrice.innerText = 'RM 0.00';
       }
     }, {once:true});
   });

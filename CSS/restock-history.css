@@ -20,6 +20,13 @@
   align-items: center;
 }
 
+.supplier {
+  margin-left: 1.5rem;
+  padding: .1rem .5rem;
+  font-size: .9rem;
+  width: 9rem;
+}
+
 .category-box {
   margin-left: 1rem;
   padding: .1rem .5rem;
@@ -46,7 +53,7 @@
 }
 
 .content-container {
-  max-height: 23rem; /* can adjust */
+  max-height: 21rem; /* can adjust */
   overflow: auto;
   background-color: white;
 }
@@ -55,6 +62,7 @@
   display: flex;
   flex-direction: row;
   height: 3rem;
+  cursor: pointer;
 }
 
 .content-row:hover {
@@ -72,72 +80,44 @@
 }
 
 .no-title,
-.product-no {
+.no {
   width: 3rem;
   text-align: center;
 }
 
-.product-no {
+.no {
   background-color: #cecdcd;
-}
-
-.name-title,
-.product-name {
-  flex: 1;
-  min-width: 28rem;
-  text-indent: 1rem;
-}
-
-.product-name {
-  border-right: .1rem solid #A8A8A8;
-  justify-content: flex-start;
-  width: 100%;
-  cursor: pointer;
-}
-
-.remaining-quantity-title,
-.remaining-quantity,
-.restock-quantity-title,
-.restock-quantity,
-.placed-title,
-.placed {
-  text-align: center;
 }
 
 .supplier-title,
 .supplier-name {
+  flex: 1;
   min-width: 22rem;
   text-indent: 1rem;
 }
 
 .supplier-name {
-  border-right: .1rem solid #A8A8A8;
   justify-content: flex-start;
 }
 
-.remaining-quantity-title,
-.remaining-quantity {
+.invoice-no-title,
+.invoice-no {
+  text-align: center;
   width: 10rem;
 }
 
-.remaining-quantity {
+.invoice-no {
   border-right: .1rem solid #A8A8A8;
+  border-left: .1rem solid #A8A8A8;
 }
 
-.restock-quantity-title {
-  width: 10rem;
-}
-
-.restock-quantity {
-  font-size: 16px;
-  padding: 0;
-  width: 7.4rem;
-  border: none;
-}
-
-.restock-quantity::-webkit-outer-spin-button,
-.restock-quantity::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+.placed-title,
+.placed,
+.received-title,
+.received,
+.restock-fee-title,
+.restock-fee {
+  text-align: center;
 }
 
 .placed-title,
@@ -145,36 +125,17 @@
   width: 10rem;
 }
 
-.placed {
+.received-title,
+.received {
+  width: 10rem;
+}
+
+.received {
   border-right: .1rem solid #A8A8A8;
   border-left: .1rem solid #A8A8A8;
 }
 
-.status-title,
-.status-and-order {
-  width: 14rem;
-}
-
-.status-title {
-  padding-left: .5rem;
-}
-
-.status-and-order {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.status {
-  margin-left: .5rem;
-}
-
-.order-btn {
-  padding: .2rem .5rem;
-  border: none;
-  border-radius: 1rem;
-  background-color: orange;
-  color: white;
-  cursor: pointer;
-  margin-right: .5rem;
+.restock-fee-title,
+.restock-fee {
+  width: 10rem;
 }

@@ -1,0 +1,151 @@
+.inventory-btn {
+  color: rgba(211, 211, 211, 0.779);
+}
+
+.checkout-btn:hover,
+.report-btn:hover {
+  background-color: rgba(255, 255, 255, .5);
+}
+
+hr {
+  border-top: 1px solid gray;
+}
+
+.whole-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto; 
+}
+
+.invoice-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  min-width: 30rem;
+  max-width: 40rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: .5rem 1rem 1rem;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+}
+
+.header-text {
+  font-size: 1.6rem;
+}
+
+.return-icon {
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+}
+
+.supplier-info-box {
+
+}
+
+.supplier-name-box {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.invoice-info-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.invoice-info-box div {
+  margin-right: 2rem;
+}
+
+.supplier-location-box {
+  margin-bottom: 1rem;
+  max-width: 15rem;
+}
+
+.title-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 2rem;
+  font-weight: bold;
+}
+
+.content-row {
+  display: flex;
+  align-items: center;
+  min-height: 2rem;
+  height: 100%;
+}
+
+.content-row > * {
+  display: flex;
+}
+
+.no-title,
+.no {
+  width: 3rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.name-title,
+.name {
+  flex: 1;
+  min-width: 15rem;
+}
+
+.name-title {
+  text-indent: .5rem;
+}
+
+.name {
+  padding-left: .5rem ;
+}
+
+.quantity-title,
+.quantity {
+  width: 6rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.unit-title,
+.unit {
+  width: 5rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.price-title,
+.price {
+  width: 8rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.total-row {
+  padding-top: .5rem;
+  margin-top: .5rem;
+  border-top: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.total-price {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
