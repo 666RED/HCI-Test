@@ -16,12 +16,11 @@ const d = new Date();
 
 const inventoryArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 const productArr = JSON.parse(sessionStorage.getItem('Purchased Product'));
-productArr[productArr.length - 1].date = 1;
+productArr[productArr.length - 1].date = 6;
+productArr[productArr.length - 1].month = 12;
 
 let dailySalesArr = JSON.parse(localStorage.getItem('Daily Sales')) || [];
 let totalSalesArr = JSON.parse(localStorage.getItem('Total Sales')) || [];
-
-const preReceiptNo = dailySalesArr;
 
 window.onload = () => {
   determineDate();
@@ -107,9 +106,11 @@ function decreaseInventory(){
 
 function determineDate() {
   if(dailySalesArr.length == 0){
+    console.log('no product');
     return;
   }
   if(dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date != productArr[productArr.length - 1].date){
+    console.log('push');
     dailySalesArr.push({
       currentDate:dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date,
       currentMonth:dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).month,

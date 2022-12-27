@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/CSS/header.css">
   <link rel="stylesheet" href="/CSS/footer.css">
   <link rel="stylesheet" href="/CSS/report.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 
 <body>
@@ -41,7 +42,7 @@
     <div class="upper-row">
       <div class="header-title">Report</div>
       <div class="month-section">
-        <label for="month">Month :</label>
+        <label for="month">Month:</label>
         <input type="month" class="month" id="month" min="2022-01">
       </div>
       <div class="period-section">
@@ -82,8 +83,12 @@
         <div class="total-profit"></div>
       </div>
     </div>
-  </section>
 
+    <div class="graph-row">
+      <canvas id="my-chart"></canvas>
+    </div>
+  </section>
+<!-- 
   <section class="footer">
     <div class="footer-upper-row">
       <div class="terms-of-use">
@@ -98,7 +103,7 @@
     <div class="footer-bottom-row">
       <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
     </div>
-  </section>
+  </section> -->
 
   <div class="logout-pop-up">
     <div class="logout-upper-row">

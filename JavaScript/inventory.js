@@ -14,7 +14,13 @@ const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 
 okButton.addEventListener('click', () => {
   outOfStockPopup.classList.remove('open-popup');
+  localStorage.setItem('Timer', 1);
 });
+
+function removeTimer() {
+  console.log('hello');
+  localStorage.removeItem('Timer');
+}
 
 restockButton.addEventListener('click', () => {
   window.location.href = 'restock.html';
@@ -120,8 +126,7 @@ const displayInventory = () => {
 window.onload = () => {
   for(let i = 0; i < contentArr.length; i++){
     if(contentArr[i].notification >= contentArr[i].quantity && localStorage.getItem('Timer') == undefined){
-      localStorage.setItem('Timer', 1);
-      // outOfStockPopup.classList.add('open-popup');
+      outOfStockPopup.classList.add('open-popup');
     }
   }
   displayInventory();
