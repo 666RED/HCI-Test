@@ -77,7 +77,7 @@ function updateHistory(e) {
       const receivedDate = document.createElement('div');
       const restockFee = document.createElement('div');
 
-      no.innerText = numOfRow + '.';
+      no.innerText = i + 1 + '.';
       invoiceNo.innerText = restockArr[i].invoiceArr.slice(-1)[0].invoiceNo;
       supplierName.innerText = restockArr[i].invoiceArr.slice(-1)[0].supplierName;
       placedDate.innerText = restockArr[i].invoiceArr.slice(-1)[0].placedDate;
