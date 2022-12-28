@@ -6,7 +6,7 @@ const productCost = document.querySelector('.product-cost');
 const productPrice = document.querySelector('.product-price');
 const productBarcode = document.querySelector('.product-barcode');
 const productQuantity = document.querySelector('.quantity');
-const productSupplierName = document.querySelector('.item-supplier-name-textarea');
+const productSupplierName = document.querySelector('.supplier-name');
 const productSupplierPhoneNumber = document.querySelector('.item-supplier-phone-number-text');
 const productSupplierLocation = document.querySelector('.item-supplier-location-textarea');
 const productCategory = document.querySelector('.category-box');
@@ -29,6 +29,19 @@ const addedItem = document.querySelector('.added-item-popup');
 const doneButton = document.querySelector('.done-btn');
 
 const productArr = JSON.parse(localStorage.getItem('Inventory')) || [];
+const supplierArr = JSON.parse(localStorage.getItem('Supplier')) || [];
+
+productSupplierLocation.defaultValue = '43, Jalan Flora Utama 3, Taman Flora Utama, 83000 Batu Pahat, Johor';
+
+productSupplierName.addEventListener('change', () => {
+  for(let i = 0; i < supplierArr.length; i++){
+    if(productSupplierName.value == supplierArr[i].supplier){
+      productSupplierPhoneNumber.value = supplierArr[i].phoneNumber;
+      productSupplierLocation.value = supplierArr[i].location;
+      break;
+    }
+  }
+});
 
 outsideScreen.addEventListener('click', (e) => {
   if(!addedItem.contains(e.target) && addedItem.classList.contains('open-popup')){

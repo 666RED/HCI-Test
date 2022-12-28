@@ -79,11 +79,8 @@ function createElement(month) {
       const day = dailySalesArr.slice(-1)[0].currentDate;
       date.innerText = `${year}-${month}-${day}`;
 
-      date.addEventListener('click', () => {
-        window.location.href = 'daily-sales.html';
-      });
 
-      let totalCost = 0;
+            let totalCost = 0;
       let totalPrice = 0;
       for(let j = 0; j < dailySalesArr.length - 1; j++){
         const productArr = dailySalesArr[j].productArr;
@@ -111,6 +108,20 @@ function createElement(month) {
       dailyCost.innerText = 'RM ' + dailyTotalCost.toFixed(2);
       dailyPrice.innerText = 'RM ' + dailyTotalPrice.toFixed(2);
       dailyProfit.innerText = 'RM ' + dailyTotalProfit.toFixed(2);
+
+      date.addEventListener('click', () => {
+        const dateArr = [{
+          day,
+          month,
+          year,
+          cost:dateCost.innerText,
+          price:datePrice.innerText,
+          profit:dateProfit.innerText
+        }]
+        sessionStorage.setItem('Date', JSON.stringify(dateArr));
+        window.location.href = 'daily-sales.html';
+      });
+
 
       dateNumber++;
     }

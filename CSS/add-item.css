@@ -193,6 +193,16 @@
   margin-left: 3.1rem;
 }
 
+.supplier-name {
+  margin-left: .8rem;
+  padding: .5rem;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: .2rem;
+  font-size: .8rem;
+  width: 18rem;
+}
+
 .error-box {
   display: none;
   margin: 0 0 0 8.5rem;

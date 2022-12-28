@@ -53,9 +53,9 @@
 }
 
 .content-container {
-  max-height: 21rem; /* can adjust */
-  overflow: auto;
+  max-height: 21rem;
   background-color: white;
+  border-bottom: 1px solid #A8A8A8;
 }
 
 .content-row {
@@ -66,7 +66,7 @@
 }
 
 .content-row:hover {
-  background-color: #e1e2de;
+  background-color: #c6c7c3;
 }
 
 .content-row:hover .restock-quantity{
@@ -98,17 +98,14 @@
 
 .supplier-name {
   justify-content: flex-start;
+  border-right: .1rem solid #A8A8A8;
+  border-left: .1rem solid #A8A8A8;
 }
 
 .invoice-no-title,
 .invoice-no {
   text-align: center;
   width: 10rem;
-}
-
-.invoice-no {
-  border-right: .1rem solid #A8A8A8;
-  border-left: .1rem solid #A8A8A8;
 }
 
 .placed-title,

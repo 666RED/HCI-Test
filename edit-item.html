@@ -22,7 +22,7 @@
     </div>
     <div class="middle-section">
       <button class="checkout-btn">
-        <a href="checkout.html">Checkout</a>
+        <a href="checkout.html">Purchase</a>
       </button>
       <button class="inventory-btn">Inventory</button>
       <button class="report-btn">
@@ -46,7 +46,7 @@
         </a>
         <hr>
       </div>
-      <div class="page-title">Edit Product</div>
+      <div class="page-title">Manage Product</div>
       <div class="edit-item-form">
         <div class="item-detail">
           <div class="first-column">
@@ -73,13 +73,17 @@
             <div class="item-category">
               <label for="category" class="item-category">Category<span class="category-colon">:</span> </label>
               <select name="category" id="category" class="category-box">
-                <option value="drink">Drink</option>
+                <option value="beverage">Beverage</option>
                 <option value="food">Food</option>
                 <option value="daily-supplies">Daily Supplies</option>
                 <option value="bread">Bread</option>
-                <option value="biskuit">Biskuit</option>
-                <option value="noodle">Noodle</option>
-                <option value="Rice">Rice</option>
+                <option value="biscuit">Biscuit</option>
+                <option value="personal-care">Personal Care</option>
+                <option value="pet">Pet</option>
+                <option value="stationery">Stationery</option>
+                <option value="cleaning-supplies">Cleaning Supplies</option>
+                <option value="food-ingredient">Food Ingredient</option>
+                <option value="snack">Snack</option>
               </select>
             </div>
           </div>
@@ -90,8 +94,12 @@
               <div class="item-unit">
                 <label for="unit">Unit <span class="unit-colon">:</span> </label>
                 <select name="unit" id="unit" class="unit-box">
-                  <option value="piece">pc</option>
-                  <option value="box">box</option>
+                  <option value="piece">Piece</option>
+                  <option value="box">Box</option>
+                  <option value="bottle">Bottle</option>
+                  <option value="can">Can</option>
+                  <option value="packet">Packet</option>
+                  <option value="pack">Pack</option>
                 </select>
               </div>
             </div>
@@ -104,7 +112,13 @@
             <div class="notification-error-box second-column-error-box"></div>
             <div class="supplier-name-box">
               <label for="supplier-name">Supplier Name<span class="supplier-name-colon">:</span></label>
-              <textarea name="supplier-name" id="supplier-name" class="supplier-name textarea-box"></textarea>
+              <select name="supplier-name" id="supplier-name" class="supplier-name">
+                <option value="supplier-1">Happy Day Stationery Trading</option>
+                <option value="supplier-2">ROTINAS BAKERY & CONFECTIONERY SDN BHD</option>
+                <option value="supplier-3">Perniagaan Yong Soon Huat</option>
+                <option value="supplier-4">SRI DISTA EGG SUPPLY AND TRADING</option>
+                <option value="supplier-5">Pemborong Barang Barang Runcit Hse</option>
+              </select>
             </div>
             <div class="supplier-name-error-box second-column-error-box">hello</div>
             <div class="supplier-phone-number-box">
@@ -120,9 +134,8 @@
           </div>
         </div>
         <div class="button-row">
-          <button type="button" class="delete-btn btn">Delete Product</button>
           <button type="submit" class="save-btn btn">
-            <a class="save-link">Confirm and Save</a>
+            <a class="save-link">Edit and Save</a>
           </button>
         </div>
       </div>
@@ -164,32 +177,6 @@
       </button>
       <button class="logout-no-btn">No</button>
     </div>
-  </div>
-
-  <div class="delete-product-pop-up">
-    <div class="delete-product-upper-row">
-      <div>
-        <img src="/image/warning.png" class="delete-product-danger-img">
-      </div>
-      <p>DELETE PRODUCT</p>
-      <div>
-        <img src="/image/remove.png" class="delete-product-cancel-img">
-      </div>
-    </div>
-    <div class="delete-product-message-row">
-      <p>Do you want to delete this product?</p>
-    </div>
-    <div class="delete-product-btn-row">
-      <button class="delete-product-yes-btn">Yes</button>
-      <button class="delete-product-no-btn">No</button>
-    </div>
-  </div>
-
-  <div class="product-deleted-popup">
-    <img src="/image/verified.png" class="verified-image">
-    <h1 class="product-deleted-header">Deleted</h1>
-    <p class="product-deleted-message">Product Deleted Successfully</p>
-    <button class="done-btn">Done</button>
   </div>
 
   <div class="product-updated-popup">

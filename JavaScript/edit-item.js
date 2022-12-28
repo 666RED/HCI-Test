@@ -9,18 +9,11 @@ const supplierLocation = document.querySelector('.supplier-location');
 const productCategory = document.querySelector('.category-box');
 const productUnit = document.querySelector('.unit-box');
 const productNotification = document.querySelector('.notification');
-const deleteProductPopup = document.querySelector('.delete-product-pop-up');
 const wholeScreen = document.querySelector('.whole-screen');
-const productDeletedPopup = document.querySelector('.product-deleted-popup');
-const doneBtn = document.querySelector('.done-btn');
 const saveBtn = document.querySelector('.save-btn');
 const productUpdatedPopup = document.querySelector('.product-updated-popup');
 const productUpdatedDoneBtn = document.querySelector('.product-updated-done-btn');
 
-const deleteButton = document.querySelector('.delete-btn');
-const deleteYesBtn = document.querySelector('.delete-product-yes-btn');
-const deleteNoBtn = document.querySelector('.delete-product-no-btn');
-const deleteCancelBtn = document.querySelector('.delete-product-cancel-img');
 const outsideScreen = document.querySelector('.item-detail');
 
 const nameError = document.querySelector('.name-error-box');
@@ -35,6 +28,16 @@ const notificationError = document.querySelector('.notification-error-box');
 
 const singleProductArr = JSON.parse(sessionStorage.getItem('Product'));
 const productArr = JSON.parse(localStorage.getItem('Inventory'));
+const supplierArr = JSON.parse(localStorage.getItem('Supplier')) || [];
+
+supplierName.addEventListener('change', () => {
+  for(let i = 0; i < supplierArr.length; i++){
+    if(supplierName.value == supplierArr[i].supplier){
+      supplierPhoneNumber.value = supplierArr[i].phoneNumber;
+      supplierLocation.value = supplierArr[i].location;
+    }
+  }
+});
 
 outsideScreen.addEventListener('click', (e) => {
   if(!productUpdatedPopup.contains(e.target) && productUpdatedPopup.classList.contains('open-popup')){
@@ -61,29 +64,6 @@ const displayProductDetail = () => {
 
 window.onload = displayProductDetail();
 
-deleteButton.addEventListener('click', () => {
-  deleteProductPopup.classList.add('open-popup'); 
-});
-
-deleteYesBtn.addEventListener('click', () => {
-  deleteProductPopup.classList.remove('open-popup');
-  for(let i = 0; i < productArr.length; i++){
-    if(productArr[i].name == singleProductArr[0].name){
-      productArr.splice(i, 1);
-      localStorage.setItem('Inventory', JSON.stringify(productArr));
-      wholeScreen.classList.add('active');
-      productDeletedPopup.classList.add('open-popup'); 
-    }
-  }
-});  
-
-doneBtn.addEventListener('click', () => {
-  wholeScreen.classList.remove('active');
-  productDeletedPopup.classList.remove('open-popup');
-  sessionStorage.clear();
-  window.location.href = 'inventory.html';
-});
-
 productUpdatedDoneBtn.addEventListener('click', () => {
   wholeScreen.classList.remove('active');
   productUpdatedPopup.classList.remove('open-popup');
@@ -92,13 +72,6 @@ productUpdatedDoneBtn.addEventListener('click', () => {
 });
 
 saveBtn.addEventListener('click', validation);
-
-deleteNoBtn.addEventListener('click', closePopup);
-deleteCancelBtn.addEventListener('click', closePopup);
-
-function closePopup() {
-  deleteProductPopup.classList.remove('open-popup');
-};
 
 const updateProductDetail = (name, cost, price, barcode, quantity, category, unit, supplierName, supplierPhoneNumber, supplierLocation, notification) => {
   for(let i = 0; i < productArr.length; i++){

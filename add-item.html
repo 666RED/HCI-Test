@@ -20,7 +20,7 @@
     </div>
     <div class="middle-section">
       <button class="checkout-btn">
-        <a href="checkout.html">Checkout</a>
+        <a href="checkout.html">Purchase</a>
       </button>
       <button class="inventory-btn">Inventory</button>
       <button class="report-btn">
@@ -71,13 +71,17 @@
             <div class="item-category">
               <label for="category" class="item-category">Category<span class="category-colon">:</span> </label>
                 <select name="category" id="category" class="category-box">
-                  <option value="drink">Drink</option>
+                  <option value="beverage">Beverage</option>
                   <option value="food">Food</option>
                   <option value="daily-supplies">Daily Supplies</option>
                   <option value="bread">Bread</option>
-                  <option value="biskuit">Biskuit</option>
-                  <option value="noodle">Noodle</option>
-                  <option value="Rice">Rice</option>
+                  <option value="biscuit">Biscuit</option>
+                  <option value="personal-care">Personal Care</option>
+                  <option value="pet">Pet</option>
+                  <option value="stationery">Stationery</option>
+                  <option value="cleaning-supplies">Cleaning Supplies</option>
+                  <option value="food-ingredient">Food Ingredient</option>
+                  <option value="snack">Snack</option>
                 </select>
             </div>
           </div>
@@ -88,8 +92,12 @@
               <div class="item-unit">
                 <label for="unit">Unit <span class="unit-colon">:</span> </label>
                 <select name="unit" id="unit" class="unit-box">
-                  <option value="piece">pc</option>
-                  <option value="box">box</option>
+                  <option value="piece">Piece</option>
+                  <option value="box">Box</option>
+                  <option value="bottle">Bottle</option>
+                  <option value="can">Can</option>
+                  <option value="packet">Packet</option>
+                  <option value="pack">Pack</option>
                 </select>
               </div>
             </div>
@@ -102,18 +110,24 @@
             <div class="notification-error-box second-column-error-box"></div>
             <div class="item-supplier-name">
               <label for="item-supplier-name-textarea">Supplier Name<span class="supplier-name-colon">:</span></label>
-              <textarea name="item-supplier-name-textarea" id="item-supplier-name-textarea" class="item-supplier-name-textarea"></textarea>
+              <select name="supplier-name" id="supplier-name" class="supplier-name">
+                <option value="supplier-1">Happy Day Stationery Trading</option>
+                <option value="supplier-2">ROTINAS BAKERY & CONFECTIONERY SDN BHD</option>
+                <option value="supplier-3">Perniagaan Yong Soon Huat</option>
+                <option value="supplier-4">SRI DISTA EGG SUPPLY AND TRADING</option>
+                <option value="supplier-5">Pemborong Barang Barang Runcit Hse</option>
+              </select>
             </div>
             <div class="supplier-name-error-box second-column-error-box"></div> 
             <div class="item-supplier-phone-number">
               <label for="item-supplier-phone-number-text">Supplier Phone Number<span class="supplier-phone-number-colon">:</span></label>
-              <input type="tel" name="item-supplier-phone-number-text" id="item-supplier-phone-number-text" class="item-supplier-phone-number-text" placeholder="e.g. 01X-XXXXXXX">
+              <input type="tel" name="item-supplier-phone-number-text" id="item-supplier-phone-number-text" class="item-supplier-phone-number-text" value="014-6253191">
             </div>
             <div class="supplier-phone-number-error-box second-column-error-box"></div>
             <div class="item-supplier-location">
               <label for="item-supplier-location-textarea">Supplier Location<span class="supplier-location-colon">:</span></label>
               <textarea name="item-supplier-location-textarea" id="item-supplier-location-textarea"
-              class="item-supplier-location-textarea"></textarea>
+              class="item-supplier-location-textarea" ></textarea>
             </div>
             <div class="supplier-location-error-box second-column-error-box"></div>
           </div>

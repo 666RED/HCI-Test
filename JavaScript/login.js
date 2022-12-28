@@ -23,33 +23,38 @@ localStorage.setItem('Owner', JSON.stringify(shopOwnerArr));
 
 const supplierArr = [
   {
-    name:'supplier-1',
-    phoneNumber:'1111111111',
-    location:'hello world'
+    supplier:'supplier-1',
+    name:'Happy Day Stationery Trading',
+    phoneNumber:'014-6253191',
+    location:'43, Jalan Flora Utama 3, Taman Flora Utama, 83000 Batu Pahat, Johor'
   },
 
   {
-    name:'supplier-2',
-    phoneNumber:'2222222222',
-    location:'Parit Raja'
+    supplier:'supplier-2',
+    name:'ROTINAS BAKERY & CONFECTIONERY SDN BHD',
+    phoneNumber:'07-5114117',
+    location:'19, Jalan Wira 8, Taman Tan Sri Yacob, 81300 Skudai, Johor'
+  },
+
+  {   
+    supplier:'supplier-3',
+    name:'Perniagaan Yong Soon Huat',
+    phoneNumber:'0111-1977682',
+    location:'28, Jalan Dato Muthuthambi (Lorong 3), Tampoi, 80200 Johor Bahru, Johor'
   },
 
   {
-    name:'supplier-3',
-    phoneNumber:'3333333333',
-    location:'UTHM'
+    supplier:'supplier-4',
+    name:'SRI DISTA EGG SUPPLY AND TRADING',
+    phoneNumber:'07-7717261',
+    location:'29(Ground Floor, Jalan Langsat, Kampung Masjid Lama, 86000 Kluang, Johor'
   },
 
   {
-    name:'supplier-4',
-    phoneNumber:'4444444444',
-    location:'Batu Pahat'
-  },
-
-  {
-    name:'supplier-5',
-    phoneNumber:'5555555555',
-    location:'Johor'
+    supplier:'supplier-5',
+    name:'Pemborong Barang Barang Runcit Hse',
+    phoneNumber:'016-7112786',
+    location:'1-31, Jln Datin Halimah, Larkin Indah, 80350 Johor Bahru, Johor'
   },
 ];
 
@@ -61,7 +66,7 @@ const productArr = [
     price:'50.00',
     barcode:'1231231231234',
     unit:'piece',
-    supplier:'supplier-1'
+    supplier:'Happy Day Stationery Trading'
   },
 
   {
@@ -69,7 +74,7 @@ const productArr = [
     price:'60.00',
     barcode:'1231231231235',
     unit:'box',
-    supplier:'supplier-1'
+    supplier:'Happy Day Stationery Trading'
   },
 
   {
@@ -77,7 +82,7 @@ const productArr = [
     price:'30.00',
     barcode:'1231231231236',
     unit:'box',
-    supplier:'supplier-2'
+    supplier:'ROTINAS BAKERY & CONFECTIONERY SDN BHD'
   },
 
   {
@@ -85,7 +90,7 @@ const productArr = [
     price:'100.00',
     barcode:'1231231231237',
     unit:'box',
-    supplier:'supplier-2'
+    supplier:'ROTINAS BAKERY & CONFECTIONERY SDN BHD'
   }
 ];
 

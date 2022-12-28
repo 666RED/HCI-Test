@@ -16,7 +16,7 @@ const d = new Date();
 
 const inventoryArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 const productArr = JSON.parse(sessionStorage.getItem('Purchased Product'));
-productArr[productArr.length - 1].date = 6;
+productArr[productArr.length - 1].date = 4;
 productArr[productArr.length - 1].month = 12;
 
 let dailySalesArr = JSON.parse(localStorage.getItem('Daily Sales')) || [];

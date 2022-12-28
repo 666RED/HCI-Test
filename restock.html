@@ -21,7 +21,7 @@
     </div>
     <div class="middle-section">
       <button class="checkout-btn">
-        <a href="checkout.html">Checkout</a>
+        <a href="checkout.html">Purchase</a>
       </button>
       <button class="inventory-btn">Inventory</button>
       <button class="report-btn">
@@ -50,16 +50,16 @@
           <div class="supplier-name-box">
             <label for="supplier-name">Supplier <span class="supplier-name-colon">:</span></label>
             <select name="supplier-name" id="supplier-name" class="supplier-name">
-              <option value="supplier-1">Supplier 1</option>
-              <option value="supplier-2">Supplier 2</option>
-              <option value="supplier-3">Supplier 3</option>
-              <option value="supplier-4">Supplier 4</option>
-              <option value="supplier-5">Supplier 5</option>
+              <option value="Happy Day Stationery Trading">Happy Day Stationery Trading</option>
+              <option value="ROTINAS BAKERY & CONFECTIONERY SDN BHD">ROTINAS BAKERY & CONFECTIONERY SDN BHD</option>
+              <option value="Perniagaan Yong Soon Huat">Perniagaan Yong Soon Huat</option>
+              <option value="SRI DISTA EGG SUPPLY AND TRADING">SRI DISTA EGG SUPPLY AND TRADING</option>
+              <option value="Pemborong Barang Barang Runcit Hse">Pemborong Barang Barang Runcit Hse</option>
             </select>
           </div>
           <div class="supplier-phone-number-box">
             <label for="supplier-phone-number">Phone Number <span class="supplier-phone-number-colon">:</span></label>
-            <input type="text" class="supplier-phone-number" id="supplier-phone-number" name="suppllier-phone-number">
+            <input type="text" class="supplier-phone-number" id="supplier-phone-number" name="suppllier-phone-number" value="014-6253191">
           </div>
           <div class="supplier-location-box">
             <label for="supplier-location">Location <span class="supplier-location-colon">:</span></label>
@@ -71,7 +71,7 @@
           </div>
           <div class="restock-fee-box">
             <label for="restock-fee">Restock Fee <span class="restock-fee-colon">:</span></label>
-            <input type="text" class="restock-fee" id="restock-fee" name="restock-fee">
+            <input type="number" class="restock-fee" id="restock-fee" name="restock-fee" placeholder="RM" step="0.10">
           </div>
           <div class="placed-date-box">
             <label for="placed-date">Order Placed <span class="placed-date-colon">:</span></label>
@@ -202,8 +202,14 @@
       <button class="remove-product-yes-btn">Yes</button>
       <button class="remove-product-no-btn">No</button>
     </div>
-    <script src="/JavaScript/restock.js"></script>
-    <script src="/JavaScript/general.js"></script>
   </div>
+  <div class="successful-popup">
+    <img src="/image/verified.png" class="verified-image">
+    <h1 class="success-header">Saved</h1>
+    <p class="success-message">Data saved successfully</p>
+    <button class="done-btn">Done</button>
+  </div>
+  <script src="/JavaScript/restock.js"></script>
+  <script src="/JavaScript/general.js"></script>
 </body>
 </html>

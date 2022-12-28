@@ -16,10 +16,56 @@ const removeNoBtn = document.querySelector('.remove-product-no-btn');
 const removePopupMenu = document.querySelector('.remove-product-pop-up');
 const removeCancel = document.querySelector('.remove-product-cancel-img');
 const totalPrice = document.querySelector('.total-price');
+const successfulPopup = document.querySelector('.successful-popup');
+const wholeScreen = document.querySelector('.whole-screen');
+const doneButton = document.querySelector('.done-btn');
+
+const clearAllButton = document.querySelector('.clear-all-btn');
+const confirmAndSaveButton = document.querySelector('.confirm-and-save-btn');
+
+const invoiceNo = document.querySelector('.invoice-no');
+const restockFee = document.querySelector('.restock-fee');
+const placedDate = document.querySelector('.placed-date');
+const receivedDate = document.querySelector('.received-date');
 
 const supplierArr = JSON.parse(localStorage.getItem('Supplier')) || [];
 const contentArr = JSON.parse(localStorage.getItem('Supplier Product')) || [];
 const tempArr = JSON.parse(localStorage.getItem('Supplier Product')) || [];
+const restockArr = JSON.parse(localStorage.getItem('Restock Product')) || [];
+
+supplierLocation.defaultValue = '43, Jalan Flora Utama 3, Taman Flora Utama, 83000 Batu Pahat, Johor';
+
+restockFee.addEventListener('change', () => {
+  if(restockFee.value <= 0){
+    errorPopupMenu.classList.add('open-popup');
+    errorMessage.innerText = "Restock Fee must greater than 0";
+    restockFee.value = '';
+  }
+});
+
+clearAllButton.addEventListener('click', () => {
+  window.location.reload();
+});
+
+confirmAndSaveButton.addEventListener('click', () => {
+  const contentRows = document.querySelectorAll('.content-row');
+    if(invoiceNo.value == '' || restockFee.value == '' || placedDate.value == '' || receivedDate.value == ''){
+      errorPopupMenu.classList.add('open-popup');
+      errorMessage.innerText = "Please enter all the restock information";
+    }else if(contentContainer.childElementCount == 0){
+      errorPopupMenu.classList.add('open-popup');
+      errorMessage.innerText = "Please insert the restocked products";
+    }else if(Number(restockFee.value).toFixed(2) != totalPrice.innerText.replace('RM ', '')){
+      errorPopupMenu.classList.add('open-popup');
+      errorMessage.innerText = "The Restock Fee and Total Price are not the same";
+    }else{
+      saveData();
+    }
+});
+
+placedDate.addEventListener('change', () => {
+  receivedDate.setAttribute('min', placedDate.value);
+});
 
 removeNoBtn.addEventListener('click', (e) => {  
   removePopupMenu.classList.remove('open-popup');
@@ -245,7 +291,7 @@ restockHistory.addEventListener('click', ()=> {
 
 supplierNameInput.addEventListener('change', () => {
   for(let i = 0; i < supplierArr.length; i++){
-    if(supplierNameInput.value == supplierArr[i].name){
+    if(supplierNameInput.value == supplierArr[i].supplier){
       supplierPhoneNumber.value = supplierArr[i].phoneNumber;
       supplierLocation.value = supplierArr[i].location;
     }
@@ -272,4 +318,33 @@ document.addEventListener('click', (e) => {
   if(suggestedProductBox.childElementCount > 0 && !suggestedProductBox.contains(e.target) && !searchBar.contains(e.target)){
     suggestedProductBox.innerHTML = '';
   }
+});
+
+function saveData() {
+  const contentRows = document.querySelectorAll('.content-row');
+  const invoiceArr = [];
+  for(let i = 0; i < contentRows.length; i++){
+    invoiceArr.push({
+      name:contentRows[i].querySelector('.product-name').innerText,
+      quantity:contentRows[i].querySelector('.product-quantity').value,
+      unit:contentRows[i].querySelector('.product-unit').innerText,
+      price:contentRows[i].querySelector('.product-price').innerText
+    });
+  }
+  invoiceArr.push({
+    invoiceNo:invoiceNo.value,
+    supplierName:supplierNameInput.value,
+    supplierLocation:supplierLocation.value,
+    placedDate:placedDate.value,
+    receivedDate:receivedDate.value,
+    restockFee:restockFee.value
+  });
+  restockArr.push({invoiceArr});
+  localStorage.setItem('Restock Product', JSON.stringify(restockArr));
+  wholeScreen.classList.add('active');
+  successfulPopup.classList.add('open-popup');
+}
+
+doneButton.addEventListener('click', () => {
+  window.location.href = 'restock-history.html';
 });

@@ -41,12 +41,11 @@ body {
 }
 
 .staff-radio div {
-  margin-right: .5rem;
   width: 8rem;
 }
 
 .staff-radio label {
-  font-size: 1rem;
+  font-size: .8rem;
 }
 
 .form-container {

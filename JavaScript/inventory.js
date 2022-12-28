@@ -9,18 +9,37 @@ const category = document.querySelector('.category-box');
 const restockButton = document.querySelector('.restock-btn');
 const outOfStockPopup = document.querySelector('.out-of-stock-popup');
 const okButton = document.querySelector('.ok-btn');
+const deleteProductPopup = document.querySelector('.delete-product-pop-up');
+const wholeScreen = document.querySelector('.whole-screen');
+const productDeletedPopup = document.querySelector('.product-deleted-popup');
+const doneBtn = document.querySelector('.done-btn');
+
+const deleteYesBtn = document.querySelector('.delete-product-yes-btn');
+const deleteNoBtn = document.querySelector('.delete-product-no-btn');
+const deleteCancelBtn = document.querySelector('.delete-product-cancel-img');
+const outsideScreen = document.querySelector('.item-detail');
+const deleteProductName = document.querySelector('.delete-product-name');
 
 const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 
-okButton.addEventListener('click', () => {
-  outOfStockPopup.classList.remove('open-popup');
-  localStorage.setItem('Timer', 1);
+doneBtn.addEventListener('click', () => {
+  wholeScreen.classList.remove('active');
+  productDeletedPopup.classList.remove('open-popup');
+  sessionStorage.clear();
+  window.location.href = 'inventory.html';
 });
 
-function removeTimer() {
-  console.log('hello');
-  localStorage.removeItem('Timer');
-}
+deleteNoBtn.addEventListener('click', closePopup);
+deleteCancelBtn.addEventListener('click', closePopup);
+
+function closePopup() {
+  deleteProductPopup.classList.remove('open-popup');
+};
+
+okButton.addEventListener('click', () => {
+  outOfStockPopup.classList.remove('open-popup');
+  // localStorage.setItem('Timer', 1);
+});
 
 restockButton.addEventListener('click', () => {
   window.location.href = 'restock.html';
@@ -30,16 +49,19 @@ const createAll = () => {
   for(let i = 0; i < contentArr.length; i++){
     const container = document.createElement('div');
     const productNo = document.createElement('div');
+    const nameAndDelete = document.createElement('div');
     const productName = document.createElement('div');
+    const deleteIcon = document.createElement('img');
     const productBarcode = document.createElement('div');
     const productQuantity = document.createElement('div');
     const productCost = document.createElement('div');
-    const quantityAndEdit = document.createElement('div');
+    const quantityAndStatus = document.createElement('div');
     const productPrice = document.createElement('div');
     const statusButton = document.createElement('button');
 
     productNo.innerText = i + 1 + '.';
     productName.innerText = contentArr[i].name;
+    deleteIcon.src = '/image/dustbin.png';
     productBarcode.innerText = contentArr[i].barcode;
     productQuantity.innerText = contentArr[i].quantity;
     productCost.innerText = 'RM ' + parseFloat(contentArr[i].cost).toFixed(2); 
@@ -52,17 +74,37 @@ const createAll = () => {
 
     container.classList.add('content-row');
     productNo.classList.add('product-no');
+    nameAndDelete.classList.add('name-and-delete');
     productName.classList.add('product-name');
+    deleteIcon.classList.add('delete-icon');
     productBarcode.classList.add('product-barcode');
     productQuantity.classList.add('product-quantity');
     productCost.classList.add('product-cost');
-    quantityAndEdit.classList.add('quantity-and-status');
+    quantityAndStatus.classList.add('quantity-and-status');
     productPrice.classList.add('product-price');
     statusButton.classList.add('status-btn');
 
-    quantityAndEdit.append(productQuantity, statusButton);
-    container.append(productNo, productName, productBarcode, productCost, productPrice, quantityAndEdit);
-    container.addEventListener('click', editItem2);
+    productName.addEventListener('click', editItem);
+
+    deleteIcon.addEventListener('click', () => {
+      deleteProductPopup.classList.add('open-popup');
+      deleteProductName.innerText = `( ${productName.innerText} )`;
+      deleteYesBtn.addEventListener('click', () => {
+        for(let i = 0; i < contentArr.length; i++){
+          if(productName.innerText == contentArr[i].name){
+            contentArr.splice(i, 1);
+            localStorage.setItem('Inventory', JSON.stringify(contentArr));
+          }
+        }
+        deleteProductPopup.classList.remove('open-popup');
+        productDeletedPopup.classList.add('open-popup');
+        wholeScreen.classList.add('active');
+      });
+    });
+
+    nameAndDelete.append(productName, deleteIcon);
+    quantityAndStatus.append(productQuantity, statusButton);
+    container.append(productNo, nameAndDelete, productBarcode, productCost, productPrice, quantityAndStatus);
     contentContainer.appendChild(container);
   }
 };
@@ -70,19 +112,22 @@ const createAll = () => {
 const createByCategory = (category) => {
   let numOfElement = 1;
   for(let i = 0; i < contentArr.length; i++){
-    if(category.value === contentArr[i].category){
+    if(category.value == contentArr[i].category){
       const container = document.createElement('div');
       const productNo = document.createElement('div');
+      const nameAndDelete = document.createElement('div');
       const productName = document.createElement('div');
+      const deleteIcon = document.createElement('img');
       const productBarcode = document.createElement('div');
       const productQuantity = document.createElement('div');
       const productCost = document.createElement('div');
-      const quantityAndEdit = document.createElement('div');
+      const quantityAndStatus = document.createElement('div');
       const productPrice = document.createElement('div');
       const statusButton = document.createElement('button');
 
       productNo.innerText = numOfElement + '.';
       productName.innerText = contentArr[i].name;
+      deleteIcon.src = '/image/dustbin.png';
       productBarcode.innerText = contentArr[i].barcode;
       productQuantity.innerText = contentArr[i].quantity;
       productCost.innerText = 'RM ' + parseFloat(contentArr[i].cost).toFixed(2); 
@@ -90,23 +135,42 @@ const createByCategory = (category) => {
       if(Number(contentArr[i].notification) >= Number(contentArr[i].quantity)){
         statusButton.innerText = 'Low';
         statusButton.style.backgroundColor = 'red';
-        statusButton.style.display = 'block';
+        statusButton.style.display = 'inline-block';
       }
 
       container.classList.add('content-row');
       productNo.classList.add('product-no');
+      nameAndDelete.classList.add('name-and-delete');
       productName.classList.add('product-name');
+      deleteIcon.classList.add('delete-icon');
       productBarcode.classList.add('product-barcode');
       productQuantity.classList.add('product-quantity');
       productCost.classList.add('product-cost');
-      quantityAndEdit.classList.add('quantity-and-status');
+      quantityAndStatus.classList.add('quantity-and-status');
       productPrice.classList.add('product-price');
       statusButton.classList.add('status-btn');
 
-      container.addEventListener('click', editItem2);
+      productName.addEventListener('click', editItem);
 
-      quantityAndEdit.append(productQuantity, statusButton);
-      container.append(productNo, productName, productBarcode, productCost, productPrice, quantityAndEdit);
+      deleteIcon.addEventListener('click', () => {
+        deleteProductPopup.classList.add('open-popup');
+        deleteProductName.innerText = `( ${productName.innerText} )`;
+        deleteYesBtn.addEventListener('click', () => {
+          for(let i = 0; i < contentArr.length; i++){
+            if(productName.innerText == contentArr[i].name){
+              contentArr.splice(i, 1);
+              localStorage.setItem('Inventory', JSON.stringify(contentArr));
+            }
+          }
+          deleteProductPopup.classList.remove('open-popup');
+          productDeletedPopup.classList.add('open-popup');
+          wholeScreen.classList.add('active');
+        });
+      });
+
+      nameAndDelete.append(productName, deleteIcon);
+      quantityAndStatus.append(productQuantity, statusButton);
+      container.append(productNo, nameAndDelete, productBarcode, productCost, productPrice, quantityAndStatus);
       contentContainer.appendChild(container);
       numOfElement++;
     }
@@ -125,68 +189,20 @@ const displayInventory = () => {
 
 window.onload = () => {
   for(let i = 0; i < contentArr.length; i++){
-    if(contentArr[i].notification >= contentArr[i].quantity && localStorage.getItem('Timer') == undefined){
+    if(Number(contentArr[i].notification) >= Number(contentArr[i].quantity)){
       outOfStockPopup.classList.add('open-popup');
     }
   }
   displayInventory();
 }
 
-contentRows.forEach(row => {
-  row.addEventListener('click', editItem2(e));
-});
+// contentRows.forEach(row => {
+//   row.addEventListener('click', editItem2(e));
+// });
 
-// function editItem(e) {
-//   const buttonClicked = e.target;
-//   const container = buttonClicked.parentElement.parentElement;
-
-//   const arr = [];
-
-//   const name = container.querySelector('.product-name').innerText;
-//   const cost = container.querySelector('.product-cost').innerText;
-//   const price = container.querySelector('.product-price').innerText;
-//   const barcode = container.querySelector('.product-barcode').innerText;
-//   const quantity = container.querySelector('.product-quantity').innerText;
-
-//   for(let i = 0; i < contentArr.length; i++){
-//     if(name == contentArr[i].name){
-//       const supplierName = contentArr[i].supplierName;
-//       const supplierPhoneNumber = contentArr[i].supplierPhoneNumber;
-//       const supplierLocation = contentArr[i].supplierLocation;
-//       const category = contentArr[i].category;
-//       const unit = contentArr[i].unit;
-//       const notification = contentArr[i].notification;
-
-//       arr.push({
-//         name,
-//         cost,
-//         price,
-//         barcode,
-//         quantity,
-//         category,
-//         unit,
-//         supplierName,
-//         supplierPhoneNumber,
-//         supplierLocation,
-//         notification
-//       });
-//       break;
-//     }
-//   }
-
-//   sessionStorage.setItem('Product', JSON.stringify(arr));
-//   window.location.href = 'edit-item.html';
-// }
-
-function editItem2(e) {
-  const elementClicked = e.target;
-  let container;
-  if(elementClicked.className == 'product-quantity' || elementClicked.className == 'status-btn'){
-    container = elementClicked.parentElement.parentElement;
-  }else {
-    container = elementClicked.parentElement;
-  }
-  console.log(container);
+function editItem(e) {
+  const buttonClicked = e.target;
+  const container = buttonClicked.parentElement.parentElement;
 
   const arr = [];
 
@@ -196,7 +212,7 @@ function editItem2(e) {
   const barcode = container.querySelector('.product-barcode').innerText;
   const quantity = container.querySelector('.product-quantity').innerText;
 
-    for(let i = 0; i < contentArr.length; i++){
+  for(let i = 0; i < contentArr.length; i++){
     if(name == contentArr[i].name){
       const supplierName = contentArr[i].supplierName;
       const supplierPhoneNumber = contentArr[i].supplierPhoneNumber;
@@ -225,6 +241,52 @@ function editItem2(e) {
   sessionStorage.setItem('Product', JSON.stringify(arr));
   window.location.href = 'edit-item.html';
 }
+
+// function editItem2(e) {
+//   const elementClicked = e.target;
+//   let container;
+//   if(elementClicked.className == 'product-quantity' || elementClicked.className == 'status-btn' || elementClicked.className == 'product-name'){
+//     container = elementClicked.parentElement.parentElement;
+//   }else {
+//     container = elementClicked.parentElement;
+//   }
+//   const arr = [];
+
+//   const name = container.querySelector('.product-name').innerText;
+//   const cost = container.querySelector('.product-cost').innerText;
+//   const price = container.querySelector('.product-price').innerText;
+//   const barcode = container.querySelector('.product-barcode').innerText;
+//   const quantity = container.querySelector('.product-quantity').innerText;
+
+//     for(let i = 0; i < contentArr.length; i++){
+//     if(name == contentArr[i].name){
+//       const supplierName = contentArr[i].supplierName;
+//       const supplierPhoneNumber = contentArr[i].supplierPhoneNumber;
+//       const supplierLocation = contentArr[i].supplierLocation;
+//       const category = contentArr[i].category;
+//       const unit = contentArr[i].unit;
+//       const notification = contentArr[i].notification;
+
+//       arr.push({
+//         name,
+//         cost,
+//         price,
+//         barcode,
+//         quantity,
+//         category,
+//         unit,
+//         supplierName,
+//         supplierPhoneNumber,
+//         supplierLocation,
+//         notification
+//       });
+//       break;
+//     }
+//   }
+
+//   sessionStorage.setItem('Product', JSON.stringify(arr));
+//   window.location.href = 'edit-item.html';
+// }
 
 function goToEdit(e) {
   const productClicked = e.target;
