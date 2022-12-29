@@ -35,6 +35,7 @@ checkoutButton.addEventListener('click', () => {
     const productRows = contentContainer.querySelectorAll('.product-row');
     let totalCost = 0;
     let totalPrice = 0;
+    let cost;
     for(let i = 0; i < productRows.length; i++){
       for(let j = 0; j < contentArr.length; j++){
         if(productRows[i].querySelector('.product-name').innerText == contentArr[j].name){
@@ -42,12 +43,18 @@ checkoutButton.addEventListener('click', () => {
           totalPrice += productRows[i].querySelector('.quantity').value * Number(contentArr[j].price);
         }
       }
-      purchasedArr.push({
-        name:productRows[i].querySelector('.product-name').innerText,
-        price:productRows[i].querySelector('.product-price').innerText,
-        quantity:productRows[i].querySelector('.quantity').value,
-        singlePrice:productRows[i].querySelector('.product-total').innerText,
-      });
+      for(let j = 0; j < contentArr.length; j++){
+        if(productRows[i].querySelector('.product-name').innerText == contentArr[j].name){
+          cost = productRows[i].querySelector('.quantity').value * contentArr[j].cost;
+          purchasedArr.push({
+            cost,
+            name:productRows[i].querySelector('.product-name').innerText,
+            price:productRows[i].querySelector('.product-price').innerText,
+            quantity:productRows[i].querySelector('.quantity').value,
+            singlePrice:productRows[i].querySelector('.product-total').innerText,
+          });
+        }
+      }
     }
     purchasedArr.push({
       totalPrice,

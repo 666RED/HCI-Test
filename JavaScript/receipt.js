@@ -106,7 +106,6 @@ function decreaseInventory(){
 
 function determineDate() {
   if(dailySalesArr.length == 0){
-    console.log('no product');
     return;
   }
   if(dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date != productArr[productArr.length - 1].date){

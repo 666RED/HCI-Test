@@ -1,23 +1,15 @@
-const printButton = document.querySelector('.print-btn');
-const printPopup = document.querySelector('.print-popup');
-const wholeContainer = document.querySelector('.whole-container');
-const productContainer = document.querySelector('.product-container');
+const contentContainer = document.querySelector('.content-container');
 const totalPrice = document.querySelector('.total-price');
 const totalCost = document.querySelector('.total-cost');
 const totalProfit = document.querySelector('.total-profit');
+const returnIcon = document.querySelector('.return-icon');
 
 const totalSalesArr = JSON.parse(localStorage.getItem('Total Sales')) || [];
 const dateArr = JSON.parse(sessionStorage.getItem('Date')) || [];
 
-printButton.addEventListener('click', () => {
-  printPopup.classList.add('open-popup');
-  wholeContainer.classList.add('active');
-  setTimeout(backToReport, 5000);
-});
-
-function backToReport() {
+returnIcon.addEventListener('click', () => {
   window.location.href = 'report.html';
-}
+});
 
 window.onload = displayDailySales();
 
@@ -44,6 +36,7 @@ function displayDailySales() {
   
   for(let i = 0; i < finalArr.length; i++){ // change the date type
     finalArr[i].quantity =  Number(finalArr[i].quantity);
+    finalArr[i].cost = Number(finalArr[i].cost);
     finalArr[i].singlePrice = Number(finalArr[i].singlePrice.replace('RM ', ''));
   }
 
@@ -51,38 +44,52 @@ function displayDailySales() {
     for(let j = i + 1; j < finalArr.length; j++){
       if(finalArr[i].name == finalArr[j].name){
         finalArr[i].quantity += finalArr[j].quantity;
+        finalArr[i].cost += finalArr[j].cost;
         finalArr[i].singlePrice += finalArr[j].singlePrice;
         finalArr.splice(j, 1);
         j--;
       }
     }
   }
-
-  console.log(finalArr);
   
   for(let i = 0; i < finalArr.length; i++){
-    const productRow = document.createElement('div');
+    const contentRow = document.createElement('div');
     const productNo = document.createElement('div');
     const productName = document.createElement('div');
     const productQuantity = document.createElement('div');
+    const productCost = document.createElement('div')
     const productPrice = document.createElement('div');
+    const productProfit = document.createElement('div');
 
     productNo.innerText = i + 1 + '.';
     productName.innerText = finalArr[i].name;
     productQuantity.innerText = finalArr[i].quantity;
+    productCost.innerText = 'RM ' + Number(finalArr[i].cost).toFixed(2);
     productPrice.innerText = 'RM ' + Number(finalArr[i].singlePrice).toFixed(2);
+    productProfit.innerText = 'RM ' + Number(((finalArr[i].singlePrice) - (finalArr[i].cost))).toFixed(2);
 
-    productRow.classList.add('product-row');
+    contentRow.classList.add('content-row');
     productNo.classList.add('product-no');
-    productName.classList.add('product-name');
-    productQuantity.classList.add('product-quantity');
+    productName.classList.add('name');
+    productQuantity.classList.add('quantity');
+    productCost.classList.add('product-cost');
     productPrice.classList.add('product-price');
+    productProfit.classList.add('product-profit');
 
-    productRow.append(productNo, productName, productQuantity, productPrice);
-    productContainer.appendChild(productRow);
+
+    contentRow.append(productNo, productName, productQuantity, productCost, productPrice, productProfit);
+    contentContainer.appendChild(contentRow);
   }
   totalPrice.innerText = dateArr[0].price;
   totalCost.innerText = dateArr[0].cost;
   totalProfit.innerText = dateArr[0].profit;
+
+  if(contentContainer.offsetHeight >= 336){
+    const productProfits = contentContainer.querySelectorAll('.product-profit');
+    productProfits.forEach(profit => {
+      profit.style.width = '143px';
+      profit.style.paddingLeft = '20px';
+    });
+  }
 
 }
