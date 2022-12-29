@@ -19,6 +19,7 @@ const totalPrice = document.querySelector('.total-price');
 const successfulPopup = document.querySelector('.successful-popup');
 const wholeScreen = document.querySelector('.whole-screen');
 const doneButton = document.querySelector('.done-btn');
+const viewSupplierButton = document.querySelector('.view-supplier-btn');
 
 const clearAllButton = document.querySelector('.clear-all-btn');
 const confirmAndSaveButton = document.querySelector('.confirm-and-save-btn');
@@ -34,6 +35,10 @@ const tempArr = JSON.parse(localStorage.getItem('Supplier Product')) || [];
 const restockArr = JSON.parse(localStorage.getItem('Restock Product')) || [];
 
 supplierLocation.defaultValue = '43, Jalan Flora Utama 3, Taman Flora Utama, 83000 Batu Pahat, Johor';
+
+viewSupplierButton.addEventListener('click', () => {
+  window.location.href = 'view-supplier.html';
+});
 
 restockFee.addEventListener('change', () => {
   if(restockFee.value <= 0){
