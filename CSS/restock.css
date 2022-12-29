@@ -61,6 +61,33 @@
   margin-top: 1rem;
 }
 
+.first-column .supplier-row,
+.header-row {
+  margin-top: .5rem;
+}
+
+.view-supplier-btn {
+  display: flex;
+  align-items: center;
+  letter-spacing: .1rem;
+  margin-left: 1rem;
+  padding: .5rem .8rem;
+  border-radius: .5rem;
+  font-size: .8rem;
+  font-weight: bold;
+  background-color: rgb(30, 158, 58);
+  border: 1px solid black;
+  color: white;
+  cursor: pointer;
+  transition: color .2s, background-color .2s;
+  overflow: hidden;
+  /* box-shadow: 1px 1px 1px black; */
+}
+
+.view-supplier-btn:hover {
+  opacity: .7;
+}
+
 .first-column input,
 .supplier-name,
 .supplier-location{
