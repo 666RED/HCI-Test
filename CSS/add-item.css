@@ -195,7 +195,7 @@
 
 .supplier-name {
   margin-left: .8rem;
-  padding: .5rem;
+  padding: .5rem .3rem;
   background-color: white;
   border: 1px solid grey;
   border-radius: .2rem;

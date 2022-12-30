@@ -32,9 +32,9 @@ const supplierArr = JSON.parse(localStorage.getItem('Supplier')) || [];
 
 supplierName.addEventListener('change', () => {
   for(let i = 0; i < supplierArr.length; i++){
-    if(supplierName.value == supplierArr[i].supplier){
+    if(supplierName.value == supplierArr[i].supplierName){
       supplierPhoneNumber.value = supplierArr[i].phoneNumber;
-      supplierLocation.value = supplierArr[i].location;
+      supplierLocation.value = supplierArr[i].supplierLocation;
     }
   }
 });
@@ -54,6 +54,13 @@ const displayProductDetail = () => {
   productPrice.value = singleProductArr[0].price.replace('RM ', '');
   productBarcode.value = singleProductArr[0].barcode;
   productQuantity.value = singleProductArr[0].quantity;
+
+  for(let i = 0; i < supplierArr.length; i++){
+    const supplierOption = document.createElement('option');
+    supplierOption.setAttribute('value', supplierArr[i].supplierName);
+    supplierOption.innerText = supplierArr[i].supplierName;
+    supplierName.append(supplierOption);
+  }
   supplierName.value = singleProductArr[0].supplierName;
   supplierPhoneNumber.value = singleProductArr[0].supplierPhoneNumber;
   supplierLocation.value = singleProductArr[0].supplierLocation;

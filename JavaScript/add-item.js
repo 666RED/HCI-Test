@@ -35,9 +35,9 @@ productSupplierLocation.defaultValue = '43, Jalan Flora Utama 3, Taman Flora Uta
 
 productSupplierName.addEventListener('change', () => {
   for(let i = 0; i < supplierArr.length; i++){
-    if(productSupplierName.value == supplierArr[i].supplier){
+    if(productSupplierName.value == supplierArr[i].supplierName){
       productSupplierPhoneNumber.value = supplierArr[i].phoneNumber;
-      productSupplierLocation.value = supplierArr[i].location;
+      productSupplierLocation.value = supplierArr[i].supplierLocation;
       break;
     }
   }
@@ -218,3 +218,18 @@ doneButton.addEventListener('click', () => {
   wholeScreen.classList.remove('active');
   window.location.href = 'inventory.html';
 });  
+
+window.onload = function() {
+  for(let i = 0; i < supplierArr.length; i++){
+    const supplierOption = document.createElement('option');
+    supplierOption.setAttribute('value', supplierArr[i].supplierName);
+    supplierOption.innerText = supplierArr[i].supplierName;
+    productSupplierName.append(supplierOption);
+  }
+  for(let i = 0; i < supplierArr.length; i++){
+    if(productSupplierName.value == supplierArr[i].supplierName){
+      productSupplierPhoneNumber.value = supplierArr[i].phoneNumber;
+      productSupplierLocation.value = supplierArr[i].supplierLocation;
+    }
+  }
+}

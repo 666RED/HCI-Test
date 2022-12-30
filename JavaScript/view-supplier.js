@@ -10,6 +10,7 @@ const doneButton = document.querySelector('.done-btn');
 const deletedSupplier = document.querySelector('.deleted-supplier');
 const searchBar = document.querySelector('#search-bar');
 const suggestedSupplierBox = document.querySelector('.suggested-supplier-box');
+const wholeScreen = document.querySelector('.whole-screen');
 
 const supplierArr = JSON.parse(localStorage.getItem('Supplier')) || [];
 
@@ -81,6 +82,7 @@ function displaySupplier() {
         localStorage.setItem('Supplier', JSON.stringify(supplierArr));
         removeSupplierPopup.classList.remove('open-popup');
         successfulPopup.classList.add('open-popup');
+        wholeScreen.classList.add('active');
       }); 
     });
   }
