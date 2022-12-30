@@ -107,7 +107,7 @@ const validation = () => {
   }
 
   if(!emptyPhoneNumberInput){
-    if(phoneNumber.value.length == 9 && /\d{9}/ || phoneNumber.value.length == 10 && /\d{10}/ || phoneNumber.value.length == 11 && /\d{11}/){
+    if(phoneNumber.value.length == 9 && /\d{9}/.test(phoneNumber.value) || phoneNumber.value.length == 10 && /\d{10}/.test(phoneNumber.value) || phoneNumber.value.length == 11 && /\d{11}/.test(phoneNumber.value)){
       for(let i = 0; i < employeeArr.length; i++){
         if(phoneNumber.value == employeeArr[i].phoneNumber || phoneNumber.value == shopOwnerArr[0].phoneNumber){
           phoneNumberErrorBox.style.display = 'block';

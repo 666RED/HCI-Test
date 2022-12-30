@@ -326,7 +326,7 @@ function searchProduct(e) {
   if(category.value == 'all'){
     for(let i = 0; i < contentArr.length; i++){
       const suggestedProduct = document.createElement('div'); 
-      if(contentArr[i].name.toLowerCase().includes(text.value) && contentArr[i].name[0].toLowerCase() === text.value[0]){
+      if(contentArr[i].name.toLowerCase().includes(text.value.toLowerCase()) && contentArr[i].name[0].toLowerCase() === text.value[0].toLowerCase()){
         suggestedProductBox.style.display = 'block';
         suggestedProduct.classList.add('suggested-product');
         suggestedProduct.innerText = contentArr[i].name;

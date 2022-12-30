@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>View Supplier</title>
+  <title>Add New Supplier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/CSS/header.css">
   <link rel="stylesheet" href="/CSS/general.css">
-  <link rel="stylesheet" href="/CSS/view-supplier.css">
+  <link rel="stylesheet" href="/CSS/add-new-supplier.css">
   <link rel="stylesheet" href="/CSS/footer.css">
 </head>
 <body>
@@ -37,48 +37,36 @@
   </section>
 
   <div class="whole-screen">
-    <section class="view-supplier-main-content">
-      <div class="return-row">
-        <img src="/image/return.png" class="return-icon">
-        <hr>
-      </div>
+    <div class="return-row">
+      <img src="/image/return.png" class="return-icon">
+      <hr>
+    </div>
 
-      <div class="add-new-supplier-row">
-        <button class="add-new-supplier-btn">
-          <img src="/image/plus.png" class="plus-icon">
-          <div class="add-new-supplier-text">Add New Supplier</div>
-        </button>
-        <div class="search-item-box">
-          <input type="text" placeholder="Supplier Name" id="search-bar">
+    <div class="add-new-supplier-main-content">
+      <div class="header-text">Add New Supplier</div>
+      <div class="supplier-info-box">
+        <div class="supplier-name-box">
+          <label for="supplier-name">Supplier Name <span class="supplier-name-colon">:</span></label>
+          <input type="text" class="supplier-name" id="supplier-name" name="supplier-name">
         </div>
+        <div class="supplier-name-error-box error-box"></div>
+        <div class="phone-number-box">  
+          <label for="phone-number">Supplier Phone Number <span class="phone-number-colon">:</span></label>
+          <input type="text" class="phone-number" id="phone-number" name="phone-number" placeholder="e.g. 01XXXXXXXX">
+        </div>
+        <div class="phone-number-error-box error-box"></div>
+        <div class="supplier-location-box">
+          <label for="supplier-location">Supplier Location <span class="supplier-location-colon">:</span></label>
+          <textarea name="supplier-location" id="supplier-location" class="supplier-location"></textarea>
+        </div>
+        <div class="supplier-location-error-box error-box"></div>
       </div>
-
-      <div class="header-row">
-        <div class="suggested-supplier-box">
-          <!-- <div class="suggested-supplier">hello</div> -->
-        </div>
-        <div class="header-text">View Supplier</div>
+      
+      <div class="button-row">
+        <button class="clear-all-btn btn">Clear All</button>
+        <button class="confirm-and-save-btn btn">Confirm and Save</button>
       </div>
-
-      <div class="main-content">
-        <div class="title-row">
-          <div class="no-title">No</div>
-          <div class="supplier-name-title">Supplier Name</div>
-          <div class="phone-number-title">Phone Number</div>
-        </div>
-
-        <div class="content-container">
-          <!-- <div class="content-row">
-            <div class="no">1.</div>
-            <div class="supplier-name-box">
-              <div class="supplier-name">xxxxxxx</div>
-              <img src="/image/dustbin.png" class="remove-icon">
-            </div>
-            <div class="phone-number">xxxxxxxxxx</div>
-          </div> -->
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
 
   <section class="footer">
@@ -118,34 +106,14 @@
     </div>
   </div>
 
-  <div class="remove-product-pop-up">
-    <div class="remove-product-upper-row">
-      <div>
-        <img src="/image/warning.png" class="remove-product-danger-img">
-      </div>
-      <p>DELETE SUPPLIER</p>
-      <div>
-        <img src="/image/remove.png" class="remove-product-cancel-img">
-      </div>
-    </div>
-    <div class="remove-product-message-row">
-      <p>Do you want to delete this supplier?</p>
-      <p class="deleted-supplier">hello</p>
-    </div>
-    <div class="remove-product-btn-row">
-      <button class="remove-product-yes-btn">Yes</button>
-      <button class="remove-product-no-btn">No</button>
-    </div>
-  </div>
-
   <div class="successful-popup">
     <img src="/image/verified.png" class="verified-image">
-    <h1 class="success-header">Deleted</h1>
-    <p class="success-message">Supplier Deleted successfully</p>
+    <h1 class="success-header">Added</h1>
+    <p class="success-message">New Supplier Added Successfully</p>
     <button class="done-btn">Done</button>
   </div>
 
-  <script src="/JavaScript/view-supplier.js"></script>
+  <script src="/JavaScript/add-new-supplier.js"></script>
   <script src="/JavaScript/general.js"></script>
 </body>
 </html>

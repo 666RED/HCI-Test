@@ -1,0 +1,160 @@
+.inventory-btn {
+  color: rgba(211, 211, 211, 0.779);
+}
+
+.checkout-btn:hover,
+.report-btn:hover {
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.whole-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+.active {
+  filter: blur(3px);
+}
+
+.return-icon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
+.manage-supplier-main-content {
+  position: relative;
+  height: 100%;
+}
+
+.header-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: .5rem;
+}
+
+.error-box {
+  display: none;
+  margin-top: .1rem;
+  margin-left: 13.3rem;
+  margin-bottom: .5rem;
+  color: red;
+  font-size: .8rem;
+}
+
+.supplier-name,
+.phone-number {
+  margin-left: .5rem;
+  padding: .5rem;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: .2rem;
+  font-size: .8rem;
+  width: 25rem;
+}
+
+.phone-number,
+.supplier-location {
+  margin-top: 1rem;
+}
+
+.supplier-info-box {
+  margin-top: 1rem;
+}
+
+.supplier-info-box div {
+  display: flex;
+  align-items: center;
+}
+
+.supplier-name-colon {
+  margin-left: 4.4rem;
+}
+
+.supplier-location-colon {
+  margin-left: 3.2rem;
+}
+
+.supplier-location {
+  margin-left: .5rem;
+  resize: none;
+  padding: .5rem;
+  width: 25rem;
+  height: 6.1rem;
+}
+
+.button-row {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  bottom: 4.5rem;
+  padding: 0 1rem;
+  justify-content: flex-end;
+}
+
+.edit-and-save-btn {
+  font-weight: bold;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+  background-color: #F65446;
+  width: 12rem;
+  height: 3rem;
+}
+
+.successful-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+
+  z-index: 100;
+  transform: translate(-50%, -50%) scale(0.1);
+  visibility: hidden;
+  transition: transform 0.2s;
+  border: .1rem solid black;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.verified-image {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.success-message {
+  font-size: .8rem;
+}
+
+.done-btn {
+  margin-top: 1rem;
+  padding: .2rem 2rem;
+  border: none;
+  background-color: #D81919;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.done-btn:hover {
+  opacity: .7;
+}
+
+.open-popup {
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}

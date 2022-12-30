@@ -43,6 +43,7 @@
   border: none;
   background-color: #b3b3b3;
   cursor: pointer;
+  position: relative;
 }
 
 .add-new-supplier-btn:hover {
@@ -78,12 +79,46 @@
 
 .header-row {
   margin-top: 1rem;
+  position: relative;
+}
+
+.header-text {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
+.suggested-supplier-box {
+  position: absolute;
+  border: 1px solid black;
+  left: 14rem;
+  top: -.5rem;
+  text-indent: .5rem;
+  width: 26rem;
+  background-color: white;
+  max-height: 8rem;
+  overflow: auto;
+  display: none;
+  border-radius: .5rem;
+  border: none;
+  box-shadow: .1rem .1rem .1rem rgba(0, 0, 0, .3),
+    -0.1rem .1rem .1rem rgba(0, 0, 0, .3);
+}
+
+.suggested-supplier {
+  font-size: 1rem;
+  cursor: pointer;
+  padding: .2rem 0;
+}
+
+.suggested-supplier:hover {
+  background-color: #c9c9c9;
+}
+
 .content-container {
   border-bottom: 1px solid #A8A8A8;
+  background-color: white;
+  max-height: 20rem;
+  overflow: auto;
 }
 
 .title-row,
@@ -214,8 +249,15 @@
 }
 
 .remove-product-message-row p {
+  text-align: center;
   font-size: 1rem;
   font-weight: bold;
+}
+
+.deleted-supplier {
+  margin-top: 1rem;
+  color: red;
+  text-align: center;
 }
 
 .remove-product-btn-row {

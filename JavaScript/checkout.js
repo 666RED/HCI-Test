@@ -45,7 +45,7 @@ checkoutButton.addEventListener('click', () => {
       }
       for(let j = 0; j < contentArr.length; j++){
         if(productRows[i].querySelector('.product-name').innerText == contentArr[j].name){
-          cost = productRows[i].querySelector('.quantity').value * contentArr[j].cost;
+          cost = contentArr[j].cost;
           purchasedArr.push({
             cost,
             name:productRows[i].querySelector('.product-name').innerText,
