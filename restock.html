@@ -53,16 +53,16 @@
           <div class="supplier-name-box">
             <label for="supplier-name">Supplier <span class="supplier-name-colon">:</span></label>
             <select name="supplier-name" id="supplier-name" class="supplier-name">
-              <option value="Happy Day Stationery Trading">Happy Day Stationery Trading</option>
+              <!-- <option value="Happy Day Stationery Trading">Happy Day Stationery Trading</option>
               <option value="ROTINAS BAKERY & CONFECTIONERY SDN BHD">ROTINAS BAKERY & CONFECTIONERY SDN BHD</option>
               <option value="Perniagaan Yong Soon Huat">Perniagaan Yong Soon Huat</option>
               <option value="SRI DISTA EGG SUPPLY AND TRADING">SRI DISTA EGG SUPPLY AND TRADING</option>
-              <option value="Pemborong Barang Barang Runcit Hse">Pemborong Barang Barang Runcit Hse</option>
+              <option value="Pemborong Barang Barang Runcit Hse">Pemborong Barang Barang Runcit Hse</option> -->
             </select>
           </div>
           <div class="supplier-phone-number-box">
             <label for="supplier-phone-number">Phone Number <span class="supplier-phone-number-colon">:</span></label>
-            <input type="text" class="supplier-phone-number" id="supplier-phone-number" name="suppllier-phone-number" value="014-6253191">
+            <input type="text" class="supplier-phone-number" id="supplier-phone-number" name="suppllier-phone-number">
           </div>
           <div class="supplier-location-box">
             <label for="supplier-location">Location <span class="supplier-location-colon">:</span></label>
@@ -93,32 +93,29 @@
               <div class="restock-history">Restock History</div>
             </div>
           </div>
-          <div class="search-row">
-            <input type="text" placeholder="Product Name / Barcode" id="search-bar">
-            <div class="suggested-product-box"></div>
-          </div>
           <div class="title-row">
             <div class="product-no-title">No.</div>
             <div class="product-name-title">Name</div>
             <div class="product-quantity-title">Qtr</div>
             <div class="unit-title">Unit</div>
-            <div class="product-price-title">Price</div>
+            <div class="product-price-title">Price (Total)</div>
           </div>
           <div class="content-container">
-            <!-- <div class="content-row">
+            <div class="content-row">
               <div class="product-no">1.</div>
               <div class="product-name-row">
-                <div class="product-name">Coke</div>
+                <input type="text" class="product-name" placeholder="Enter product name">
                 <img src="/image/dustbin.png" class="remove-icon">
               </div>
               <div class="product-quantity-row">
                 <img src="/image/minus.png" class="decrease-icon icon">
                 <input type="number" class="product-quantity" value="1">
-                <img src="/image/plus.png" class="increase-quantity icon">
+                <img src="/image/plus.png" class="increase-icon icon">
               </div>
-              <div class="product-unit">Box</div>
-              <div class="product-price">RM 1.00</div>
-            </div>  -->
+              <input type="text" class="product-unit" placeholder="e.g. box">
+              <input type="number" class="product-price" placeholder="RM" step="0.1">
+            </div> 
+            <img src="/image/plus.png" class="plus-icon">
           </div>
           <div class="total-row">
             <div class="total-text">Total :</div>

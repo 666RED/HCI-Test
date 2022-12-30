@@ -242,6 +242,7 @@
 .content-container {
   max-height: 16rem;
   overflow: auto;
+  border-bottom: 1px solid #A8A8A8;
 }
 
 .title-row,
@@ -279,6 +280,15 @@
   justify-content: flex-start;
   flex: 1;
   text-indent: .5rem  ;
+}
+
+.product-name {
+  height: 100%;
+  border: none;
+}
+
+.product-unit {
+  border: none;
 }
 
 .product-quantity-title,
@@ -320,6 +330,9 @@
 
 .product-price {
   border-left: .1rem solid #A8A8A8;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
 }
 
 .icon {
@@ -346,6 +359,16 @@
   height: 1.2rem;
   cursor: pointer;
   margin-right: 1.5rem;
+}
+
+.plus-icon {
+  width: 1.5rem;
+  height: 1.5rem ;
+  position: absolute;
+  left: 31.5rem;
+  top: 5.6rem;
+  background-color: white;
+  cursor: pointer;
 }
 
 .total-row {

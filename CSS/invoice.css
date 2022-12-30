@@ -118,14 +118,14 @@ hr {
 
 .unit-title,
 .unit {
-  width: 5rem;
+  width: 7rem;
   text-align: center;
   justify-content: center;
 }
 
 .price-title,
 .price {
-  width: 8rem;
+  width: 10rem;
   text-align: center;
   justify-content: center;
 }
@@ -144,4 +144,8 @@ hr {
 .total-price {
   margin-right: 1rem;
   margin-left: 1rem;
+}
+
+.title {
+  font-weight: bold;
 }

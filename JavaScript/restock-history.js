@@ -1,7 +1,6 @@
 const returnIcon = document.querySelector('.return-icon');
 const contentContainer = document.querySelector('.content-container');
 const supplierInput = document.querySelector('.supplier');
-const contentRows = document.querySelectorAll('.content-row');
 // const invoice = document.querySelector('.invoice-no');
 const supplierCategory = document.querySelector('.supplier');
 
@@ -40,12 +39,10 @@ function displayHistory() {
     receivedDate.classList.add('received');
     restockFee.classList.add('restock-fee');
 
-    contentRow.addEventListener('click', () => {
-      window.location.href = 'invoice.html';
-    });
-
     contentRow.append(no, invoiceNo, supplierName, placedDate, receivedDate, restockFee);
     contentContainer.appendChild(contentRow);
+
+    contentRow.addEventListener('click', goToInvoice);
 
     if(contentContainer.offsetHeight >= 336){
       const restockFees = contentContainer.querySelectorAll('.restock-fee');
@@ -57,12 +54,17 @@ function displayHistory() {
   }
 }
 
-contentRows.forEach(row => {
-  row.addEventListener('click', () => {
-    window.location.href = 'invoice.html';
-  });
-});
-
+function goToInvoice(e) {
+  const rowClicked = e.target.parentElement;
+  for(let i = 0; i < restockArr.length; i++){
+    const invoiceArr = restockArr[i].invoiceArr;
+    if(rowClicked.querySelector('.invoice-no').innerText == invoiceArr.slice(-1)[0].invoiceNo){
+      sessionStorage.setItem('Invoice', JSON.stringify(invoiceArr));
+      window.location.href = 'invoice.html';
+      return;
+    }
+  }
+}
 function updateHistory(e) {
   const category = e.target;
   contentContainer.innerHTML = '';
