@@ -1,10 +1,10 @@
 const returnIcon = document.querySelector('.return-icon');
 const contentContainer = document.querySelector('.content-container');
-const supplierInput = document.querySelector('.supplier');
 // const invoice = document.querySelector('.invoice-no');
 const supplierCategory = document.querySelector('.supplier');
 
 const restockArr = JSON.parse(localStorage.getItem('Restock Product')) || [];
+const supplierArr = JSON.parse(localStorage.getItem('Supplier')) || [];
 
 supplierCategory.addEventListener('change', updateHistory);
 
@@ -52,6 +52,12 @@ function displayHistory() {
       });
     }
   }
+  for(let i = 0; i < supplierArr.length; i++){
+    const supplierOption = document.createElement('option');
+    supplierOption.setAttribute('value', supplierArr[i].supplierName);
+    supplierOption.innerText = supplierArr[i].supplierName;
+    supplierCategory.append(supplierOption);
+  }
 }
 
 function goToInvoice(e) {
@@ -65,6 +71,7 @@ function goToInvoice(e) {
     }
   }
 }
+
 function updateHistory(e) {
   const category = e.target;
   contentContainer.innerHTML = '';
