@@ -16,10 +16,12 @@ const supplierArr = JSON.parse(localStorage.getItem('Supplier')) || [];
 const tempArr = JSON.parse(sessionStorage.getItem('Supplier')) || [];
 
 returnIcon.addEventListener('click', () => {
+  sessionStorage.clear();
   window.location.href = 'view-supplier.html';
 });
 
 doneButton.addEventListener('click', () => {
+  sessionStorage.clear();
   window.location.href = 'view-supplier.html';
 });
 

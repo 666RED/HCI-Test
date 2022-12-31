@@ -8,6 +8,7 @@ const totalSalesArr = JSON.parse(localStorage.getItem('Total Sales')) || [];
 const dateArr = JSON.parse(sessionStorage.getItem('Date')) || [];
 
 returnIcon.addEventListener('click', () => {
+  sessionStorage.clear();
   window.location.href = 'report.html';
 });
 
