@@ -7,12 +7,12 @@
   background-color: rgba(255, 255, 255, .5);
 }
 
-.weekly-report-main-content {
+.monthly-report-main-content {
   max-height: 32.5rem;
   overflow: auto;
 }
 
-.weekly-report-main-content::-webkit-scrollbar {
+.monthly-report-main-content::-webkit-scrollbar {
   display: none;
 }
 
@@ -34,7 +34,7 @@
   font-weight: bold;
 }
 
-.week-section {
+.month-section {
   margin-left: 4rem;
 }
 
@@ -42,7 +42,7 @@
   color: red;
 }
 
-.weekly-sales-info {
+.monthly-sales-info {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;

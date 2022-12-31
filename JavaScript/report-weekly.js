@@ -4,7 +4,6 @@ const monthlyCost = document.querySelector('.total-cost');
 const monthlyPrice = document.querySelector('.total-price');
 const monthlyProfit = document.querySelector('.total-profit');
 
-// const dates = document.querySelectorAll('.date');
 
 const weeklySalesArr = JSON.parse(localStorage.getItem('Weekly Sales')) || [];
 
@@ -16,15 +15,9 @@ monthInput.addEventListener('change', () => {
   updateTable(monthInput.value);
 });
 
-// dates.forEach(date => {
-//   date.addEventListener('click', () => {
-//     window.location.href = 'weekly-sales.html';
-//   })
-// });
+window.onload = displayWeeklyReport();
 
-window.onload = displayMonthlyReport();
-
-function displayMonthlyReport() {
+function displayWeeklyReport() {
   const month = getCurrentMonth();
   createElement(month);
   const dateProfits = document.querySelectorAll('.date-profit');
@@ -110,7 +103,6 @@ function createElement(month){
         container.append(dateNo, date, dateCost, datePrice, dateProfit);
         contentContainer.appendChild(container);
       }
-      console.log(totalProfit);
       monthlyCost.innerText = 'RM ' + Number(totalCost).toFixed(2);
       monthlyPrice.innerText = 'RM ' + Number(totalPrice).toFixed(2);
       monthlyProfit.innerText = 'RM ' + Number(totalProfit).toFixed(2);

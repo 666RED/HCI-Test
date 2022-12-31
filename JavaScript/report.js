@@ -111,6 +111,7 @@ function createElement(month) {
 
       date.addEventListener('click', () => {
         const dateArr = [{
+          date:date.innerText,
           day,
           month,
           year,
@@ -283,7 +284,70 @@ function saveWeeklyData() {
 }
 
 function saveMonthlyData() {
-  
+  localStorage.removeItem('Monthly Sales');
+  if(totalSales.length == 0){
+    return;
+  }
+
+  let start = 0;
+  while(start != -1){
+    let index;
+    let monthArr = [];
+    let arr = JSON.parse(localStorage.getItem('Monthly Sales')) || [];
+    let currentMonth;
+    let currentYear;
+    let totalCost = 0;
+    let totalPrice = 0;
+    let totalProfit;
+    let enoughMonth = false;
+
+    for(let i = start; i < totalSales.length; i++){
+      const dailySalesArr = totalSales[i].dailySalesArr;
+      if(dailySalesArr.slice(-1)[0].currentDate == 1){
+        currentMonth = dailySalesArr.slice(-1)[0].currentMonth;
+        currentYear = dailySalesArr.slice(-1)[0].currentYear;
+        index = i;
+        break;
+      }
+    }
+
+    for(let i = index; i < totalSales.length; i++){
+      if(totalSales[index].dailySalesArr.slice(-1)[0].currentMonth == currentMonth && totalSales[index].dailySalesArr.slice(-1)[0].currentYear == currentYear){
+        const dailySalesArr = totalSales[index].dailySalesArr;
+        for(let k = 0; k < dailySalesArr.length - 1; k++){ // calculate daily total
+          const productArr = dailySalesArr[k].productArr;
+          totalCost += productArr.slice(-1)[0].totalCost;
+          totalPrice += productArr.slice(-1)[0].totalPrice;
+        }
+        index++;
+        if(index == totalSales.length){
+          index--;
+          if((totalSales[index].dailySalesArr.slice(-1)[0].currentDate == 28 && currentMonth == 2) || (totalSales[index].dailySalesArr.slice(-1)[0].currentDate == 30 && (currentMonth == 4 || currentMonth == 6 || currentMonth == 9 || currentMonth == 11)) || (totalSales[index].dailySalesArr.slice(-1)[0].currentDate == 31 && (currentMonth == 1 || currentMonth == 3 || currentMonth == 5 || currentMonth == 7 || currentMonth == 8 ||currentMonth == 10 || currentMonth == 12))){
+            enoughMonth = true;
+          }
+          break;
+        }
+      }else if((totalSales[index - 1].dailySalesArr.slice(-1)[0].currentDate == 28 && currentMonth == 2) || (totalSales[index - 1].dailySalesArr.slice(-1)[0].currentDate == 30 && (currentMonth == 4 || currentMonth == 6 || currentMonth == 9 || currentMonth == 11)) || (totalSales[index - 1].dailySalesArr.slice(-1)[0].currentDate == 31 || (currentMonth == 1 || currentMonth == 3 || currentMonth == 5 || currentMonth == 7 || currentMonth == 8 ||currentMonth == 10 || currentMonth == 12))){
+        enoughMonth = true;
+        break;
+      }
+    }
+    totalProfit = totalPrice - totalCost;
+    monthArr.push({
+      totalCost,
+      totalPrice,
+      totalProfit,
+      currentMonth,
+      currentYear
+    });
+    if(enoughMonth){
+      arr.push(monthArr);
+      localStorage.setItem('Monthly Sales', JSON.stringify(arr));
+      start = index;
+    }else {
+      start = -1;
+    }
+  }
 }
 
 // graph section

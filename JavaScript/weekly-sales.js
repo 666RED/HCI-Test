@@ -4,6 +4,7 @@ const returnIcon = document.querySelector('.return-icon');
 const totalPrice = document.querySelector('.total-price');
 const totalCost = document.querySelector('.total-cost');
 const totalProfit = document.querySelector('.total-profit');
+const weekSection = document.querySelector('.week-section');
 
 const totalSales = JSON.parse(localStorage.getItem('Total Sales')) || [];
 const tempArr = JSON.parse(sessionStorage.getItem('Date')) || [];
@@ -104,6 +105,7 @@ function displayProduct() {
     productCost.innerText = 'RM ' + Number(finalArr[i].cost).toFixed(2);
     productPrice.innerText = 'RM ' + Number(finalArr[i].singlePrice).toFixed(2);
     productProfit.innerText = 'RM ' + Number(((finalArr[i].singlePrice) - (finalArr[i].cost))).toFixed(2);
+    weekSection.innerText = 'Week: ' + tempArr[0].date;
 
     contentRow.classList.add('content-row');
     productNo.classList.add('product-no');

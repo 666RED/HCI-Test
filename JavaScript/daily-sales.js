@@ -1,4 +1,5 @@
 const contentContainer = document.querySelector('.content-container');
+const dateSection = document.querySelector('.date-section');
 const totalPrice = document.querySelector('.total-price');
 const totalCost = document.querySelector('.total-cost');
 const totalProfit = document.querySelector('.total-profit');
@@ -23,7 +24,6 @@ function displayDailySales() {
     const year = dailySalesArr.slice(-1)[0].currentYear;
 
     if (dateArr[0].day == date && dateArr[0].month == month && dateArr[0].year == year) {
-      const dailySalesArr = totalSalesArr[i].dailySalesArr;
 
       for (let j = 0; j < dailySalesArr.length - 1; j++) { //get the array of all product
         const productArr = dailySalesArr[j].productArr;
@@ -68,6 +68,7 @@ function displayDailySales() {
     productCost.innerText = 'RM ' + Number(finalArr[i].cost).toFixed(2);
     productPrice.innerText = 'RM ' + Number(finalArr[i].singlePrice).toFixed(2);
     productProfit.innerText = 'RM ' + Number(((finalArr[i].singlePrice) - (finalArr[i].cost))).toFixed(2);
+    dateSection.innerText = 'Date: ' + dateArr[0].date;
 
     contentRow.classList.add('content-row');
     productNo.classList.add('product-no');
