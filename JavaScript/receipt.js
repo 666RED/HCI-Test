@@ -16,16 +16,13 @@ const d = new Date();
 
 const inventoryArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 const productArr = JSON.parse(sessionStorage.getItem('Purchased Product'));
-productArr[productArr.length - 1].date = 15;
-productArr[productArr.length - 1].month = 12;
-productArr[productArr.length - 1].year = 2022;
 
 let dailySalesArr = JSON.parse(localStorage.getItem('Daily Sales')) || [];
 let totalSalesArr = JSON.parse(localStorage.getItem('Total Sales')) || [];
 
 window.onload = () => {
   determineDate();
-  const receiptNo = dailySalesArr.length + 1; 
+  const receiptNo = dailySalesArr.length + 1;
   receiptNoText.innerText = 'Receipt No: ' + receiptNo;
   receiptDate.innerText = 'Date: ' + d.toLocaleDateString();
   receiptTime.innerText = 'Time: ' + d.toLocaleTimeString();
@@ -33,7 +30,7 @@ window.onload = () => {
 };
 
 function createProduct() {
-  for(let i = 0; i < productArr.length - 1; i++){
+  for (let i = 0; i < productArr.length - 1; i++) {
     const productRow = document.createElement('div');
     const productNo = document.createElement('div');
     const productName = document.createElement('div');
@@ -71,7 +68,7 @@ printAndSaveButton.addEventListener('click', () => {
     decreaseInventory();
     sessionStorage.clear();
     window.location.href = 'checkout.html';
-  },5000);
+  }, 5000);
 });
 
 saveButton.addEventListener('click', () => {
@@ -89,14 +86,14 @@ doneButton.addEventListener('click', () => {
 });
 
 function saveData() {
-  dailySalesArr.push({productArr});
+  dailySalesArr.push({ productArr });
   localStorage.setItem('Daily Sales', JSON.stringify(dailySalesArr));
 }
 
-function decreaseInventory(){
-  for(let i = 0; i < productArr.length; i++){
-    for(let j = 0; j < inventoryArr.length; j++){
-      if(productArr[i].name == inventoryArr[j].name){
+function decreaseInventory() {
+  for (let i = 0; i < productArr.length; i++) {
+    for (let j = 0; j < inventoryArr.length; j++) {
+      if (productArr[i].name == inventoryArr[j].name) {
         inventoryArr[j].quantity = Number(inventoryArr[j].quantity) - Number(productArr[i].quantity);
         break;
       }
@@ -106,17 +103,17 @@ function decreaseInventory(){
 }
 
 function determineDate() {
-  if(dailySalesArr.length == 0){
+  if (dailySalesArr.length == 0) {
     return;
   }
-  if(dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date != productArr[productArr.length - 1].date){
+  if (dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date != productArr[productArr.length - 1].date) {
     console.log('push');
     dailySalesArr.push({
-      currentDate:dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date,
-      currentMonth:dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).month,
-      currentYear:dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).year
+      currentDate: dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).date,
+      currentMonth: dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).month,
+      currentYear: dailySalesArr[dailySalesArr.length - 1].productArr.at(-1).year
     });
-    totalSalesArr.push({dailySalesArr});
+    totalSalesArr.push({ dailySalesArr });
     localStorage.setItem('Total Sales', JSON.stringify(totalSalesArr));
     dailySalesArr = [];
   }
