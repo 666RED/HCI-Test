@@ -3,7 +3,7 @@ const monthInput = document.querySelector('.month');
 const monthlyCost = document.querySelector('.total-cost');
 const monthlyPrice = document.querySelector('.total-price');
 const monthlyProfit = document.querySelector('.total-profit');
-const yearInput = monthInput.value.slice(0, 4);
+const yearInput = new Date().getFullYear;
 
 const monthlySalesArr = JSON.parse(localStorage.getItem('Monthly Sales')) || [];
 
@@ -16,9 +16,17 @@ monthInput.addEventListener('change', () => {
   updateTable(yearInput);
 });
 
+function getCurrentMonth() {
+  const d = new Date();
+  const month = "0" + (d.getMonth() + 1);
+  const year = d.getFullYear();
+  monthInput.value = `${year}-${month.slice(-2)}`;
+}
+
 window.onload= displayMontnlyReport();
 
 function displayMontnlyReport() {
+  getCurrentMonth();
   createElement(yearInput);
   const dateProfits = document.querySelectorAll('.date-profit');
   dateProfits.forEach(profit => {
