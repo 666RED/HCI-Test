@@ -68,8 +68,6 @@ function displayProduct() {
     }
   }
 
-  console.log(finalArr);
-
   // not related
   
   for(let i = 0; i < finalArr.length; i++){ // change the date type

@@ -16,9 +16,12 @@ const errorPopupMenu = document.querySelector('.error-pop-up');
 const errorOkButton = document.querySelector('.error-ok-btn');
 const errorCancelButton = document.querySelector('.error-cancel-img');
 const errorMessage = document.querySelector('.error-message');
-const currentDate = new Date().getDate();
-const currentMonth = new Date().getMonth() + 1;
+// const currentDate = new Date().getDate();
+// const currentMonth = "0" + new Date().getMonth() + 1;
 const currentYear = new Date().getFullYear();
+
+const currentDate = 22;
+const currentMonth = "0" + 2;
 
 const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
 const tempArr = JSON.parse(localStorage.getItem('Inventory')) || [];

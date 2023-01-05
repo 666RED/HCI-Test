@@ -3,6 +3,7 @@ const monthInput = document.querySelector('.month');
 const dailyCost = document.querySelector('.total-cost');
 const dailyPrice = document.querySelector('.total-price');
 const dailyProfit = document.querySelector('.total-profit');
+const myChart = document.querySelector('#my-chart').getContext('2d');
 
 const totalSales = JSON.parse(localStorage.getItem('Total Sales')) || [];
 
@@ -12,6 +13,7 @@ monthInput.addEventListener('change', () => {
   dailyPrice.innerText = '';
   dailyProfit.innerText = '';
   updateTable(monthInput.value);
+  updateGraph(monthInput.value);
 });
 
 window.onload = displayTable();
@@ -20,6 +22,7 @@ function displayTable() {
   const month = getCurrentMonth();
   createElement(month);
   saveData();
+  updateGraph(month);
   const dateProfits = contentContainer.querySelectorAll('.date-profit');
   dateProfits.forEach(profit => {
     if(contentContainer.offsetHeight >= 360){
@@ -177,13 +180,30 @@ function saveWeeklyData() {
     let currentMonth;
     let currentYear;
 
-    for(let i = start; i < totalSales.length; i++){ // find date 1
-      const dailySalesArr = totalSales[i].dailySalesArr;
-      if(dailySalesArr.slice(-1)[0].currentDate == 1){
-        currentMonth = dailySalesArr.slice(-1)[0].currentMonth;
-        currentYear = dailySalesArr.slice(-1)[0].currentYear;
-        index = i;
-        break;
+    if(arr.length != 0){
+      for(let i = start; i < totalSales.length; i++){ // start from the next month
+        const dailySalesArr = totalSales[i].dailySalesArr;
+        if(dailySalesArr.slice(-1)[0].currentMonth == '0' + (Number(arr.slice(-1)[0].slice(-1)[0].currentMonth) + 1)){
+          currentMonth = dailySalesArr.slice(-1)[0].currentMonth;
+          currentYear = dailySalesArr.slice(-1)[0].currentYear;
+          index = i;
+          break;
+        }
+      }
+    }else {
+      currentMonth = totalSales[0].dailySalesArr.slice(-1)[0].currentMonth;
+      currentYear = totalSales[0].dailySalesArr.slice(-1)[0].currentYear;
+      index = 0;
+      if(totalSales[0].dailySalesArr.slice(-1)[0].currentDate >= 1 || totalSales[0].dailySalesArr.slice(-1)[0].currentDate <= 7){
+        mul = 1;
+      }else if(totalSales[0].dailySalesArr.slice(-1)[0].currentDate >= 8 || totalSales[0].dailySalesArr.slice(-1)[0].currentDate <= 14){
+        mul = 2;
+      }else if(totalSales[0].dailySalesArr.slice(-1)[0].currentDate >= 15 || totalSales[0].dailySalesArr.slice(-1)[0].currentDate <= 21){
+        mul = 3;
+      }else if(totalSales[0].dailySalesArr.slice(-1)[0].currentDate >= 22 || totalSales[0].dailySalesArr.slice(-1)[0].currentDate <= 28){
+        mul = 4;
+      }else {
+        mul = 5;
       }
     }
 
@@ -192,7 +212,7 @@ function saveWeeklyData() {
       let totalPrice = 0;
       let totalProfit;
       let beginDateBoolean = false;
-      if(mul * 7> totalSales.slice(-1)[0].dailySalesArr.slice(-1)[0].currentDate && totalSales[index].dailySalesArr.slice(-1)[0].currentMonth == totalSales.slice(-1)[0].dailySalesArr.slice(-1)[0].currentMonth){ 
+      if(mul * 7 > totalSales.slice(-1)[0].dailySalesArr.slice(-1)[0].currentDate && totalSales[index].dailySalesArr.slice(-1)[0].currentMonth == totalSales.slice(-1)[0].dailySalesArr.slice(-1)[0].currentMonth){ 
         weekArr.push({
           currentYear:totalSales.slice(-1)[0].dailySalesArr.slice(-1)[0].currentYear,
           currentMonth:totalSales.slice(-1)[0].dailySalesArr.slice(-1)[0].currentMonth
@@ -278,7 +298,7 @@ function saveWeeklyData() {
     if(mul == 5 && totalSales[index].dailySalesArr.slice(-1)[0].currentDate >= 27 || totalSales[index].dailySalesArr.slice(-1)[0].currentDate == 1 || totalSales[index].dailySalesArr.slice(-1)[0].currentDate == 2 || mul < 5){
       start = -1;
     }else if(mul == 5 && totalSales[index].dailySalesArr.slice(-1)[0].currentDate >= 3){
-      start = index - 4;
+      start = index - 7;
     }
   }  
 }
@@ -301,16 +321,22 @@ function saveMonthlyData() {
     let totalProfit;
     let enoughMonth = false;
 
-    for(let i = start; i < totalSales.length; i++){
-      const dailySalesArr = totalSales[i].dailySalesArr;
-      if(dailySalesArr.slice(-1)[0].currentDate == 1){
-        currentMonth = dailySalesArr.slice(-1)[0].currentMonth;
-        currentYear = dailySalesArr.slice(-1)[0].currentYear;
-        index = i;
-        break;
+    if(arr.length != 0){
+      for(let i = start; i < totalSales.length; i++){
+        const dailySalesArr = totalSales[i].dailySalesArr;
+        if(dailySalesArr.slice(-1)[0].currentMonth == '0' + (Number(arr.slice(-1)[0].slice(-1)[0].currentMonth) + 1)){ // find next month
+          currentMonth = dailySalesArr.slice(-1)[0].currentMonth;
+          currentYear = dailySalesArr.slice(-1)[0].currentYear;
+          index = i;
+          break;
+        }
       }
+    }else {
+      const dailySalesArr = totalSales[0].dailySalesArr;
+      currentMonth = dailySalesArr.slice(-1)[0].currentMonth;
+      currentYear = dailySalesArr.slice(-1)[0].currentYear;
+      index = 0;
     }
-
     for(let i = index; i < totalSales.length; i++){
       if(totalSales[index].dailySalesArr.slice(-1)[0].currentMonth == currentMonth && totalSales[index].dailySalesArr.slice(-1)[0].currentYear == currentYear){
         const dailySalesArr = totalSales[index].dailySalesArr;
@@ -350,36 +376,68 @@ function saveMonthlyData() {
   }
 }
 
-// graph section
+function updateGraph(month) {
 
-var xValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-var yValues = [100, 200, 150, 120, 130, 90, 50, 190, 200, 140, 138, 159, 85, 159, 130, 158, 105, 157, 159, 135, 100, 205, 154, 104, 94, 105, 140, 138, 195, 92, 194];
+  const monthValue = month.slice(-2);
+  const monthArr = [0];
 
-new Chart("my-chart", {
-  type: "line",
-  data: {
-    labels: xValues,
-    datasets: [{
-      fill: false, // highlight area underneath the line
-      lineTension: 0.4,
-      backgroundColor: "rgba(0,0,255)",
-      borderColor: "rgba(0,0,255)",
-      data: yValues
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'hello'
-    },
-    legend: {display: false},
-    tension: 0.4,
-    scales: {
-      yAxes: [
-        {
-          ticks: {min: 0, max:250},
-        }
-      ]
+  const profits = document.querySelectorAll('.date-profit');
+  const profitArr = [0];
+
+  for(let i = 0; i < profits.length; i++){
+    profitArr.push(profits[i].innerText.replace('RM ', ''));
+  }
+  for(let i = 0; i < totalSales.length; i++){
+    if(totalSales[i].dailySalesArr.slice(-1)[0].currentMonth == monthValue){
+      monthArr.push(totalSales[i].dailySalesArr.slice(-1)[0].currentDate);
     }
   }
-});
+
+  new Chart('my-chart', {
+    type: "line",
+    data: {
+      labels: monthArr,
+      datasets: [{
+        label: 'Daily Profit',
+        fill: false, // highlight area underneath the line
+        lineTension: 0.4,
+        backgroundColor: "rgba(0,0,255)",
+        borderColor: "rgba(0,0,255)",
+        data: profitArr
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Total Daily Profit'
+      },
+      tension: 0.4,
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Date',
+            font: {
+              size: 20,
+              weight: 'bold',
+              lineHeight: 1.2
+            },
+            padding: {top: 10, left: 0, right: 0, bottom: 10}
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Profit (RM)',
+            font: {
+              size: 20,
+              weight: 'bold',
+              lineHeight: 1.2
+            },
+            padding: {top: 10, left: 0, right: 0, bottom: 10}
+          }
+        },
+      }
+    }
+  });
+}

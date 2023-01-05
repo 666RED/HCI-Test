@@ -3,7 +3,6 @@ const monthInput = document.querySelector('.month');
 const monthlyCost = document.querySelector('.total-cost');
 const monthlyPrice = document.querySelector('.total-price');
 const monthlyProfit = document.querySelector('.total-profit');
-const yearInput = new Date().getFullYear;
 
 const monthlySalesArr = JSON.parse(localStorage.getItem('Monthly Sales')) || [];
 
@@ -27,6 +26,7 @@ window.onload= displayMontnlyReport();
 
 function displayMontnlyReport() {
   getCurrentMonth();
+  const yearInput = monthInput.value.slice(0, 4);
   createElement(yearInput);
   const dateProfits = document.querySelectorAll('.date-profit');
   dateProfits.forEach(profit => {
