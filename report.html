@@ -40,18 +40,24 @@
 
   <section class="daily-report-main-content">
     <div class="upper-row">
-      <div class="header-title">Report</div>
-      <div class="month-section">
-        <label for="month">Month:</label>
-        <input type="month" class="month" id="month" min="2022-01">
-      </div>
-      <div class="period-section">
-        <div class="daily">Daily</div>
-        <div class="weekly">
-          <a href="report-weekly.html">Weekly</a>
+      <div class="upper-row-left-section">
+        <div class="header-title">Report</div>
+        <div class="month-section">
+          <label for="month">Month :</label>
+          <input type="month" class="month" id="month" min="2022-01">
         </div>
-        <div class="monthly">
-          <a href="report-monthly.html">Monthly</a>
+        <img src="image/graph.png" class="graph-icon">
+      </div>
+
+      <div class="upper-row-right-section">
+        <div class="period-section">
+          <div class="daily">Daily</div>
+          <div class="weekly">
+            <a href="report-weekly.html">Weekly</a>
+          </div>
+          <div class="monthly">
+            <a href="report-monthly.html">Monthly</a>
+          </div>
         </div>
       </div>
     </div>
@@ -83,12 +89,19 @@
         <div class="total-profit"></div>
       </div>
     </div>
+  </section>
 
+  <div class="graph-container">
     <div class="graph-row">
+      <div class="graph-upper-row">
+        <h1 class="graph-date">2023-01</h1>
+        <img src="image/remove.png" class="remove-icon">
+      </div>
+      <hr>
       <canvas id="my-chart"></canvas>
     </div>
-  </section>
-<!-- 
+  </div>
+
   <section class="footer">
     <div class="footer-upper-row">
       <div class="terms-of-use">
@@ -103,7 +116,7 @@
     <div class="footer-bottom-row">
       <p class="system-name">PASAR MINI KMS SALES SYSTEM</p>
     </div>
-  </section> -->
+  </section>
 
   <div class="logout-pop-up">
     <div class="logout-upper-row">

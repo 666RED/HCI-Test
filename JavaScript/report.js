@@ -4,8 +4,14 @@ const dailyCost = document.querySelector('.total-cost');
 const dailyPrice = document.querySelector('.total-price');
 const dailyProfit = document.querySelector('.total-profit');
 const myChart = document.querySelector('#my-chart').getContext('2d');
+const graphIcon = document.querySelector('.graph-icon');
+const graphContainer = document.querySelector('.graph-container');
 
 const totalSales = JSON.parse(localStorage.getItem('Total Sales')) || [];
+
+graphIcon.addEventListener('click', () => {
+  graphContainer.style.display = 'block';
+});
 
 monthInput.addEventListener('change', () => {
   contentContainer.innerHTML = '';

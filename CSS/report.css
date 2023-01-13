@@ -11,7 +11,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+}
+
+.upper-row-left-section {
+  display: flex;
+  align-items: center;
 }
 
 .header-title {
@@ -24,7 +29,7 @@
   flex-direction: row;
   align-items: center;
   margin-left: 4rem;
-  margin-right: 32rem;
+  margin-right: 2rem;
   min-width: 13rem;
 }
 
@@ -42,11 +47,17 @@
   width: 1.5rem;
 }
 
+.graph-icon {
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+}
+
 .period-section {
   text-align: center;
   display: flex;
   flex-direction: row;
-  margin-right: 9rem;
+  margin-right: 8.9rem;
 }
 
 .period-section > * {
@@ -187,15 +198,49 @@
   font-weight: bold;
 }
 
+.graph-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /* background-color: red; */
+  display: none;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  z-index: 100;
+}
+
 .graph-row {
+  position: fixed;
+  top: 2%;
+  bottom: 5%;
+  left: 10%;
+  right: 10%;
+  background-color: white;
+}
+
+.graph-upper-row {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.graph-date {
+  margin-left: 1rem;
+  font-size: 25px;
+}
+
+.remove-icon {
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  margin-right: 1rem;
 }
 
 #my-chart {
-  width: 100%;
-  max-width: 1000px;
+  min-width: 100%;
+  /* max-width: 1000px; */
   background-color: white;
   margin-bottom: 5rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }

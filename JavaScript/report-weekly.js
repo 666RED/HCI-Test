@@ -4,7 +4,7 @@ const monthlyCost = document.querySelector('.total-cost');
 const monthlyPrice = document.querySelector('.total-price');
 const monthlyProfit = document.querySelector('.total-profit');
 
-
+const totalSales = JSON.parse(localStorage.getItem('Total Sales')) || [];
 const weeklySalesArr = JSON.parse(localStorage.getItem('Weekly Sales')) || [];
 
 monthInput.addEventListener('change', () => {
@@ -20,6 +20,7 @@ window.onload = displayWeeklyReport();
 function displayWeeklyReport() {
   const month = getCurrentMonth();
   createElement(month);
+  updateGraph(month);
   const dateProfits = document.querySelectorAll('.date-profit');
   dateProfits.forEach(profit => {
     if(contentContainer.offsetHeight >= 360){
@@ -108,4 +109,70 @@ function createElement(month){
       monthlyProfit.innerText = 'RM ' + Number(totalProfit).toFixed(2);
     }
   }
+}
+
+function updateGraph(month) {
+
+  const monthValue = month.slice(-2);
+  const monthArr = [0];
+
+  const profits = document.querySelectorAll('.date-profit');
+  const profitArr = [0];
+
+  for(let i = 0; i < profits.length; i++){
+    profitArr.push(profits[i].innerText.replace('RM ', ''));
+  }
+  for(let i = 0; i < totalSales.length; i++){
+    if(totalSales[i].dailySalesArr.slice(-1)[0].currentMonth == monthValue){
+      monthArr.push(totalSales[i].dailySalesArr.slice(-1)[0].currentDate);
+    }
+  }
+
+  new Chart('my-chart', {
+    type: "line",
+    data: {
+      labels: monthArr,
+      datasets: [{
+        label: 'Daily Profit',
+        fill: false, // highlight area underneath the line
+        lineTension: 0.4,
+        backgroundColor: "rgba(0,0,255)",
+        borderColor: "rgba(0,0,255)",
+        data: profitArr
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Total Daily Profit'
+      },
+      tension: 0.4,
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Date',
+            font: {
+              size: 20,
+              weight: 'bold',
+              lineHeight: 1.2
+            },
+            padding: {top: 10, left: 0, right: 0, bottom: 10}
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Profit (RM)',
+            font: {
+              size: 20,
+              weight: 'bold',
+              lineHeight: 1.2
+            },
+            padding: {top: 10, left: 0, right: 0, bottom: 10}
+          }
+        },
+      }
+    }
+  });
 }
