@@ -6,10 +6,12 @@ const dailyProfit = document.querySelector('.total-profit');
 const myChart = document.querySelector('#my-chart').getContext('2d');
 const graphIcon = document.querySelector('.graph-icon');
 const graphContainer = document.querySelector('.graph-container');
+const removeIcon = document.querySelector('.remove-icon');
 
 const totalSales = JSON.parse(localStorage.getItem('Total Sales')) || [];
 
 graphIcon.addEventListener('click', () => {
+  updateGraph(monthInput.value); // 2023-01
   graphContainer.style.display = 'block';
 });
 
@@ -19,7 +21,6 @@ monthInput.addEventListener('change', () => {
   dailyPrice.innerText = '';
   dailyProfit.innerText = '';
   updateTable(monthInput.value);
-  updateGraph(monthInput.value);
 });
 
 window.onload = displayTable();
@@ -28,7 +29,6 @@ function displayTable() {
   const month = getCurrentMonth();
   createElement(month);
   saveData();
-  updateGraph(month);
   const dateProfits = contentContainer.querySelectorAll('.date-profit');
   dateProfits.forEach(profit => {
     if(contentContainer.offsetHeight >= 360){
@@ -399,7 +399,7 @@ function updateGraph(month) {
     }
   }
 
-  new Chart('my-chart', {
+  const newChart = new Chart('my-chart', {
     type: "line",
     data: {
       labels: monthArr,
@@ -445,5 +445,10 @@ function updateGraph(month) {
         },
       }
     }
+  });
+
+  removeIcon.addEventListener('click', () => {
+    newChart.destroy();
+    graphContainer.style.display = 'none';
   });
 }
