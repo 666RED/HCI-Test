@@ -7,6 +7,7 @@ const myChart = document.querySelector('#my-chart').getContext('2d');
 const graphIcon = document.querySelector('.graph-icon');
 const graphContainer = document.querySelector('.graph-container');
 const removeIcon = document.querySelector('.remove-icon');
+const graphDate = document.querySelector('.graph-date');
 
 const totalSales = JSON.parse(localStorage.getItem('Total Sales')) || [];
 
@@ -162,7 +163,6 @@ function createElement(month) {
   //   currentMonth
   // });
   // arr.push(monthlyArr);
-  // console.log(arr);
   // localStorage.setItem('Monthly Sales', JSON.stringify(arr));
 }
 
@@ -372,7 +372,7 @@ function saveMonthlyData() {
       currentMonth,
       currentYear
     });
-    if(enoughMonth){
+    if(enoughMonth){  
       arr.push(monthArr);
       localStorage.setItem('Monthly Sales', JSON.stringify(arr));
       start = index;
@@ -385,7 +385,20 @@ function saveMonthlyData() {
 function updateGraph(month) {
 
   const monthValue = month.slice(-2);
+  const yearValue = month.slice(0, 4);
   const monthArr = [0];
+  graphDate.innerText = monthInput.value;
+  let numOfDate;
+  if(monthValue == '01' || monthValue == '03' || monthValue == '05' || monthValue == '07' || monthValue == '08' || monthValue == '10' || monthValue == '12'){
+    numOfDate = 31;
+  }else if(monthValue == '02' && yearValue % 4 != 0){
+    numOfDate = 28;
+  }else if(monthValue == '02' && yearValue % 4 == 0){
+    numOfDate = 29;
+  }
+  else if(monthValue == '04' || monthValue == '06' || monthValue == '09' || monthValue == '11'){
+    numOfDate = 30;
+  }
 
   const profits = document.querySelectorAll('.date-profit');
   const profitArr = [0];
@@ -393,9 +406,23 @@ function updateGraph(month) {
   for(let i = 0; i < profits.length; i++){
     profitArr.push(profits[i].innerText.replace('RM ', ''));
   }
+
   for(let i = 0; i < totalSales.length; i++){
-    if(totalSales[i].dailySalesArr.slice(-1)[0].currentMonth == monthValue){
+    if(totalSales[i].dailySalesArr.slice(-1)[0].currentMonth == monthValue && totalSales[i].dailySalesArr.slice(-1)[0].currentYear == yearValue){
       monthArr.push(totalSales[i].dailySalesArr.slice(-1)[0].currentDate);
+    }
+  }
+
+  if(monthArr.length == 0){ 
+    for(let i = 0; i < numOfDate; i++){
+      profitArr.push(0);
+      monthArr.push(i + 1);
+    }
+  }
+  if(monthArr.slice(-1) != numOfDate){
+    for(let i = Number(monthArr.slice(-1)); i < numOfDate; i++){
+      profitArr.push(0);
+      monthArr.push(i + 1);
     }
   }
 
@@ -413,10 +440,6 @@ function updateGraph(month) {
       }]
     },
     options: {
-      title: {
-        display: true,
-        text: 'Total Daily Profit'
-      },
       tension: 0.4,
       scales: {
         x: {

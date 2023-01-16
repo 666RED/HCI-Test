@@ -204,7 +204,6 @@
   bottom: 0;
   right: 0;
   left: 0;
-  /* background-color: red; */
   display: none;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
   z-index: 100;
@@ -212,22 +211,27 @@
 
 .graph-row {
   position: fixed;
-  top: 2%;
-  bottom: 5%;
+  top: 5%;
   left: 10%;
   right: 10%;
   background-color: white;
 }
 
-.graph-upper-row {
+.graph-title-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: .5rem;
+}
+
+.graph-title {
+  margin-left: 1rem;
+  font-size: 25px;
 }
 
 .graph-date {
   margin-left: 1rem;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .remove-icon {
@@ -239,8 +243,6 @@
 
 #my-chart {
   min-width: 100%;
-  /* max-width: 1000px; */
+  max-height: 500px;
   background-color: white;
-  margin-bottom: 5rem;
-  /* border: 1px solid black; */
 }

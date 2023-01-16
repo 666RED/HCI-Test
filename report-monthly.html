@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/CSS/header.css">
   <link rel="stylesheet" href="/CSS/footer.css">
   <link rel="stylesheet" href="/CSS/report-monthly.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
  
 <body>
@@ -39,19 +40,25 @@
 
   <section class="daily-report-main-content">
     <div class="upper-row">
-      <div class="header-title">Report</div>
-      <div class="month-section">
-        <label for="month">Year :</label>
-        <input type="month" class="month" id="month" min="2022-01">
+      <div class="upper-row-left-section">
+        <div class="header-title">Report</div>
+        <div class="month-section">
+          <label for="month">Year :</label>
+          <input type="month" class="month" id="month" min="2022-01">
+        </div>
+        <img src="image/graph.png" class="graph-icon">
       </div>
-      <div class="period-section">
-        <div class="daily">
-          <a href="report.html">Daily</a>
+
+      <div class="upper-row-right-section">
+        <div class="period-section">
+          <div class="daily">
+            <a href="report.html">Daily</a>
+          </div>
+          <div class="weekly">
+            <a href="report-weekly.html">Weekly</a>
+          </div>
+          <div class="monthly">Monthly</div>
         </div>
-        <div class="weekly">
-          <a href="report-weekly.html">Weekly</a>
-        </div>
-        <div class="monthly">Monthly</div>
       </div>
     </div>
 
@@ -83,6 +90,20 @@
       </div>
     </div>
   </section>
+
+  <div class="graph-container">
+    <div class="graph-row">
+      <div class="graph-upper-row">
+        <div class="graph-title-row">
+          <h1 class="graph-title">Monthly Profit Graph</h1>
+          <img src="image/remove.png" class="remove-icon">
+        </div>
+        <div class="graph-date"></div>
+      </div>
+      <hr>
+      <canvas id="my-chart"></canvas>
+    </div>
+  </div>
 
   <section class="footer">
     <div class="footer-upper-row">

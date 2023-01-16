@@ -3,8 +3,18 @@ const monthInput = document.querySelector('.month');
 const monthlyCost = document.querySelector('.total-cost');
 const monthlyPrice = document.querySelector('.total-price');
 const monthlyProfit = document.querySelector('.total-profit');
+const myChart = document.querySelector('#my-chart').getContext('2d');
+const graphIcon = document.querySelector('.graph-icon');
+const graphContainer = document.querySelector('.graph-container');
+const removeIcon = document.querySelector('.remove-icon');
+const graphDate = document.querySelector('.graph-date');
 
 const monthlySalesArr = JSON.parse(localStorage.getItem('Monthly Sales')) || [];
+
+graphIcon.addEventListener('click', () => {
+  updateGraph(monthInput.value); // 2023-01
+  graphContainer.style.display = 'block';
+});
 
 monthInput.addEventListener('change', () => {
   contentContainer.innerHTML = '';
@@ -100,4 +110,84 @@ function createElement(year){
       monthlyProfit.innerText = 'RM ' + Number(totalProfit).toFixed(2);
     }
   }
+}
+
+function updateGraph(month) {
+
+  const yearValue = month.slice(0, 4);
+  const yearArr = [0];
+  graphDate.innerText = yearValue;
+  const numOfMonth = 12;
+
+  const profits = document.querySelectorAll('.date-profit');
+  const profitArr = [0];
+
+  for(let i = 0; i < profits.length; i++){
+    profitArr.push(profits[i].innerText.replace('RM ', ''));
+  }
+  for(let i = profitArr.length; i <= numOfMonth; i++){
+    profitArr.push(0);
+  }
+
+  for(let i = 0; i < monthlySalesArr.length; i++){
+    if(monthlySalesArr[i][0].currentYear == yearValue){
+      yearArr.push(monthlySalesArr[i][0].currentMonth);
+    }
+  }
+  for(let i = yearArr.length; i <= numOfMonth; i++){
+    if(yearArr.length <= 9){
+      yearArr.push('0' + i);
+    }else {
+      yearArr.push(i);
+    }
+  }
+
+  const newChart = new Chart('my-chart', {
+    type: "line",
+    data: {
+      labels: yearArr,
+      datasets: [{
+        label: 'Monthly Profit',
+        fill: false, // highlight area underneath the line
+        lineTension: 0.4,
+        backgroundColor: "rgba(0,0,255)",
+        borderColor: "rgba(0,0,255)",
+        data: profitArr
+      }]
+    },
+    options: {
+      tension: 0.4,
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Month',
+            font: {
+              size: 20,
+              weight: 'bold',
+              lineHeight: 1.2
+            },
+            padding: {top: 10, left: 0, right: 0, bottom: 10}
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Profit (RM)',
+            font: {
+              size: 20,
+              weight: 'bold',
+              lineHeight: 1.2
+            },
+            padding: {top: 10, left: 0, right: 0, bottom: 10}
+          }
+        },
+      }
+    }
+  });
+
+  removeIcon.addEventListener('click', () => {
+    newChart.destroy();
+    graphContainer.style.display = 'none';
+  });
 }

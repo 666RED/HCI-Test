@@ -41,18 +41,24 @@
 
   <section class="daily-report-main-content">
     <div class="upper-row">
-      <div class="header-title">Report</div>
-      <div class="month-section">
-        <label for="month">Month :</label>
-        <input type="month" class="month" id="month" min="2022-01">
-      </div>
-      <div class="period-section">
-        <div class="daily">
-          <a href="report.html">Daily</a>
+      <div class="upper-row-left-section">
+        <div class="header-title">Report</div>
+        <div class="month-section">
+          <label for="month">Month :</label>
+          <input type="month" class="month" id="month" min="2022-01">
         </div>
-        <div class="weekly">Weekly</div>
-        <div class="monthly">
-          <a href="report-monthly.html">Monthly</a>
+        <img src="image/graph.png" class="graph-icon">
+      </div>
+
+      <div class="upper-row-right-section">
+        <div class="period-section">
+          <div class="daily">
+            <a href="report.html">Daily</a>
+          </div>
+          <div class="weekly">Weekly</div>
+          <div class="monthly">
+            <a href="report-monthly.html">Monthly</a>
+          </div>
         </div>
       </div>
     </div>
@@ -85,6 +91,20 @@
       </div>
     </div>
   </section>
+
+  <div class="graph-container">
+    <div class="graph-row">
+      <div class="graph-upper-row">
+        <div class="graph-title-row">
+          <h1 class="graph-title">Weekly Profit Graph</h1>
+          <img src="image/remove.png" class="remove-icon">
+        </div>
+        <div class="graph-date"></div>
+      </div>
+      <hr>
+      <canvas id="my-chart"></canvas>
+    </div>
+  </div>
 
   <section class="footer">
     <div class="footer-upper-row">

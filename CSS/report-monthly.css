@@ -11,7 +11,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+}
+
+.upper-row-left-section {
+  display: flex;
+  align-items: center;
 }
 
 .header-title {
@@ -23,8 +28,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 4rem;
-  margin-right: 32rem;
+  margin-left: 4.9rem;
+  margin-right: 2rem;
+  min-width: 13rem;
 }
 
 .month-section label {
@@ -41,11 +47,17 @@
   width: 1.5rem;
 }
 
+.graph-icon {
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+}
+
 .period-section {
   text-align: center;
   display: flex;
   flex-direction: row;
-  padding-left: .9rem;
+  margin-right: 8.9rem;
 }
 
 .period-section>* {
@@ -78,6 +90,7 @@
 
 .report-info {
   margin-top: 1rem;
+  margin-bottom: 5rem;
   display: flex;
   flex-direction: column;
   min-width: fit-content;
@@ -181,4 +194,53 @@
 
 .total-text {
   font-weight: bold;
+}
+
+.graph-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  z-index: 100;
+}
+
+.graph-row {
+  position: fixed;
+  top: 5%;
+  left: 10%;
+  right: 10%;
+  background-color: white;
+}
+
+.graph-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: .5rem;
+}
+
+.graph-title {
+  margin-left: 1rem;
+  font-size: 25px;
+}
+
+.graph-date {
+  margin-left: 1rem;
+  font-size: 20px;
+}
+
+.remove-icon {
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+#my-chart {
+  min-width: 100%;
+  max-height: 500px;
+  background-color: white;
 }
