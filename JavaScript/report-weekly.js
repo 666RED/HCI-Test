@@ -30,6 +30,11 @@ window.onload = displayWeeklyReport();
 function displayWeeklyReport() {
   const month = getCurrentMonth();
   createElement(month);
+  if(contentContainer.childElementCount == 0){
+    monthlyCost.innerText = '';
+    monthlyPrice.innerText = '';
+    monthlyProfit.innerText = '';
+  }
   const dateProfits = document.querySelectorAll('.date-profit');
   dateProfits.forEach(profit => {
     if(contentContainer.offsetHeight >= 360){

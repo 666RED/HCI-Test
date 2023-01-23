@@ -20,7 +20,7 @@ const errorMessage = document.querySelector('.error-message');
 // const currentMonth = "0" + new Date().getMonth() + 1;
 const currentYear = new Date().getFullYear();
 
-const currentDate = 22;
+const currentDate = 4;
 const currentMonth = "0" + 2;
 
 const contentArr = JSON.parse(localStorage.getItem('Inventory')) || [];
