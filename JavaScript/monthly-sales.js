@@ -48,7 +48,6 @@ function displayMonthlySales() {
     for(let j = i + 1; j < finalArr.length; j++){
       if(finalArr[i].name == finalArr[j].name){
         finalArr[i].quantity += finalArr[j].quantity;
-        finalArr[i].cost += finalArr[j].cost;
         finalArr[i].singlePrice += finalArr[j].singlePrice;
         finalArr.splice(j, 1);
         j--;
@@ -68,9 +67,9 @@ function displayMonthlySales() {
     productNo.innerText = i + 1 + '.';
     productName.innerText = finalArr[i].name;
     productQuantity.innerText = finalArr[i].quantity;
-    productCost.innerText = 'RM ' + Number(finalArr[i].cost).toFixed(2);
+    productCost.innerText = 'RM ' + Number(finalArr[i].cost * finalArr[i].quantity).toFixed(2);
     productPrice.innerText = 'RM ' + Number(finalArr[i].singlePrice).toFixed(2);
-    productProfit.innerText = 'RM ' + Number(((finalArr[i].singlePrice) - (finalArr[i].cost))).toFixed(2);
+    productProfit.innerText = 'RM ' + Number(((finalArr[i].singlePrice) - (finalArr[i].cost * finalArr[i].quantity))).toFixed(2);
     monthSection.innerText = 'Date: ' + tempArr[0].date;
 
     contentRow.classList.add('content-row');

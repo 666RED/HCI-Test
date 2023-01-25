@@ -24,7 +24,6 @@ function displayDailySales() {
     const year = dailySalesArr.slice(-1)[0].currentYear;
 
     if (dateArr[0].day == date && dateArr[0].month == month && dateArr[0].year == year) {
-
       for (let j = 0; j < dailySalesArr.length - 1; j++) { //get the array of all product
         const productArr = dailySalesArr[j].productArr;
         for (let k = 0; k < productArr.length - 1; k++) {
@@ -34,7 +33,7 @@ function displayDailySales() {
       break;
     }
   }
-  
+
   for(let i = 0; i < finalArr.length; i++){ // change the date type
     finalArr[i].quantity =  Number(finalArr[i].quantity);
     finalArr[i].cost = Number(finalArr[i].cost);
@@ -65,9 +64,9 @@ function displayDailySales() {
     productNo.innerText = i + 1 + '.';
     productName.innerText = finalArr[i].name;
     productQuantity.innerText = finalArr[i].quantity;
-    productCost.innerText = 'RM ' + Number(finalArr[i].cost).toFixed(2);
+    productCost.innerText = 'RM ' + (Number(finalArr[i].cost).toFixed(2) * finalArr[i].quantity).toFixed(2);
     productPrice.innerText = 'RM ' + Number(finalArr[i].singlePrice).toFixed(2);
-    productProfit.innerText = 'RM ' + Number(((finalArr[i].singlePrice) - (finalArr[i].cost))).toFixed(2);
+    productProfit.innerText = 'RM ' + Number(((finalArr[i].singlePrice) - (finalArr[i].cost * finalArr[i].quantity))).toFixed(2);
     dateSection.innerText = 'Date: ' + dateArr[0].date;
 
     contentRow.classList.add('content-row');

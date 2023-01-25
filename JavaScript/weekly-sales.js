@@ -80,7 +80,6 @@ function displayProduct() {
     for(let j = i + 1; j < finalArr.length; j++){
       if(finalArr[i].name == finalArr[j].name){
         finalArr[i].quantity += finalArr[j].quantity;
-        finalArr[i].cost += finalArr[j].cost;
         finalArr[i].singlePrice += finalArr[j].singlePrice;
         finalArr.splice(j, 1);
         j--;
@@ -88,6 +87,7 @@ function displayProduct() {
     }
   }
 
+  console.log(finalArr);
   for(let i = 0; i < finalArr.length; i++){
     const contentRow = document.createElement('div');
     const productNo = document.createElement('div');
@@ -100,9 +100,9 @@ function displayProduct() {
     productNo.innerText = i + 1 + '.';
     productName.innerText = finalArr[i].name;
     productQuantity.innerText = finalArr[i].quantity;
-    productCost.innerText = 'RM ' + Number(finalArr[i].cost).toFixed(2);
+    productCost.innerText = 'RM ' + Number(finalArr[i].cost * finalArr[i].quantity).toFixed(2);
     productPrice.innerText = 'RM ' + Number(finalArr[i].singlePrice).toFixed(2);
-    productProfit.innerText = 'RM ' + Number(((finalArr[i].singlePrice) - (finalArr[i].cost))).toFixed(2);
+    productProfit.innerText = 'RM ' + Number(((finalArr[i].singlePrice) - (finalArr[i].cost * finalArr[i].quantity))).toFixed(2);
     weekSection.innerText = 'Week: ' + tempArr[0].date;
 
     contentRow.classList.add('content-row');
